@@ -26,7 +26,7 @@
                     </table>
                 </div>
 		<div id="videoFieldDiv">
-			<video id="videoField" src="" width="100%" height="100%"></video>
+			<video id="videoField" src="WorkingDirectory/1.mp4" width="100%" height="100%"></video>
 		</div>
 		<div id="timeDiv"></div>
 		<div id="actionsToolbarDiv">
@@ -43,6 +43,21 @@
 				<img onclick="onSpeed(2);return false;" class="toolbarIcons" src="img/2x.png"></img>
 			</div>
 		</div>
-		<div id="actionsDiv"></div>
+                <div id="actionsDiv">
+                    <table id="actionsTable">
+                        <thead>
+                            <tr>
+                                <td>Название</td>
+                                <td>Комментарий</td>
+                                <td>Фактическое время</td>
+                                <td>Расчетное время</td>
+                                <td>Дата обновления</td>
+                                <td>Позиция</td>
+                            </tr>
+                        </thead>
+                        <tbody id="actionsTableBody"> 
+                        </tbody>
+                    </table>
+                </div>
 	</body>
 </html>
