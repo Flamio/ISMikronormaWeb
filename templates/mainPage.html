@@ -5,14 +5,32 @@
 		<script src="js/script.js"></script>
 	</head>
 	<body>
-		<div id="processTreeToolbarDiv"></div>
-		<div id="processTreeFieldDiv"></div>
+            <div id="processTreeToolbarDiv">
+                <div class="toolbarConteiner">
+                    <img class="toolbarIcons" src="img/plusBig.png"></img>
+                    <img class="toolbarIcons" src="img/plusSmall.png"></img>
+                    <img class="toolbarIcons" src="img/pencil.png"></img>
+                </div>
+            </div>
+                <div id="processTreeFieldDiv"> 
+                    <table id="processTable">
+                        <thead>
+                            <tr>
+                                <td>Название</td>
+                                <td>Комментарий</td>
+                                <td>Дата обновления</td>
+                            </tr>
+                        </thead>
+                        <tbody id="processTableBody"> 
+                        </tbody>
+                    </table>
+                </div>
 		<div id="videoFieldDiv">
-			<video id="videoField" src="WorkingDirectory/DSC_0190.MOV" width="100%" height="100%"></video>
+			<video id="videoField" src="" width="100%" height="100%"></video>
 		</div>
 		<div id="timeDiv"></div>
 		<div id="actionsToolbarDiv">
-			<div style="position:relative; padding-top:1%">	
+			<div  class="toolbarConteiner">	
 				<img class="toolbarIcons" src="img/plusBig.png"></img>
 				<img class="toolbarIcons" src="img/plusSmall.png"></img>
 				<img class="toolbarIcons" src="img/pencil.png"></img>
