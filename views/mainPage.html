@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link href="css/style.css" rel="stylesheet">
+		<script src="js/script.js"></script>
+	</head>
+	<body>
+		<div id="processTreeToolbarDiv"></div>
+		<div id="processTreeFieldDiv"></div>
+		<div id="videoFieldDiv">
+			<video id="videoField" src="WorkingDirectory/DSC_0190.MOV" width="100%" height="100%"></video>
+		</div>
+		<div id="timeDiv"></div>
+		<div id="actionsToolbarDiv">
+			<div style="position:relative; padding-top:1%">	
+				<img class="toolbarIcons" src="img/plusBig.png"></img>
+				<img class="toolbarIcons" src="img/plusSmall.png"></img>
+				<img class="toolbarIcons" src="img/pencil.png"></img>
+				<img onclick="onBackward(); return false;" class="toolbarIcons" src="img/backward.png"></img>
+				<img id="playButton" onclick="onPlayPause();return false;" class="toolbarIcons" src="img/play.png"></img>
+				<img onclick="onForward();return false;" class="toolbarIcons" src="img/forward.png"></img>
+				<img onclick="onSpeed(0.125);return false;" class="toolbarIcons" src="img/0125.png"></img>
+				<img onclick="onSpeed(0.25);return false;" class="toolbarIcons" src="img/025.png"></img>
+				<img onclick="onSpeed(1);return false;" class="toolbarIcons" src="img/1x.png"></img>
+				<img onclick="onSpeed(2);return false;" class="toolbarIcons" src="img/2x.png"></img>
+			</div>
+		</div>
+		<div id="actionsDiv"></div>
+	</body>
+</html>

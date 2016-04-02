@@ -1,0 +1,62 @@
+.toolbarIcons
+{
+	height:95%;
+
+}
+
+div
+{
+	position:absolute;
+}
+#processTreeFieldDiv
+{
+	height:97%;
+	width:33%;
+	//background-color:black;
+	left:0%;
+	top:3%;
+}
+
+#processTreeToolbarDiv
+{
+	height:3%;
+	width:33%;
+	left:0%;
+	top:0%;
+	//background-color:green;
+}
+
+#videoFieldDiv
+{
+	height:54.3%;
+	width:51%;
+	left:33%;
+	top:0%;
+	background-color:black;
+}
+#timeDiv
+{
+	height:54.3%;
+	width:16%;
+	left:84%;
+	top:0%;
+	//background-color:silver;
+}
+
+#actionsToolbarDiv	
+{
+	height:5%;
+	width:67%;
+	left:33%;
+	top:54.2%;
+	//background-color:pink;
+}
+
+#actionsDiv
+{
+	height:41%;
+	width:67%;
+	left:33%;
+	top:59%;
+	//background-color:gold;
+}
