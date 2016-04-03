@@ -1,5 +1,5 @@
 <?php
-
+require_once 'adapters/HtmlOutputAdapter.php';
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,6 +12,7 @@ class MainPageController
     public function __construct($mainModel, $mainView) 
     {
         $this->mainModel = $mainModel;
-        $mainView->setProcesses($this->mainModel->getAllProcesses());
+        $htmlAdapter = new HtmlOutputAdapter();
+        $mainView->setProcesses($htmlAdapter->convertProcesses($this->mainModel->getAllProcesses()));
     }
 }

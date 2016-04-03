@@ -22,26 +22,8 @@ class MainView
     
     public function setProcesses($processes)
     {
-        $innerHtml="";
-        foreach ($processes as $key => $value) 
-        {
-            $innerHtml.= ""
-                    . "<tr id='process{$key}' class='process'>"
-                    . " <td>{$value->name}</td>"
-                    . "<td>{$value->comment}</td>"
-                    . "<td>{$value->updated}</td>"
-                    . "</tr>";
-            foreach ($value->approaches as $keyApproach => $approach) 
-            {
-                $innerHtml.= ""
-                    . "<tr id='approach{$keyApproach}' class='approach'>"
-                    . " <td>{$approach->name}</td>"
-                    . "<td>{$approach->comment}</td>"
-                    . "<td>{$approach->updated}</td>"
-                    . "</tr>";
-            }
-        }
-        $this->html->getElementById("processTableBody")->innertext = $innerHtml ;
+        
+        $this->html->getElementById("processTableBody")->innertext = $processes ;
         echo $this->html;
     }
 }
