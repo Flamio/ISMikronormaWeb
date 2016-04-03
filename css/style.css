@@ -5,7 +5,7 @@
     font-style: italic;
 }
 
-.clickedApproachRow td
+.clickedApproachRow td:nth-of-type(1)
 {
     padding-left: 3%;
 }
@@ -17,7 +17,6 @@
     font-weight: bold;
 }
 
-
 .process
 {
     font-weight: bold;
@@ -28,7 +27,7 @@
     font-style: italic;
 }
 
-.approach td
+.approach td:nth-of-type(1)
 {
     padding-left: 3%;
 }
