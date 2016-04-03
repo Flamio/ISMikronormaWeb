@@ -1,3 +1,23 @@
+.clickedApproachRow
+{
+    background-color: black;
+    color: white;
+    font-style: italic;
+}
+
+.clickedApproachRow td
+{
+    padding-left: 3%;
+}
+
+.clickedProccessRow 
+{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+
 .process
 {
     font-weight: bold;

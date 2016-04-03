@@ -1,5 +1,6 @@
 
 var isPlay = false;
+var processSelcted = -1;
 
 function onPlayPause()
 {	
@@ -30,4 +31,31 @@ function onBackward()
 function onSpeed(speed)
 {
 	document.getElementById("videoField").playbackRate = speed;
+}
+
+function onProcessClick(id)
+{
+        var table = document.getElementById("processTableBody");
+        var cells = table.getElementsByTagName("tr"); 
+        for (var i = 0; i < cells.length; i++) 
+        { 
+           if (cells[i].className == "clickedProccessRow")
+           {
+                cells[i].className = "process";
+           }
+           if (cells[i].className == "clickedApproachRow")
+           {
+               cells[i].className = "approach";
+           }
+
+        }
+        if (document.getElementById(id).className == "approach")
+        {
+            document.getElementById(id).className = "clickedApproachRow";
+        }
+        else
+        {
+            document.getElementById(id).className = "clickedProccessRow";
+            processSelected = id;
+        }
 }

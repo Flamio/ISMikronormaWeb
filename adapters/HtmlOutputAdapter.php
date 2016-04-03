@@ -19,7 +19,7 @@ class HtmlOutputAdapter
         foreach ($processes as $key => $value) 
         {
             $innerHtml.= ""
-                    . "<tr id='process{$key}' class='process'>"
+                    . "<tr id='process{$key}' onclick='onProcessClick(this.id);return false;' class='process'>"
                     . " <td>{$value->name}</td>"
                     . "<td>{$value->comment}</td>"
                     . "<td>{$value->updated}</td>"
@@ -27,7 +27,7 @@ class HtmlOutputAdapter
             foreach ($value->approaches as $keyApproach => $approach) 
             {
                 $innerHtml.= ""
-                    . "<tr id='approach{$keyApproach}' class='approach'>"
+                    . "<tr id='approach{$keyApproach}' onclick='onProcessClick(this.id);return false;' class='approach'>"
                     . " <td>{$approach->name}</td>"
                     . "<td>{$approach->comment}</td>"
                     . "<td>{$approach->updated}</td>"
