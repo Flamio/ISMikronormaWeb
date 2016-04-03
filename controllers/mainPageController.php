@@ -9,10 +9,12 @@ require_once 'adapters/HtmlOutputAdapter.php';
 class MainPageController
 {
     private $mainModel;
+    
     public function __construct($mainModel, $mainView) 
     {
         $this->mainModel = $mainModel;
         $htmlAdapter = new HtmlOutputAdapter();
+        $mainView->loadTemplate();
         $mainView->setProcesses($htmlAdapter->convertProcesses($this->mainModel->getAllProcesses()));
     }
 }

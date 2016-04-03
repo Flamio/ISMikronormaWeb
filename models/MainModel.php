@@ -21,6 +21,5 @@ class MainModel
     public function getAllProcesses() 
     {
         return $this->database->getProcesses();
-        
     }
 }

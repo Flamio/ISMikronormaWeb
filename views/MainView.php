@@ -15,15 +15,20 @@ class MainView
 {
     private $html;
     
-    public function __construct() 
-    {
-        $this->html = file_get_html('templates/mainPage.html');
-    }
-    
+   
     public function setProcesses($processes)
     {
-        
         $this->html->getElementById("processTableBody")->innertext = $processes ;
         echo $this->html;
+    }
+    
+    public function setOperations($operations)
+    {
+        echo $operations;
+    }
+    
+    public function loadTemplate()
+    {
+        $this->html = file_get_html('templates/mainPage.html');
     }
 }

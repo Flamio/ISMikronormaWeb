@@ -52,12 +52,53 @@ function onProcessClick(id)
         if (document.getElementById(id).className == "approach")
         {
             document.getElementById(id).className = "clickedApproachRow";
+            approachSelected = id;
+            getAjaxData("index.php?action=1", id, "approach");
         }
         else
         {
             document.getElementById(id).className = "clickedProccessRow";
             processSelected = id;
         }
+}
+
+function getXmlHttp(){
+  var xmlhttp;
+  try {
+    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+  } catch (e) {
+    try {
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (E) {
+      xmlhttp = false;
+    }
+  }
+  if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+    xmlhttp = new XMLHttpRequest();
+  }
+  return xmlhttp;
+}
+
+function getAjaxData(url, id, typeId)
+{
+    var req = getXmlHttp();
+    req.onreadystatechange = function() 
+    {
+        if (req.readyState == 4) 
+        {
+            if(req.status == 200) 
+            {
+                document.getElementById("actionsTableBody").innerHTML = req.responseText;
+            }
+        }
+    } 
+    
+    req.open('POST', url, true); 
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+    var request = "approachId="+id.replace(typeId,"");
+    req.send(request);
+    
+    
 }
 
 // javascript-код голосования из примера

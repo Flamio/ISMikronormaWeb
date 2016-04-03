@@ -36,4 +36,21 @@ class HtmlOutputAdapter
         }
         return $innerHtml;
     }
+    
+    public function convertOperations($operations)
+    {
+        $innerHtml="";
+        foreach ($operations as $key => $value) 
+        {
+            $innerHtml.= ""
+                    . "<tr id='operation{$key}' onclick='return false' class='operation'>"
+                    . " <td>{$value->name}<input type='hidden' class='videoFile' value='{$value->videoFileName}' ></td>"
+                    . " <td>&nbsp;</td>"
+                    . " <td>&nbsp;</td>"
+                    . " <td>&nbsp;</td>"
+                    . "<td>{$value->updated}</td>"
+                    . "</tr>";
+        }
+        return $innerHtml;
+    }
 }

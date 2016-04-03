@@ -2,6 +2,7 @@
 require_once 'consts/DataBaseConnectionConsts.php';
 require_once 'structs/ApproachesStruct.php';
 require_once 'structs/ProcessesStruct.php';
+require_once 'structs/OperationsStruct.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -55,6 +56,24 @@ class DataBaseConnection
             
         }
         return $processes;
-        
     }
+    
+            
+        public function getOperations($approachId)
+        {
+            $query = "select * from Operations where idApproach={$approachId}";
+            $result = mysql_query($query,$this->database);
+            $operatons = array();
+            while ($row = mysql_fetch_assoc($result))
+            {
+                if (!isset($operatons[$row['id']]))
+                {
+                    $operations[$row['id']] = new OperationsStruct();
+                }
+                $operations[$row['id']]->name = $row['name'];
+                $operations[$row['id']]->updated = $row['updated'];
+                $operations[$row['id']]->videoFileName = $row['videoFilename'];
+            }
+            return $operations;
+        }
 }
