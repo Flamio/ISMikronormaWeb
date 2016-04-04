@@ -19,7 +19,7 @@ class HtmlOutputAdapter
         foreach ($processes as $key => $value) 
         {
             $innerHtml.= ""
-                    . "<tr id='process{$key}' onclick='onProcessClick(this.id);return false;' class='process'>"
+                    . "<tr id='process{$key}' onclick='onProcessesClick(this.id);return false;' class='process'>"
                     . " <td>{$value->name}</td>"
                     . "<td>{$value->comment}</td>"
                     . "<td>{$value->updated}</td>"
@@ -27,7 +27,7 @@ class HtmlOutputAdapter
             foreach ($value->approaches as $keyApproach => $approach) 
             {
                 $innerHtml.= ""
-                    . "<tr id='approach{$keyApproach}' onclick='onProcessClick(this.id);return false;' class='approach'>"
+                    . "<tr id='approach{$keyApproach}' onclick='onProcessesClick(this.id);return false;' class='approach belongprocess{$key}'>"
                     . " <td>{$approach->name}</td>"
                     . "<td>{$approach->comment}</td>"
                     . "<td>{$approach->updated}</td>"
@@ -43,12 +43,13 @@ class HtmlOutputAdapter
         foreach ($operations as $key => $value) 
         {
             $innerHtml.= ""
-                    . "<tr id='operation{$key}' onclick='return false' class='operation'>"
+                    . "<tr id='operation{$key}' onclick='onOperationsClick(this.id);' class='operation'>"
                     . " <td>{$value->name}<input type='hidden' class='videoFile' value='{$value->videoFileName}' ></td>"
                     . " <td>&nbsp;</td>"
                     . " <td>&nbsp;</td>"
                     . " <td>&nbsp;</td>"
                     . "<td>{$value->updated}</td>"
+                    . " <td>&nbsp;</td>"
                     . "</tr>";
         }
         return $innerHtml;

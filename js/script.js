@@ -1,6 +1,7 @@
 
 var isPlay = false;
 var processSelcted = -1;
+var operatonSelected = -1;
 
 function onPlayPause()
 {	
@@ -33,7 +34,7 @@ function onSpeed(speed)
 	document.getElementById("videoField").playbackRate = speed;
 }
 
-function onProcessClick(id)
+function onProcessesClick(id)
 {
         var table = document.getElementById("processTableBody");
         var cells = table.getElementsByTagName("tr"); 
@@ -43,22 +44,48 @@ function onProcessClick(id)
            {
                 cells[i].className = "process";
            }
-           if (cells[i].className == "clickedApproachRow")
+           if (cells[i].className.indexOf("clickedApproachRow")!=-1)
            {
-               cells[i].className = "approach";
+               cells[i].className = cells[i].className.replace("clickedApproachRow","");
+               cells[i].className += " approach";
+           }
+           if(cells[i].className == "clickedOperationRow")
+           {
+               cells[i].className = "operation";
            }
 
         }
-        if (document.getElementById(id).className == "approach")
+        if (document.getElementById(id).className.indexOf("approach") !=-1)
         {
-            document.getElementById(id).className = "clickedApproachRow";
+            document.getElementById(id).className = document.getElementById(id).className.replace("approach","");
+            document.getElementById(id).className += " clickedApproachRow";
             approachSelected = id;
             getAjaxData("index.php?action=1", id, "approach");
+            processSelected = document.getElementById(id).className.replace("clickedApproachRow","").replace("belong","").trim();
         }
-        else
+        else if (document.getElementById(id).className == "process")
         {
             document.getElementById(id).className = "clickedProccessRow";
             processSelected = id;
+        }
+}
+
+function onOperationsClick(id)
+{
+    var table = document.getElementById("actionsTableBody");
+        var cells = table.getElementsByTagName("tr"); 
+        for (var i = 0; i < cells.length; i++) 
+        { 
+           if(cells[i].className == "clickedOperationRow")
+           {
+               cells[i].className = "operation";
+           }
+        }
+        
+        if (document.getElementById(id).className == "operation")
+        {
+            document.getElementById(id).className = "clickedOperationRow";
+            operationSelected = id;
         }
 }
 

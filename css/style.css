@@ -10,6 +10,13 @@
     padding-left: 3%;
 }
 
+.clickedOperationRow 
+{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
 .clickedProccessRow 
 {
     background-color: black;
@@ -18,6 +25,11 @@
 }
 
 .process
+{
+    font-weight: bold;
+}
+
+.operation
 {
     font-weight: bold;
 }
