@@ -96,6 +96,10 @@ function onOperationsClick(id)
         {
             document.getElementById(id).className = "clickedOperationRow";
             operationSelected = id;
+            var videoFile =  document.getElementById(id).getElementsByTagName("input")[0].getAttribute('value');
+            unPressAllSpeedButtons();
+            onSpeed(1,document.getElementById("1"));
+            document.getElementById("videoField").setAttribute('src', videoFile);
         }
 }
 
