@@ -92,6 +92,16 @@
     cursor:pointer;
 }
 
+.toolbarIcons:hover
+{
+    background-color: #4ca9a9;
+}
+
+.toolbarIcons[pressed="pressed"]
+{
+    background-color: #4ca9a9;
+}
+
 .toolbarConteiner
 {
     position:relative; 
@@ -142,7 +152,7 @@ div
 
 #actionsToolbarDiv	
 {
-	height:5%;
+	height:3%;
 	width:67%;
 	left:33%;
 	top:54.2%;
@@ -151,9 +161,9 @@ div
 
 #actionsDiv
 {
-	height:41%;
+	height:43%;
 	width:67%;
 	left:33%;
-	top:59%;
+	top:57%;
 	//background-color:gold;
 }

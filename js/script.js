@@ -29,9 +29,19 @@ function onBackward()
 	document.getElementById("videoField").currentTime-=2;
 }
 
-function onSpeed(speed)
+function unPressAllSpeedButtons()
+{
+    document.getElementById("0125").setAttribute("pressed","");
+    document.getElementById("025").setAttribute("pressed","");
+    document.getElementById("1").setAttribute("pressed","");
+    document.getElementById("2").setAttribute("pressed","");
+}
+
+function onSpeed(speed, id)
 {
 	document.getElementById("videoField").playbackRate = speed;
+        unPressAllSpeedButtons();
+        id.setAttribute("pressed","pressed");
 }
 
 function onProcessesClick(id)
