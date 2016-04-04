@@ -3,19 +3,30 @@ var isPlay = false;
 var processSelcted = -1;
 var operatonSelected = -1;
 
+var beginOfPartVideo = 0;
+
 function onPlayPause()
 {	
+    if (document.getElementById("videoField").getAttribute('src')=="")
+    {
+        return;
+    }
 	if (isPlay)
 	{
 		document.getElementById("videoField").pause();
 		document.getElementById("playButton").setAttribute("src","img/play.png")
-		isPlay = false;
+		isPlay = false; 
+                var endOfPartVideo = document.getElementById("videoField").currentTime;
+                document.getElementById("timesTable").innerHTML+=
+                        "<tr><td>"+beginOfPartVideo.toFixed(3)+"-"+endOfPartVideo.toFixed(3)+"</td>\n\
+        <td>"+(endOfPartVideo-beginOfPartVideo).toFixed(3)+"</td></tr>";
 	}
 	else
 	{
 		document.getElementById("videoField").play();
 		document.getElementById("playButton").setAttribute("src","img/pause.png");
 		isPlay = true;
+                beginOfPartVideo = document.getElementById("videoField").currentTime;
 	}
 }
 
@@ -137,83 +148,5 @@ function getAjaxData(url, id, typeId)
     req.open('POST', url, true); 
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     var request = "approachId="+id.replace(typeId,"");
-    req.send(request);
-    
-    
+    req.send(request);    
 }
-
-// javascript-код голосования из примера
-/*02
-function vote() {
-03
-    // (1) создать объект для запроса к серверу
-04
-    var req = getXmlHttp() 
-05
-        
-06
-        // (2)
-07
-    // span рядом с кнопкой
-08
-    // в нем будем отображать ход выполнения
-09
-    var statusElem = document.getElementById('vote_status')
-10
-     
-11
-    req.onreadystatechange = function() { 
-12
-        // onreadystatechange активируется при получении ответа сервера
-13
- 
-14
-        if (req.readyState == 4) {
-15
-            // если запрос закончил выполняться
-16
- 
-17
-            statusElem.innerHTML = req.statusText // показать статус (Not Found, ОК..)
-18
- 
-19
-            if(req.status == 200) {
-20
-                 // если статус 200 (ОК) - выдать ответ пользователю
-21
-                alert("Ответ сервера: "+req.responseText);
-22
-            }
-23
-            // тут можно добавить else с обработкой ошибок запроса
-24
-        }
-25
- 
-26
-    }
-27
- 
-28
-       // (3) задать адрес подключения
-29
-    req.open('GET', '/ajax_intro/vote.php', true); 
-30
- 
-31
-    // объект запроса подготовлен: указан адрес и создана функция onreadystatechange
-32
-    // для обработки ответа сервера
-33
-      
-34
-        // (4)
-35
-    req.send(null);  // отослать запрос
-36
-   
-37
-        // (5)
-38
-    statusElem.innerHTML = 'Ожидаю ответа сервера...'*/
