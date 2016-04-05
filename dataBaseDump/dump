@@ -1,0 +1,112 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.13.1deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 05, 2016 at 10:21 PM
+-- Server version: 5.6.28-0ubuntu0.15.10.1
+-- PHP Version: 5.6.11-1ubuntu3.1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `ISMikronormaDB`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Approach`
+--
+
+CREATE TABLE IF NOT EXISTS `Approach` (
+  `id` int(11) NOT NULL,
+  `idProcess` int(11) DEFAULT NULL,
+  `name` varchar(50) NOT NULL,
+  `updated` date NOT NULL,
+  `comment` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Approach`
+--
+
+INSERT INTO `Approach` (`id`, `idProcess`, `name`, `updated`, `comment`) VALUES
+(1, 1, 'approach 1', '0000-00-00', NULL),
+(2, 2, 'approach2', '0000-00-00', NULL),
+(3, 1, 'sdfsafsda', '2016-04-02', 'asfsadfsadfd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Operations`
+--
+
+CREATE TABLE IF NOT EXISTS `Operations` (
+  `id` int(11) NOT NULL,
+  `idApproach` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `updated` date NOT NULL,
+  `videoFilename` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Operations`
+--
+
+INSERT INTO `Operations` (`id`, `idApproach`, `name`, `updated`, `videoFilename`) VALUES
+(1, 1, 'Opearation1', '2016-04-03', 'WorkingDirectory/1.mp4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Processes`
+--
+
+CREATE TABLE IF NOT EXISTS `Processes` (
+  `id` int(11) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Comment` text,
+  `updated` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Processes`
+--
+
+INSERT INTO `Processes` (`id`, `Name`, `Comment`, `updated`) VALUES
+(1, 'process 1', NULL, '0000-00-00'),
+(2, 'oooo', 'safsafsdafs', '2016-04-03');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Approach`
+--
+ALTER TABLE `Approach`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Operations`
+--
+ALTER TABLE `Operations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `Processes`
+--
+ALTER TABLE `Processes`
+  ADD PRIMARY KEY (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
