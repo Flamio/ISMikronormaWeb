@@ -150,3 +150,11 @@ function getAjaxData(url, id, typeId)
     var request = "approachId="+id.replace(typeId,"");
     req.send(request);    
 }
+
+function onKeyDown(event)
+{
+    if (event.keyCode==32)
+    {
+        onPlayPause();
+    }
+}
