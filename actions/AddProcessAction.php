@@ -11,7 +11,7 @@ require_once 'abstractActions.php';
  *
  * @author Maksim
  */
-class AddOperationAction extends abstractActions
+class AddProcessAction extends abstractActions
 {
     private $name;
     private $comment;

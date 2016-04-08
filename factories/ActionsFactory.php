@@ -1,7 +1,8 @@
 <?php
 require_once 'consts/ActionsConsts.php';
 require_once 'actions/getAllOperationsAction.php';
-require_once 'actions/AddOperationAction.php';
+require_once 'actions/AddProcessAction.php';
+require_once 'actions/UpdateProcessTree.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,7 +23,9 @@ class ActionsFactory
             case ActionsConsts::getOperations:
                 return new getAllOperationsAction($post["approachId"]);
             case ActionsConsts::addProcess:
-                return new AddOperationAction($post["name"],$post["comment"]);
+                return new AddProcessAction($post["name"],$post["comment"]);
+            case ActionsConsts::updateProcessTree:
+                return new UpdateProcessTree();
             default:
                 break;
         }

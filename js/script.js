@@ -25,7 +25,16 @@ function onAddingProcess()
             alert("Произошла ошибка!");
         }
         onCloseDialog("addingProcessDiv");
+        updateProcessTree();
     });
+}
+
+function updateProcessTree()
+{
+        getAjaxData("index.php?action=3","", function(response)
+        {
+           document.getElementById("processTableBody").innerHTML = response;
+        });
 }
 
 function onOpenDialog(id)
