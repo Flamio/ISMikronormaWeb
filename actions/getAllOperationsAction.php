@@ -24,6 +24,10 @@ class getAllOperationsAction extends abstractActions
     public function run()
     {
         $operations = $this->database->getOperations($this->approachId);
+        if (empty($operations))
+        {
+            return;
+        }
         $adapter = new HtmlOutputAdapter();
         $this->view->answer($adapter->convertOperations($operations));
     }
