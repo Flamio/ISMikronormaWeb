@@ -5,6 +5,41 @@ var operatonSelected = -1;
 
 var beginOfPartVideo = 0;
 
+function onAddingProcessClick()
+{
+    onOpenDialog("addingProcessDiv");
+}
+
+function onAddingProcess()
+{
+    var name = document.getElementById("addingProcessInputName").value;
+    var comment = document.getElementById("addingProcessInputComment").value;
+    getAjaxData("index.php?action=2", "name="+name+"&comment="+comment, function(response)
+    {
+        if (response == 'ok')
+        {
+            alert("Успешно!");
+        }
+        else
+        {
+            alert("Произошла ошибка!");
+        }
+        onCloseDialog("addingProcessDiv");
+    });
+}
+
+function onOpenDialog(id)
+{
+    document.getElementById(id).style.display = 'block';
+    document.getElementById("blockerBackground").style.display = 'block';
+}
+
+function onCloseDialog(id)
+{
+    document.getElementById(id).style.display = 'none';
+    document.getElementById("blockerBackground").style.display = 'none';
+}
+
 function onPlayPause()
 {	
     if (document.getElementById("videoField").getAttribute('src')=="")
@@ -81,7 +116,11 @@ function onProcessesClick(id)
             document.getElementById(id).className = document.getElementById(id).className.replace("approach","");
             document.getElementById(id).className += " clickedApproachRow";
             approachSelected = id;
-            getAjaxData("index.php?action=1", id, "approach");
+            getAjaxData("index.php?action=1","approachId="+id.replace("approach",""), function(responseText)
+            {
+                document.getElementById("actionsTableBody").innerHTML = responseText;
+            }
+            );
             processSelected = document.getElementById(id).className.replace("clickedApproachRow","").replace("belong","").trim();
         }
         else if (document.getElementById(id).className == "process")
@@ -131,7 +170,7 @@ function getXmlHttp(){
   return xmlhttp;
 }
 
-function getAjaxData(url, id, typeId)
+function getAjaxData(url, request, onResponse)
 {
     var req = getXmlHttp();
     req.onreadystatechange = function() 
@@ -140,14 +179,16 @@ function getAjaxData(url, id, typeId)
         {
             if(req.status == 200) 
             {
-                document.getElementById("actionsTableBody").innerHTML = req.responseText;
+                if (onResponse!=undefined)
+                {
+                    onResponse(req.responseText);
+                }
             }
         }
     } 
     
     req.open('POST', url, true); 
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-    var request = "approachId="+id.replace(typeId,"");
     req.send(request);    
 }
 
@@ -156,5 +197,9 @@ function onKeyDown(event)
     if (event.keyCode==32)
     {
         onPlayPause();
+    }
+    else 
+    {
+        return event.keyCode;
     }
 }

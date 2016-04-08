@@ -14,4 +14,5 @@
 class ActionsConsts 
 {
    const getOperations = 1;
+   const addProcess = 2;
 }

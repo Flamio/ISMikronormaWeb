@@ -22,9 +22,9 @@ class MainView
         echo $this->html;
     }
     
-    public function setOperations($operations)
+    public function answer($answer)
     {
-        echo $operations;
+        echo $answer;
     }
     
     public function loadTemplate()

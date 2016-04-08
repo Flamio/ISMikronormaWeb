@@ -76,4 +76,13 @@ class DataBaseConnection
             }
             return $operations;
         }
+        
+        public function addProcess($name, $comment)
+        {
+            $result;
+            $query = "insert into processes (Name,Comment,updated) values ('{$name}','{$comment}', curdate())";
+            mysql_query($query) or $result = 'failed';
+            $result = 'ok';
+            return $result;
+        }
 }

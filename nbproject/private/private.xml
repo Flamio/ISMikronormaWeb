@@ -3,24 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/ISMikronorma/css/style.css</file>
-            <file>file:/var/www/html/ISMikronorma/js/script.js</file>
-            <file>file:/var/www/html/ISMikronorma/factories/ControllerFactory.php</file>
-            <file>file:/var/www/html/ISMikronorma/adapters/HtmlOutputAdapter.php</file>
-            <file>file:/var/www/html/ISMikronorma/factories/ActionsFactory.php</file>
-            <file>file:/var/www/html/ISMikronorma/templates/mainPage.html</file>
-            <file>file:/var/www/html/ISMikronorma/models/MainModel.php</file>
-            <file>file:/var/www/html/ISMikronorma/index.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/getAllOperationsAction.php</file>
-            <file>file:/var/www/html/ISMikronorma/controllers/mainPageController.php</file>
-            <file>file:/var/www/html/ISMikronorma/structs/ApproachesStruct.php</file>
-            <file>file:/var/www/html/ISMikronorma/core/dataBaseConnection.php</file>
-            <file>file:/var/www/html/ISMikronorma/structs/OperationsStruct.php</file>
-            <file>file:/var/www/html/ISMikronorma/controllers/ActionController.php</file>
-            <file>file:/var/www/html/ISMikronorma/core/application.php</file>
-            <file>file:/var/www/html/ISMikronorma/views/MainView.php</file>
-            <file>file:/var/www/html/ISMikronorma/consts/ActionsConsts.php</file>
-            <file>file:/var/www/html/ISMikronorma/structs/ProcessesStruct.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/views/MainView.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/templates/mainPage.html</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/js/script.js</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/adapters/HtmlOutputAdapter.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/controllers/ActionController.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/css/style.css</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/consts/ActionsConsts.php</file>
         </group>
     </open-files>
 </project-private>

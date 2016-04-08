@@ -1,5 +1,5 @@
 <?php
-
+require_once 'abstractActions.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,26 +11,20 @@
  *
  * @author maksim
  */
-class getAllOperationsAction 
+class getAllOperationsAction extends abstractActions
 {
     private $approachId;
-    private $dataBase;
-    private $view;
     
     public function __construct($approachId) 
     {
         $this->approachId = $approachId;
     }
     
-    public function setDataBaseAndView($dataBase,$view)
-    {
-        $this->dataBase = $dataBase;
-        $this->view = $view;
-    }
+    
     public function run()
     {
         $operations = $this->dataBase->getOperations($this->approachId);
         $adapter = new HtmlOutputAdapter();
-        $this->view->setOperations($adapter->convertOperations($operations));
+        $this->view->answer($adapter->convertOperations($operations));
     }
 }
