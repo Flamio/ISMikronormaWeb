@@ -191,14 +191,15 @@ function getAjaxData(url, request, onResponse)
                 if (onResponse!=undefined)
                 {
                     onResponse(req.responseText);
+                    onCloseDialog('load');
                 }
             }
         }
     } 
-    
     req.open('POST', url, true); 
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-    req.send(request);    
+    req.send(request);
+    onOpenDialog('load');
 }
 
 function onKeyDown(event)
