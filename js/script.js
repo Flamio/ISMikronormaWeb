@@ -1,7 +1,7 @@
 
 var isPlay = false;
 var processSelcted = -1;
-var operatonSelected = -1;
+var approachSelected = -1;
 
 var beginOfPartVideo = 0;
 
@@ -99,6 +99,11 @@ function onSpeed(speed, id)
         id.setAttribute("pressed","pressed");
 }
 
+function onUpploadFile()
+{
+    document.getElementById('uploadFile').click();  
+}
+
 function onProcessesClick(id)
 {
         var table = document.getElementById("processTableBody");
@@ -135,12 +140,19 @@ function onProcessesClick(id)
             }
             );
             processSelected = document.getElementById(id).className.replace("clickedApproachRow","").replace("belong","").trim();
+            approachSelected = id;
         }
         else if (document.getElementById(id).className == "process")
         {
             document.getElementById(id).className = "clickedProccessRow";
             processSelected = id;
         }
+}
+
+function onFileSelected()
+{
+    document.getElementById('formUppload').setAttribute('action','index.php?action=4&approachId='+approachSelected);
+    document.getElementById('formUppload').submit();
 }
 
 function onOperationsClick(id)

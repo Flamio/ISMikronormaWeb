@@ -20,5 +20,6 @@ class MainModel
        $approach = new Approach();
       return ($process->join('left', $approach ,"{$process->getTableName()}.id={$approach->getTableName()}.idProcess" ,array("name",'comment', 'id', 'updated'), 
                array('name','comment','updated','id','videoFilename')));
+      
     }
 }

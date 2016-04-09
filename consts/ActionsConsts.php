@@ -16,4 +16,5 @@ class ActionsConsts
    const getOperations = 1;
    const addProcess = 2;
    const updateProcessTree = 3;
+   const videoUpload = 4;
 }

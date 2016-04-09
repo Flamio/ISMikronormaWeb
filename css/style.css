@@ -8,6 +8,16 @@
     display:none;
 }
 
+input[type="file"]
+{
+    display: none;
+}
+
+#formUppload
+{
+    display:none;
+}
+
 #load table
 {
     text-align: center;
