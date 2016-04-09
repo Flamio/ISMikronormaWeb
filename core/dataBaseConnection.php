@@ -29,7 +29,7 @@ class DataBaseConnection
         $query = "select Approach.`name` as approachName, Processes.`Name` as processesName, Processes.Comment as processesComment, 
                     Processes.id as processId,Approach.comment as approachComment, Approach.updated as approachUpdated,
                     Processes.updated as processUpdated,
-                    Approach.id as approachId from Processes left join Approach on Processes.id=Approach.idProcess
+                    Approach.id as approachId, Approach.videoFilename as video from Processes left join Approach on Processes.id=Approach.idProcess
                     ";
         $result = mysql_query($query,$this->database);
         
@@ -52,6 +52,7 @@ class DataBaseConnection
             $processes[$row['processId']]->approaches[$row['approachId']]->name = $row['approachName'];
             $processes[$row['processId']]->approaches[$row['approachId']]->comment = $row['approachComment'];
             $processes[$row['processId']]->approaches[$row['approachId']]->updated = $row['approachUpdated'];
+            $processes[$row['processId']]->approaches[$row['approachId']]->videoFileName = $row['video'];
             
             
         }

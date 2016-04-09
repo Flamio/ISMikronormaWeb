@@ -15,4 +15,5 @@ class ApproachesStruct {
     public $name;
     public $comment;
     public $updated;
+    public $videoFileName;
 }

@@ -28,7 +28,7 @@ class HtmlOutputAdapter
             {
                 $innerHtml.= ""
                     . "<tr id='approach{$keyApproach}' onclick='onProcessesClick(this.id);return false;' class='approach belongprocess{$key}'>"
-                    . " <td>{$approach->name}</td>"
+                    . " <td>{$approach->name} <input type='hidden' value='{$approach->videoFileName}'></td>"
                     . "<td>{$approach->comment}</td>"
                     . "<td>{$approach->updated}</td>"
                     . "</tr>";
@@ -44,7 +44,7 @@ class HtmlOutputAdapter
         {
             $innerHtml.= ""
                     . "<tr id='operation{$key}' onclick='onOperationsClick(this.id);' class='operation'>"
-                    . " <td>{$value->name}<input type='hidden' class='videoFile' value='{$value->videoFileName}' ></td>"
+                    . " <td>{$value->name}</td>"
                     . " <td>&nbsp;</td>"
                     . " <td>&nbsp;</td>"
                     . " <td>&nbsp;</td>"

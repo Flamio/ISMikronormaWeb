@@ -125,6 +125,10 @@ function onProcessesClick(id)
             document.getElementById(id).className = document.getElementById(id).className.replace("approach","");
             document.getElementById(id).className += " clickedApproachRow";
             approachSelected = id;
+            var videoFile =  document.getElementById(id).getElementsByTagName("input")[0].getAttribute('value');
+            unPressAllSpeedButtons();
+            onSpeed(1,document.getElementById("1"));
+            document.getElementById("videoField").setAttribute('src', videoFile);
             getAjaxData("index.php?action=1","approachId="+id.replace("approach",""), function(responseText)
             {
                 document.getElementById("actionsTableBody").innerHTML = responseText;
@@ -155,10 +159,7 @@ function onOperationsClick(id)
         {
             document.getElementById(id).className = "clickedOperationRow";
             operationSelected = id;
-            var videoFile =  document.getElementById(id).getElementsByTagName("input")[0].getAttribute('value');
-            unPressAllSpeedButtons();
-            onSpeed(1,document.getElementById("1"));
-            document.getElementById("videoField").setAttribute('src', videoFile);
+            
         }
 }
 
