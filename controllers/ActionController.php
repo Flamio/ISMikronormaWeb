@@ -13,17 +13,20 @@ require_once 'factories/ActionsFactory.php';
  */
 class ActionController 
 {
+
+    private $mainModel;
     private $dataBase;
     private $mainView;
-    public function __construct($dataBase,$mainView) 
+    public function __construct($mainView,$mainModel) 
     {
-        $this->dataBase = $dataBase;
         $this->mainView = $mainView;
+        $this->mainModel = $mainModel;
     }
     public function setActionId($id)
     {
         $action = ActionsFactory::create($id, $_POST);
-        $action->setDataBaseAndView($this->dataBase, $this->mainView);
+        $action->setView($this->mainView);
+        $action->setMainModel($this->mainModel);
         $action->run();
     }
 }

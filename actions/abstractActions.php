@@ -15,11 +15,17 @@ abstract class abstractActions
 {
     protected $view;
     protected $database;
-    
-    public function setDataBaseAndView($dataBase,$view)
+    protected $mainModel;
+
+
+    public function setView($view)
     {
-        $this->database = $dataBase;
         $this->view = $view;
+    }
+    
+    public function setMainModel($mainModel) 
+    {
+        $this->mainModel = $mainModel;
     }
     
     abstract public function run();

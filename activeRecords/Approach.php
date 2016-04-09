@@ -1,5 +1,5 @@
 <?php
-require_once 'abstractActiveRecord.php';
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,28 +7,24 @@ require_once 'abstractActiveRecord.php';
  */
 
 /**
- * Description of process
+ * Description of Approach
  *
  * @author Maksim
  */
-class Process  extends abstractActiveRecord
+class Approach extends abstractActiveRecord
 {
-    public $name;
-    public $updated;
-    public $comment;
-    
     public function __construct() 
     {
         $this->fillTableName();
     }
     protected function fillInsertingValues() 
     {
-        $this->insertingValues = array("name" => $this->name,"updated" => $this->updated, "comment" => $this->comment);
+        
     }
 
     protected function fillTableName() 
     {
-        $this->tableName = "processes";
+        $this->tableName = "approach";
     }
 
 //put your code here

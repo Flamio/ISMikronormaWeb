@@ -1,5 +1,6 @@
 <?php
 require_once 'abstractActions.php';
+require_once 'activeRecords/operation.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,7 +24,8 @@ class getAllOperationsAction extends abstractActions
     
     public function run()
     {
-        $operations = $this->database->getOperations($this->approachId);
+        $opearation = new operation();
+        $operations = $opearation->getValues(array('id','idApproach','name','updated'), "{$opearation->getTableName()}.idApproach={$this->approachId}");
         if (empty($operations))
         {
             return;

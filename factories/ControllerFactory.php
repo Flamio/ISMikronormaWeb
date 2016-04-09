@@ -17,17 +17,17 @@ require_once 'models/MainModel.php';
  */
 class ControllerFactory 
 {
-    public static function create($get, $dataBaseConnection, $mainView)
+    public static function create($get, $mainView)
     {
     foreach ($get as $key => $value) 
     {
         if ($key == "action")
         {
-            $actionController = new ActionController($dataBaseConnection,$mainView);
+            $actionController = new ActionController($mainView, new MainModel());
             $actionController->setActionId($value);
             return $actionController;
         }
     }
-        return new MainPageController(new MainModel($dataBaseConnection), $mainView);
+        return new MainPageController(new MainModel(), $mainView);
     }
 }

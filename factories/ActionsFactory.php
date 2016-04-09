@@ -24,6 +24,7 @@ class ActionsFactory
                 return new getAllOperationsAction($post["approachId"]);
             case ActionsConsts::addProcess:
                 return new AddProcessAction($post["name"],$post["comment"]);
+                
             case ActionsConsts::updateProcessTree:
                 return new UpdateProcessTree();
             default:

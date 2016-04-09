@@ -15,22 +15,27 @@ class HtmlOutputAdapter
 {
     public function convertProcesses($processes) 
     {
-        $innerHtml="";
+        $innerHtml=""; 
+        $procesIds = array();
         foreach ($processes as $key => $value) 
         {
-            $innerHtml.= ""
-                    . "<tr id='process{$key}' onclick='onProcessesClick(this.id);return false;' class='process'>"
-                    . " <td>{$value->name}</td>"
-                    . "<td>{$value->comment}</td>"
-                    . "<td>{$value->updated}</td>"
-                    . "</tr>";
-            foreach ($value->approaches as $keyApproach => $approach) 
+            if (!in_array($value['processesid'],$procesIds))
             {
                 $innerHtml.= ""
-                    . "<tr id='approach{$keyApproach}' onclick='onProcessesClick(this.id);return false;' class='approach belongprocess{$key}'>"
-                    . " <td>{$approach->name} <input type='hidden' value='{$approach->videoFileName}'></td>"
-                    . "<td>{$approach->comment}</td>"
-                    . "<td>{$approach->updated}</td>"
+                    . "<tr id='process{$value['processesid']}' onclick='onProcessesClick(this.id);return false;' class='process'>"
+                    . " <td>{$value['processesname']}</td>"
+                    . "<td>{$value['processescomment']}</td>"
+                    . "<td>{$value['processesupdated']}</td>"
+                    . "</tr>";
+                array_push($procesIds, $value['processesid']);
+            }
+            
+            if ($value['approachid']!="")            
+            {$innerHtml.= ""
+                    . "<tr id='approach{$value['approachid']}' onclick='onProcessesClick(this.id);return false;' class='approach belongprocess{$key}'>"
+                    . " <td>{$value['approachname']} <input type='hidden' value='{$value['approachvideoFilename']}'></td>"
+                    . "<td>{$value['approachcomment']}</td>"
+                    . "<td>{$value['approachupdated']}</td>"
                     . "</tr>";
             }
         }
@@ -43,12 +48,12 @@ class HtmlOutputAdapter
         foreach ($operations as $key => $value) 
         {
             $innerHtml.= ""
-                    . "<tr id='operation{$key}' onclick='onOperationsClick(this.id);' class='operation'>"
-                    . " <td>{$value->name}</td>"
+                    . "<tr id='operation{$value['operationsid']}' onclick='onOperationsClick(this.id);' class='operation'>"
+                    . " <td>{$value['operationsname']}</td>"
                     . " <td>&nbsp;</td>"
                     . " <td>&nbsp;</td>"
                     . " <td>&nbsp;</td>"
-                    . "<td>{$value->updated}</td>"
+                    . "<td>{$value['operationsupdate']}</td>"
                     . " <td>&nbsp;</td>"
                     . "</tr>";
         }
