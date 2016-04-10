@@ -26,14 +26,15 @@ class getAllOperationsAction extends abstractActions
     {
         $opearation = new operation();
         $operations = $opearation->getValues(array('id','idApproach','name','updated'), "{$opearation->getTableName()}.idApproach={$this->approachId}");
-        if (empty($operations))
-        {
-            return;
-        }
         $approach = new Approach();
         $videoFileName = $approach->getValues(array('videoFilename'), "id={$this->approachId}")[0]['approachvideoFilename'];
-        $result["variants"] = $operations;
         $result['videoFilename'] = $videoFileName;
+        
+        if (!empty($operations))
+        {
+            $result["variants"] = $operations;
+        }
+                
         $this->view->answer(json_encode($result));
     }
 }

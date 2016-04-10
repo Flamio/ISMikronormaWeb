@@ -147,6 +147,7 @@ function onProcessesClick(id)
                 }
                 var response = JSON.parse(responseText);
                 var innerHtml = "" ;
+                console.log(responseText);
                 for (var i in response.variants) 
                 {
                     innerHtml+= "<tr id='operation"+response.variants[i].operationsid+"' onclick='onOperationsClick(this.id);' class='operation'>"
@@ -157,9 +158,9 @@ function onProcessesClick(id)
                     + "<td>"+response.variants[i].operationsupdated+"</td>"
                     + " <td>&nbsp;</td>"
                     + "</tr>";
+                }
                 document.getElementById("videoField").setAttribute('src', response.videoFilename);
                 document.getElementById("actionsTableBody").innerHTML = innerHtml;
-                }
             }
             );
             processSelected = document.getElementById(id).className.replace("clickedApproachRow","").replace("belong","").trim();
