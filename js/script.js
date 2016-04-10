@@ -151,7 +151,7 @@ function onProcessesClick(id)
 
 function onFileSelected()
 {
-    document.getElementById('formUppload').setAttribute('action','index.php?action=4&approachId='+approachSelected);
+    document.getElementById('formUppload').setAttribute('action','index.php?action=4&approachId='+approachSelected.replace("approach",""));
     document.getElementById('formUppload').submit();
 }
 

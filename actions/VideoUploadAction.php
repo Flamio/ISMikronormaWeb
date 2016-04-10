@@ -14,20 +14,31 @@ require_once 'abstractActions.php';
 class VideoUploadAction extends abstractActions
 {
 
+    private $get;
     private $file;
 
-    public function __construct($file) 
+    public function __construct($file,$get) 
     {
         $this->file = $file;
+        $this->get = $get;
     }
     public function run()
     {
         if (empty($this->file['videoFile']['tmp_name']))
         {
-            return;
+            echo "Ошибка! Ничего не загружено";
         }
+        $approach = new Approach();
+        $videofile = $approach->getValues(array("videoFilename"), "id={$this->get['approachId']}");
+        @unlink($videofile[0]['approachvideoFilename']);
+        
         $hash = hash_file("md5",$this->file['videoFile']['tmp_name']);
-        move_uploaded_file($this->file['videoFile']['tmp_name'],"WorkingDirectory/{$hash}");
-        header("Location:{$_SERVER['HTTP_REFERER']}");
+        $filePath = "WorkingDirectory/{$hash}";
+        move_uploaded_file($this->file['videoFile']['tmp_name'],$filePath);
+        
+        
+        $approach->update(array($filePath), array('videoFilename'), "id={$this->get['approachId']}");
+        
+        header("Location:index.php");
     }
 }

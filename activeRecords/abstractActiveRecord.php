@@ -13,7 +13,6 @@ require_once 'consts/DatabaseConnectionConsts.php';
  */
 abstract class abstractActiveRecord 
 {
-    private $database;
     protected $insertingValues;
     protected $tableName;
    
@@ -21,11 +20,6 @@ abstract class abstractActiveRecord
     abstract protected function fillInsertingValues();
     abstract protected function fillTableName();
     
-    /*select Approach.`name` as approachName, Processes.`Name` as processesName, Processes.Comment as processesComment, 
-                    Processes.id as processId, Processes.updated as processUpdated,Approach.comment as approachComment, 
-     * Approach.updated as approachUpdated,
-                    Approach.id as approachId, Approach.videoFilename as video from Processes left join
-     *  Approach on Processes.id=Approach.idProcess */
     
     public function join($type, $activeRecord,$condition,$fieldArrayLeft, $fieldArrayRight)
     {
@@ -63,18 +57,17 @@ abstract class abstractActiveRecord
     
     private function convertfromResToArray($query)
     {
-        $this->database = mysql_connect(DataBaseConnectionConsts::server, DataBaseConnectionConsts::username, DataBaseConnectionConsts::password);
-        mysql_select_db("ISMikronormaDB",  $this->database);
+        $database = $this->getConnection();
         
         $result = array();
-        $res = mysql_query($query, $this->database) or $result = "failed";
+        $res = mysql_query($query, $database) or $result = "failed";
         $counter = 0;
         while ($row = mysql_fetch_assoc($res))
         {
             $result[$counter] = $row;
             $counter++;
         }
-        mysql_close($this->database);
+        mysql_close($database);
         return $result;
     }
     
@@ -83,11 +76,32 @@ abstract class abstractActiveRecord
         return $this->tableName;
     }
     
+    public function update($updateParams,$columns,$condition) 
+    {
+        /*update approach set name = 'app1' where approach.id = 1*/
+        $query = "update {$this->tableName} set ";
+        for ($i=0;$i<count($columns);$i++)
+        {
+            $query.=" {$columns[$i]}='{$updateParams[$i]}',";
+        }
+        
+        $query = rtrim($query,',');
+        if (!empty($condition))
+        {
+            $query.=" where {$condition}";
+        }
+
+        $result;
+        $database = $this->getConnection();
+        mysql_query($query,$database) or $result = mysql_error();   
+         $result = 'ok';
+         mysql_close($database);
+         return $result;
+    }
+    
     public function save()
     {
-        $this->database = mysql_connect(DataBaseConnectionConsts::server, DataBaseConnectionConsts::username, DataBaseConnectionConsts::password);
-        mysql_select_db("ISMikronormaDB",  $this->database);
-
+        $database = $this->getConnection();
         $this->fillInsertingValues();
         $saveQuery = "insert into {$this->tableName} (";
         foreach ($this->insertingValues as $key => $value) 
@@ -106,10 +120,17 @@ abstract class abstractActiveRecord
         
         $result;
         
-         mysql_query($saveQuery,$this->database) or $result = die(mysql_error());;   
+         mysql_query($saveQuery,$database) or $result = mysql_error();   
          $result = 'ok';
-         mysql_close($this->database);
+         mysql_close($database);
          return $result; 
+    }
+    
+    private function getConnection()
+    {
+        $database = mysql_connect(DataBaseConnectionConsts::server, DataBaseConnectionConsts::username, DataBaseConnectionConsts::password);
+        mysql_select_db("ISMikronormaDB",  $database);
+        return $database;
     }
    
 }

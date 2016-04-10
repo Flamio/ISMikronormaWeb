@@ -29,7 +29,7 @@ class ActionsFactory
             case ActionsConsts::updateProcessTree:
                 return new UpdateProcessTree();
             case ActionsConsts::videoUpload:
-                return new VideoUploadAction($_FILES);
+                return new VideoUploadAction($_FILES,$_GET);
             default:
                 break;
         }
