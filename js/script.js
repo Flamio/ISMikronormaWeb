@@ -137,6 +137,8 @@ function onProcessesClick(id)
             approachSelected = id;
             unPressAllSpeedButtons();
             onSpeed(1,document.getElementById("1"));
+            document.getElementById("actionsTableBody").innerHTML = "";
+            document.getElementById("videoField").setAttribute('src', "");
             getAjaxData("index.php?action=1","approachId="+id.replace("approach",""), function(responseText)
             {
                 if (responseText=="")
@@ -155,9 +157,9 @@ function onProcessesClick(id)
                     + "<td>"+response.variants[i].operationsupdated+"</td>"
                     + " <td>&nbsp;</td>"
                     + "</tr>";
-                }
                 document.getElementById("videoField").setAttribute('src', response.videoFilename);
                 document.getElementById("actionsTableBody").innerHTML = innerHtml;
+                }
             }
             );
             processSelected = document.getElementById(id).className.replace("clickedApproachRow","").replace("belong","").trim();
@@ -167,6 +169,7 @@ function onProcessesClick(id)
         {
             document.getElementById(id).className = "clickedProccessRow";
             document.getElementById("videoField").setAttribute('src', "");
+            document.getElementById("actionsTableBody").innerHTML = "";
             processSelected = id;
             approachSelected = -1;
         }
