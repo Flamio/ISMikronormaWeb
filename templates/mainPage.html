@@ -45,7 +45,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <button onclick="onAddingProcess(); return false">Добавить</button>
+                            <button  id='okProcess' onclick="onAddingProcess(); return false">ОК</button>
                         </td>
                         <td>
                             <button onclick="onCloseDialog('addingProcessDiv')">Отмена</button>
@@ -57,7 +57,7 @@
                 <div class="toolbarConteiner">
                     <img class="toolbarIcons" src="img/plusBig.png" onclick="onAddingProcessClick(); return false;"></img>
                     <img class="toolbarIcons" src="img/plusSmall.png"></img>
-                    <img class="toolbarIcons" src="img/pencil.png"></img>
+                    <img class="toolbarIcons" src="img/pencil.png" onclick="onEditProcessClick();"></img>
                 </div>
             </div>
                 <div id="processTreeFieldDiv"> 

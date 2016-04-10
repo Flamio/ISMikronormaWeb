@@ -4,6 +4,8 @@ require_once 'actions/getAllOperationsAction.php';
 require_once 'actions/AddProcessAction.php';
 require_once 'actions/UpdateProcessTree.php';
 require_once 'actions/VideoUploadAction.php';
+require_once 'actions/getProcessAction.php';
+require_once 'actions/UpdateProcessAction.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,6 +32,12 @@ class ActionsFactory
                 return new UpdateProcessTree();
             case ActionsConsts::videoUpload:
                 return new VideoUploadAction($_FILES,$_GET);
+            case 'getProcess':
+            {
+                return new getProcessAction($_GET['id']);
+            }
+            case 'updateProcess':
+                return new UpdateProcessAction($_GET['id'],$post);
             default:
                 break;
         }

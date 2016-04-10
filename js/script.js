@@ -7,7 +7,52 @@ var beginOfPartVideo = 0;
 
 function onAddingProcessClick()
 {
+    document.getElementById("okProcess").setAttribute('onclick','onAddingProcess()');
     onOpenDialog("addingProcessDiv");
+}
+
+function onEditProcessClick()
+{
+    var onclick ="";
+    var url = '';
+    if (processSelected!=-1 && approachSelected==-1)
+    {
+        onclick = 'onEditProcess()';
+        getAjaxData("index.php?action=getProcess&id="+processSelected.replace("process",""),null,  function(response)
+        {
+            console.log(response);
+            var responseObject = JSON.parse(response);
+            document.getElementById("addingProcessInputName").value = responseObject[0].processesname;
+            document.getElementById("addingProcessInputComment").value = responseObject[0].processescomment;
+            onOpenDialog("addingProcessDiv");
+        });
+    }
+    else if(processSelected!=-1 && approachSelected!=-1)
+    {
+        onclick = 'onEditApproach()';
+    }
+    document.getElementById("okProcess").setAttribute('onclick',onclick);
+ 
+}
+
+function onEditProcess()
+{
+    var name = document.getElementById("addingProcessInputName").value;
+    var comment = document.getElementById("addingProcessInputComment").value;
+    getAjaxData("index.php?action=updateProcess&id="+processSelected.replace("process",""),"name="+name+"&comment="+comment,  function(response)
+        {
+            console.log(response);
+            if (response == 'ok')
+            {
+                alert("Успешно!");
+            }
+            else
+            {
+                alert("Произошла ошибка!");
+            }
+            onCloseDialog("addingProcessDiv");
+            updateProcessTree();
+        });
 }
 
 function onAddingProcess()
@@ -230,8 +275,8 @@ function getAjaxData(url, request, onResponse)
             {
                 if (onResponse!=undefined)
                 {
-                    onResponse(req.responseText);
                     onCloseDialog('load');
+                    onResponse(req.responseText);
                 }
             }
         }
