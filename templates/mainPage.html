@@ -53,10 +53,40 @@
                     </tr>
                 </table>  
             </div>
+            
+            <div id = "addingApproachDiv">
+                <table id="addingApproachTable">
+                    <tr>
+                        <td>
+                            Наименование
+                        </td>
+                        <td>
+                            <input id="addingApproachInputName" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Комментарий
+                        </td>
+                        <td>
+                            <input id="addingApproachInputComment" type="text" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button  id='okApproach'>ОК</button>
+                        </td>
+                        <td>
+                            <button onclick="onCloseDialog('addingApproachDiv')">Отмена</button>
+                        </td>
+                    </tr>
+                </table>  
+            </div>
+            
             <div id="processTreeToolbarDiv">
                 <div class="toolbarConteiner">
                     <img class="toolbarIcons" src="img/plusBig.png" onclick="onAddingProcessClick(); return false;"></img>
-                    <img class="toolbarIcons" src="img/plusSmall.png"></img>
+                    <img class="toolbarIcons" src="img/plusSmall.png" onclick="onAddingApproachClick();"></img>
                     <img class="toolbarIcons" src="img/pencil.png" onclick="onEditProcessClick();"></img>
                 </div>
             </div>

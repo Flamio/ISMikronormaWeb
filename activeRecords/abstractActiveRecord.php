@@ -21,7 +21,7 @@ abstract class abstractActiveRecord
     abstract protected function fillTableName();
     
     
-    public function join($type, $activeRecord,$condition,$fieldArrayLeft, $fieldArrayRight)
+    public function join($type, $activeRecord,$condition,$fieldArrayLeft, $fieldArrayRight, $order)
     {
         $query=" select ";
         foreach ($fieldArrayLeft as $key => $value) 
@@ -33,7 +33,7 @@ abstract class abstractActiveRecord
             $query.=" {$activeRecord->tableName}.{$value} as {$activeRecord->tableName}{$value},";
         }
         $query = rtrim($query,',');
-        $query.=" from {$this->tableName} {$type} join {$activeRecord->tableName} on {$condition}";
+        $query.=" from {$this->tableName} {$type} join {$activeRecord->tableName} on {$condition} order by {$order}";
         return $this->convertfromResToArray($query);
     }
     
@@ -119,7 +119,6 @@ abstract class abstractActiveRecord
         $saveQuery.=')';
         
         $result;
-        
          mysql_query($saveQuery,$database) or $result = mysql_error();   
          $result = 'ok';
          mysql_close($database);

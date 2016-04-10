@@ -13,13 +13,18 @@
  */
 class Approach extends abstractActiveRecord
 {
+    public $comment;
+    public $name;
+    public $idProcess;
+    public $updated;
+    
     public function __construct() 
     {
         $this->fillTableName();
     }
     protected function fillInsertingValues() 
     {
-        
+        $this->insertingValues = array("name" => $this->name,"updated" => $this->updated, "comment" => $this->comment, "idProcess"=>  $this->idProcess);
     }
 
     protected function fillTableName() 

@@ -6,6 +6,7 @@ require_once 'actions/UpdateProcessTree.php';
 require_once 'actions/VideoUploadAction.php';
 require_once 'actions/getProcessAction.php';
 require_once 'actions/UpdateProcessAction.php';
+require_once 'actions/AddApproachAction.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -38,6 +39,8 @@ class ActionsFactory
             }
             case 'updateProcess':
                 return new UpdateProcessAction($_GET['id'],$post);
+            case 'addApproach':
+                return new AddApproachAction($post);
             default:
                 break;
         }

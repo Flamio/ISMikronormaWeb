@@ -1,6 +1,6 @@
 
 var isPlay = false;
-var processSelcted = -1;
+var processSelected = -1;
 var approachSelected = -1;
 
 var beginOfPartVideo = 0;
@@ -9,6 +9,15 @@ function onAddingProcessClick()
 {
     document.getElementById("okProcess").setAttribute('onclick','onAddingProcess()');
     onOpenDialog("addingProcessDiv");
+}
+
+function onAddingApproachClick()
+{
+    if (processSelected!=-1)
+    {
+           document.getElementById("okApproach").setAttribute('onclick','onAddingApproach()');
+            onOpenDialog("addingApproachDiv");
+    }
 }
 
 function onEditProcessClick()
@@ -33,6 +42,27 @@ function onEditProcessClick()
     }
     document.getElementById("okProcess").setAttribute('onclick',onclick);
  
+}
+
+function onAddingApproach()
+{
+    var name = document.getElementById("addingApproachInputName").value;
+    var comment = document.getElementById("addingApproachInputComment").value;
+    getAjaxData("index.php?action=addApproach", "name="+name+"&comment="+comment+"&idProcess="+processSelected.replace("process",""), function(response)
+    {
+        console.log(processSelected.replace("process",""));
+        console.log(response);
+        if (response == 'ok')
+        {
+            alert("Успешно!");
+        }
+        else
+        {
+            alert("Произошла ошибка!");
+        }
+        onCloseDialog("addingApproachDiv");
+        updateProcessTree();
+    });
 }
 
 function onEditProcess()

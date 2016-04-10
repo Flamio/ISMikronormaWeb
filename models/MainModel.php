@@ -19,7 +19,7 @@ class MainModel
        $process = new Process();
        $approach = new Approach();
       return ($process->join('left', $approach ,"{$process->getTableName()}.id={$approach->getTableName()}.idProcess" ,array("name",'comment', 'id', 'updated'), 
-               array('name','comment','updated','id')));
+               array('name','comment','updated','id'),"{$process->getTableName()}id"));
       
     }
 }

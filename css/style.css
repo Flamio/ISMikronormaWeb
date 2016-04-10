@@ -35,7 +35,7 @@ input[type="file"]
     top:0;
     display:none;
 }
-#addingProcessDiv
+#addingProcessDiv, #addingApproachDiv
 {
     position: absolute;
     left: 30%;
@@ -44,7 +44,7 @@ input[type="file"]
     background-color: white;
     display:none;
 }
-#addingProcessTable
+#addingProcessTable, #addingApproachTable
 {
     width: 100%;
     text-align: center;
