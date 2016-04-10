@@ -26,7 +26,7 @@ class VideoUploadAction extends abstractActions
     {
         if (empty($this->file['videoFile']['tmp_name']))
         {
-            echo "Ошибка! Ничего не загружено";
+            die("Ошибка! Ничего не загружено");
         }
         $approach = new Approach();
         $videofile = $approach->getValues(array("videoFilename"), "id={$this->get['approachId']}");

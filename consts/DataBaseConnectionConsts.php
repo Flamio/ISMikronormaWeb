@@ -4,6 +4,6 @@ class DataBaseConnectionConsts
 {
     const server = "localhost";
     const username = "root";
-    const password = "";
+    const password = "root";
 }
 
