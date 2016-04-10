@@ -33,29 +33,11 @@ class HtmlOutputAdapter
             if ($value['approachid']!="")            
             {$innerHtml.= ""
                     . "<tr id='approach{$value['approachid']}' onclick='onProcessesClick(this.id);return false;' class='approach belongprocess{$key}'>"
-                    . " <td>{$value['approachname']} <input type='hidden' value='{$value['approachvideoFilename']}'></td>"
+                    . " <td>{$value['approachname']}</td>"
                     . "<td>{$value['approachcomment']}</td>"
                     . "<td>{$value['approachupdated']}</td>"
                     . "</tr>";
             }
-        }
-        return $innerHtml;
-    }
-    
-    public function convertOperations($operations)
-    {
-        $innerHtml="";
-        foreach ($operations as $key => $value) 
-        {
-            $innerHtml.= ""
-                    . "<tr id='operation{$value['operationsid']}' onclick='onOperationsClick(this.id);' class='operation'>"
-                    . " <td>{$value['operationsname']}</td>"
-                    . " <td>&nbsp;</td>"
-                    . " <td>&nbsp;</td>"
-                    . " <td>&nbsp;</td>"
-                    . "<td>{$value['operationsupdate']}</td>"
-                    . " <td>&nbsp;</td>"
-                    . "</tr>";
         }
         return $innerHtml;
     }

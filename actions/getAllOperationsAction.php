@@ -30,7 +30,10 @@ class getAllOperationsAction extends abstractActions
         {
             return;
         }
-        $adapter = new HtmlOutputAdapter();
-        $this->view->answer($adapter->convertOperations($operations));
+        $approach = new Approach();
+        $videoFileName = $approach->getValues(array('videoFilename'), "id={$this->approachId}")[0]['approachvideoFilename'];
+        $result["variants"] = $operations;
+        $result['videoFilename'] = $videoFileName;
+        $this->view->answer(json_encode($result));
     }
 }
