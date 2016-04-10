@@ -110,6 +110,7 @@ function onUpploadFile()
 
 function onProcessesClick(id)
 {
+        document.getElementById('timesTable').innerHTML = "";
         var table = document.getElementById("processTableBody");
         var cells = table.getElementsByTagName("tr"); 
         for (var i = 0; i < cells.length; i++) 

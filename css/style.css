@@ -199,6 +199,7 @@ div
 	left:84%;
 	top:0%;
         border-bottom: solid thin;
+        overflow-y: auto;
 }
 
 #actionsToolbarDiv	

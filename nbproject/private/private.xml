@@ -3,29 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/activeRecords/Approach.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/core/application.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/templates/mainPage.html</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/structs/ApproachesStruct.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/factories/ControllerFactory.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/js/script.js</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/actions/abstractActions.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/controllers/ActionController.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/css/style.css</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/structs/ProcessesStruct.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/activeRecords/abstractActiveRecord.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/models/MainModel.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/actions/getAllOperationsAction.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/consts/ActionsConsts.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/activeRecords/operation.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/views/MainView.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/actions/AddProcessAction.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/controllers/mainPageController.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/activeRecords/process.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/factories/ActionsFactory.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/adapters/HtmlOutputAdapter.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/actions/UpdateProcessTree.php</file>
-            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/actions/VideoUploadAction.php</file>
+            <file>file:/var/www/html/ISMikronorma/actions/VideoUploadAction.php</file>
+            <file>file:/var/www/html/ISMikronorma/activeRecords/abstractActiveRecord.php</file>
+            <file>file:/var/www/html/ISMikronorma/consts/DataBaseConnectionConsts.php</file>
         </group>
     </open-files>
 </project-private>
