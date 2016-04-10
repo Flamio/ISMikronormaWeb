@@ -101,6 +101,10 @@ function onSpeed(speed, id)
 
 function onUpploadFile()
 {
+    if (approachSelected==-1)
+    {
+        return;
+    }
     document.getElementById('uploadFile').click();  
 }
 
@@ -145,7 +149,9 @@ function onProcessesClick(id)
         else if (document.getElementById(id).className == "process")
         {
             document.getElementById(id).className = "clickedProccessRow";
+            document.getElementById("videoField").setAttribute('src', "");
             processSelected = id;
+            approachSelected = -1;
         }
 }
 
