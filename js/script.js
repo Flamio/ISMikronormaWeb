@@ -22,11 +22,9 @@ function onAddingApproachClick()
 
 function onEditProcessClick()
 {
-    var onclick ="";
-    var url = '';
     if (processSelected!=-1 && approachSelected==-1)
     {
-        onclick = 'onEditProcess()';
+        document.getElementById("okProcess").setAttribute('onclick','onEditProcess()');
         getAjaxData("index.php?action=getProcess&id="+processSelected.replace("process",""),null,  function(response)
         {
             console.log(response);
@@ -38,9 +36,16 @@ function onEditProcessClick()
     }
     else if(processSelected!=-1 && approachSelected!=-1)
     {
-        onclick = 'onEditApproach()';
+        document.getElementById("okApproach").setAttribute('onclick','onEditApproach()');
+        getAjaxData("index.php?action=getApproach&id="+approachSelected.replace("approach",""),null,  function(response)
+        {
+            console.log(response);
+            var responseObject = JSON.parse(response);
+            document.getElementById("addingApproachInputName").value = responseObject[0].approachname;
+            document.getElementById("addingApproachInputComment").value = responseObject[0].approachcomment;
+            onOpenDialog("addingApproachDiv");
+        });
     }
-    document.getElementById("okProcess").setAttribute('onclick',onclick);
  
 }
 
@@ -81,6 +86,26 @@ function onEditProcess()
                 alert("Произошла ошибка!");
             }
             onCloseDialog("addingProcessDiv");
+            updateProcessTree();
+        });
+}
+
+function onEditApproach()
+{
+       var name = document.getElementById("addingApproachInputName").value;
+    var comment = document.getElementById("addingApproachInputComment").value;
+    getAjaxData("index.php?action=updateApproach&id="+approachSelected.replace("approach",""),"name="+name+"&comment="+comment,  function(response)
+        {
+            console.log(response);
+            if (response == 'ok')
+            {
+                alert("Успешно!");
+            }
+            else
+            {
+                alert("Произошла ошибка!");
+            }
+            onCloseDialog("addingApproachDiv");
             updateProcessTree();
         });
 }
