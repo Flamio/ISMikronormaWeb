@@ -238,7 +238,7 @@ function onProcessesClick(id)
                 document.getElementById("actionsTableBody").innerHTML = innerHtml;
             }
             );
-            processSelected = document.getElementById(id).className.replace("clickedApproachRow","").replace("belong","").trim();
+            processSelected = document.getElementById(id).getAttribute('belong');
             approachSelected = id;
         }
         else if (document.getElementById(id).className == "process")

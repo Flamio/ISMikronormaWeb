@@ -32,7 +32,7 @@ class HtmlOutputAdapter
             
             if ($value['approachid']!="")            
             {$innerHtml.= ""
-                    . "<tr id='approach{$value['approachid']}' onclick='onProcessesClick(this.id);return false;' class='approach'>"
+                    . "<tr id='approach{$value['approachid']}' onclick='onProcessesClick(this.id);return false;' class='approach' belong='{$value['processesid']}'>"
                     . " <td>{$value['approachname']}</td>"
                     . "<td>{$value['approachcomment']}</td>"
                     . "<td>{$value['approachupdated']}</td>"
