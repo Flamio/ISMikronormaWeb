@@ -24,7 +24,7 @@ class ActionsFactory
 {
     public static function create($actionId, $post)
     {
-        switch ($actionId) 
+        switch ($actionId)
         {
             case ActionsConsts::getOperations:
                 return new getAllOperationsAction($post["approachId"]);

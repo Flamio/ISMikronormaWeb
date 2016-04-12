@@ -11,7 +11,7 @@ class Application
 {
     public function execute() 
     {
-        ControllerFactory::create($_GET, new MainView());
+        $controller = ControllerFactory::create($_GET, new MainView());
     }
     
 }

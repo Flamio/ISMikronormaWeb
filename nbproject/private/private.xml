@@ -4,27 +4,30 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/var/www/html/ISMikronorma/js/script.js</file>
-            <file>file:/var/www/html/ISMikronorma/css/style.css</file>
-            <file>file:/var/www/html/ISMikronorma/factories/ControllerFactory.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/getProcessAction.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/VideoUploadAction.php</file>
-            <file>file:/var/www/html/ISMikronorma/adapters/HtmlOutputAdapter.php</file>
             <file>file:/var/www/html/ISMikronorma/factories/ActionsFactory.php</file>
             <file>file:/var/www/html/ISMikronorma/activeRecords/operation.php</file>
-            <file>file:/var/www/html/ISMikronorma/templates/mainPage.html</file>
             <file>file:/var/www/html/ISMikronorma/models/MainModel.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/abstractActions.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/getAllOperationsAction.php</file>
+            <file>file:/var/www/html/ISMikronorma/templates/mainPage.html</file>
             <file>file:/var/www/html/ISMikronorma/controllers/mainPageController.php</file>
             <file>file:/var/www/html/ISMikronorma/controllers/ActionController.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/UpdateProcessAction.php</file>
             <file>file:/var/www/html/ISMikronorma/activeRecords/abstractActiveRecord.php</file>
+            <file>file:/var/www/html/ISMikronorma/core/application.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/AddProcessAction.php</file>
-            <file>file:/var/www/html/ISMikronorma/activeRecords/process.php</file>
             <file>file:/var/www/html/ISMikronorma/activeRecords/Approach.php</file>
-            <file>file:/var/www/html/ISMikronorma/consts/DataBaseConnectionConsts.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/AddApproachAction.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/UpdateProcessTree.php</file>
+            <file>file:/var/www/html/ISMikronorma/css/style.css</file>
+            <file>file:/var/www/html/ISMikronorma/factories/ControllerFactory.php</file>
+            <file>file:/var/www/html/ISMikronorma/actions/VideoUploadAction.php</file>
+            <file>file:/var/www/html/ISMikronorma/actions/abstractActions.php</file>
+            <file>file:/var/www/html/ISMikronorma/actions/getAllOperationsAction.php</file>
+            <file>file:/var/www/html/ISMikronorma/activeRecords/process.php</file>
+            <file>file:/var/www/html/ISMikronorma/actions/getApproachAction.php</file>
+            <file>file:/var/www/html/ISMikronorma/consts/DataBaseConnectionConsts.php</file>
+            <file>file:/var/www/html/ISMikronorma/views/MainView.php</file>
+            <file>file:/var/www/html/ISMikronorma/actions/AddApproachAction.php</file>
+            <file>file:/var/www/html/ISMikronorma/actions/UpdateApproachAction.php</file>
         </group>
     </open-files>
 </project-private>

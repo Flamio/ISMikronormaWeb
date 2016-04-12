@@ -15,8 +15,7 @@ class UpdateProcessTree extends abstractActions
 {
     public function run() 
     {
-        $adapter = new HtmlOutputAdapter();
-        $this->view->answer($adapter->convertProcesses($this->mainModel->getAllProcesses()));
+        $this->view->answer(json_encode($this->mainModel->getAllProcesses()));
     }
 
 }

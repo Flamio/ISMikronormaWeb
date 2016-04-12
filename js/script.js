@@ -5,6 +5,11 @@ var approachSelected = -1;
 
 var beginOfPartVideo = 0;
 
+window.onload = function()
+{
+    updateProcessTree();
+}
+
 function onAddingProcessClick()
 {
     document.getElementById("okProcess").setAttribute('onclick','onAddingProcess()');
@@ -133,7 +138,34 @@ function updateProcessTree()
 {
         getAjaxData("index.php?action=3","", function(response)
         {
-           document.getElementById("processTableBody").innerHTML = response;
+           var responseObject = JSON.parse(response);
+           var innerHtml = "";
+           var processIds =[];
+           for(var i in responseObject)
+           {
+               if (processIds.indexOf(responseObject[i].processesid)==-1)
+               {
+                   innerHtml += "<tr id='"+responseObject[i].processesid+"' onclick='onProcessesClick(this.id);return false;' class='process'>"
+                    + " <td>"+responseObject[i].processesname+"</td>"
+                    + "<td>"+responseObject[i].processescomment+"</td>"
+                    + "<td>"+responseObject[i].processesupdated+"</td>"
+                    + "</tr>";
+                    processIds.push(responseObject[i].processesid);
+                }   
+                
+               if (responseObject[i].approachid!=null)            
+               {
+                    innerHtml+="<tr id='"+responseObject[i].approachid+"' onclick='onProcessesClick(this.id);return false;' class='approach' belong='"+responseObject[i].processesid+"'>"
+                    + " <td>"+responseObject[i].approachname+"</td>"
+                    + "<td>"+responseObject[i].approachcomment+"</td>"
+                    + "<td>"+responseObject[i].approachupdated+"</td>"
+                    + "</tr>";
+               }
+            
+           }
+           
+           document.getElementById("processTableBody").innerHTML = innerHtml;
+           
         });
 }
 
