@@ -91,12 +91,11 @@ abstract class abstractActiveRecord
             $query.=" where {$condition}";
         }
 
-        $result;
         $database = $this->getConnection();
         mysql_query($query,$database) or $result = mysql_error();   
-         $result = 'ok';
+         $result["success"] = 'ok';
          mysql_close($database);
-         return $result;
+         return json_encode($result);
     }
     
     public function save()
@@ -118,11 +117,10 @@ abstract class abstractActiveRecord
         $saveQuery = rtrim($saveQuery,',');
         $saveQuery.=')';
         
-        $result;
          mysql_query($saveQuery,$database) or $result = mysql_error();   
-         $result = 'ok';
+         $result['success'] = 'ok';
          mysql_close($database);
-         return $result; 
+         return json_encode($result); 
     }
     
     private function getConnection()

@@ -23,10 +23,5 @@ abstract class abstractActions
         $this->view = $view;
     }
     
-    public function setMainModel($mainModel) 
-    {
-        $this->mainModel = $mainModel;
-    }
-    
     abstract public function run();
 }

@@ -116,9 +116,10 @@
 				<img class="toolbarIcons" src="img/plusSmall.png"></img>
 				<img class="toolbarIcons" src="img/pencil.png"></img>
                                 <img class="toolbarIcons" onclick="onUpploadFile(); return false" src="img/uploadVideo.png"></img>
-                                <form id ="formUppload"  method='post' enctype="multipart/form-data">
+                                <form id ="formUppload"  method='post' enctype="multipart/form-data" target="upload_target">
                                     <input id="uploadFile" onchange="onFileSelected()" type="file" name="videoFile">
                                 </form> 
+                                <iframe id="upload_target" name="upload_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>  
 				<img onclick="onBackward(); return false;" class="toolbarIcons" src="img/backward.png"></img>
 				<img id="playButton" onclick="onPlayPause();return false;" class="toolbarIcons" src="img/play.png"></img>
 				<img onclick="onForward();return false;" class="toolbarIcons" src="img/forward.png"></img>

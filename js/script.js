@@ -30,7 +30,7 @@ function onEditProcessClick()
     if (processSelected!=-1 && approachSelected==-1)
     {
         document.getElementById("okProcess").setAttribute('onclick','onEditProcess()');
-        getAjaxData("index.php?action=getProcess&id="+processSelected.replace("process",""),null,  function(response)
+        getAjaxData("api.php?action=getProcess&id="+processSelected.replace("process",""),null,  function(response)
         {
             console.log(response);
             var responseObject = JSON.parse(response);
@@ -42,7 +42,7 @@ function onEditProcessClick()
     else if(processSelected!=-1 && approachSelected!=-1)
     {
         document.getElementById("okApproach").setAttribute('onclick','onEditApproach()');
-        getAjaxData("index.php?action=getApproach&id="+approachSelected.replace("approach",""),null,  function(response)
+        getAjaxData("api.php?action=getApproach&id="+approachSelected.replace("approach",""),null,  function(response)
         {
             console.log(response);
             var responseObject = JSON.parse(response);
@@ -58,11 +58,12 @@ function onAddingApproach()
 {
     var name = document.getElementById("addingApproachInputName").value;
     var comment = document.getElementById("addingApproachInputComment").value;
-    getAjaxData("index.php?action=addApproach", "name="+name+"&comment="+comment+"&idProcess="+processSelected.replace("process",""), function(response)
+    getAjaxData("api.php?action=addApproach", "name="+name+"&comment="+comment+"&idProcess="+processSelected.replace("process",""), function(response)
     {
         console.log(processSelected.replace("process",""));
         console.log(response);
-        if (response == 'ok')
+        response = JSON.parse(response);
+        if (response.success == 'ok')
         {
             alert("Успешно!");
         }
@@ -79,10 +80,11 @@ function onEditProcess()
 {
     var name = document.getElementById("addingProcessInputName").value;
     var comment = document.getElementById("addingProcessInputComment").value;
-    getAjaxData("index.php?action=updateProcess&id="+processSelected.replace("process",""),"name="+name+"&comment="+comment,  function(response)
+    getAjaxData("api.php?action=updateProcess&id="+processSelected.replace("process",""),"name="+name+"&comment="+comment,  function(response)
         {
             console.log(response);
-            if (response == 'ok')
+            response = JSON.parse(response);
+            if (response.success == 'ok')
             {
                 alert("Успешно!");
             }
@@ -99,10 +101,11 @@ function onEditApproach()
 {
        var name = document.getElementById("addingApproachInputName").value;
     var comment = document.getElementById("addingApproachInputComment").value;
-    getAjaxData("index.php?action=updateApproach&id="+approachSelected.replace("approach",""),"name="+name+"&comment="+comment,  function(response)
+    getAjaxData("api.php?action=updateApproach&id="+approachSelected.replace("approach",""),"name="+name+"&comment="+comment,  function(response)
         {
             console.log(response);
-            if (response == 'ok')
+            response = JSON.parse(response);
+            if (response.success == 'ok')
             {
                 alert("Успешно!");
             }
@@ -119,9 +122,10 @@ function onAddingProcess()
 {
     var name = document.getElementById("addingProcessInputName").value;
     var comment = document.getElementById("addingProcessInputComment").value;
-    getAjaxData("index.php?action=2", "name="+name+"&comment="+comment, function(response)
+    getAjaxData("api.php?action=2", "name="+name+"&comment="+comment, function(response)
     {
-        if (response == 'ok')
+        response = JSON.parse(response);
+        if (response.success == 'ok')
         {
             alert("Успешно!");
         }
@@ -136,7 +140,7 @@ function onAddingProcess()
 
 function updateProcessTree()
 {
-        getAjaxData("index.php?action=3","", function(response)
+        getAjaxData("api.php?action=3","", function(response)
         {
            var responseObject = JSON.parse(response);
            var innerHtml = "";
@@ -145,7 +149,7 @@ function updateProcessTree()
            {
                if (processIds.indexOf(responseObject[i].processesid)==-1)
                {
-                   innerHtml += "<tr id='"+responseObject[i].processesid+"' onclick='onProcessesClick(this.id);return false;' class='process'>"
+                   innerHtml += "<tr id='process"+responseObject[i].processesid+"' onclick='onProcessesClick(this.id);return false;' class='process'>"
                     + " <td>"+responseObject[i].processesname+"</td>"
                     + "<td>"+responseObject[i].processescomment+"</td>"
                     + "<td>"+responseObject[i].processesupdated+"</td>"
@@ -155,7 +159,7 @@ function updateProcessTree()
                 
                if (responseObject[i].approachid!=null)            
                {
-                    innerHtml+="<tr id='"+responseObject[i].approachid+"' onclick='onProcessesClick(this.id);return false;' class='approach' belong='"+responseObject[i].processesid+"'>"
+                    innerHtml+="<tr id=approach'"+responseObject[i].approachid+"' onclick='onProcessesClick(this.id);return false;' class='approach' belong='"+responseObject[i].processesid+"'>"
                     + " <td>"+responseObject[i].approachname+"</td>"
                     + "<td>"+responseObject[i].approachcomment+"</td>"
                     + "<td>"+responseObject[i].approachupdated+"</td>"
@@ -271,7 +275,7 @@ function onProcessesClick(id)
             onSpeed(1,document.getElementById("1"));
             document.getElementById("actionsTableBody").innerHTML = "";
             document.getElementById("videoField").setAttribute('src', "");
-            getAjaxData("index.php?action=1","approachId="+id.replace("approach",""), function(responseText)
+            getAjaxData("api.php?action=1","approachId="+id.replace("approach",""), function(responseText)
             {
                 if (responseText=="")
                 {
@@ -310,8 +314,9 @@ function onProcessesClick(id)
 
 function onFileSelected()
 {
-    document.getElementById('formUppload').setAttribute('action','index.php?action=4&approachId='+approachSelected.replace("approach",""));
+    document.getElementById('formUppload').setAttribute('action','api.php?action=4&approachId='+approachSelected.replace("approach",""));
     document.getElementById('formUppload').submit();
+    
 }
 
 function onOperationsClick(id)

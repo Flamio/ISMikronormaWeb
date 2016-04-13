@@ -1,8 +1,6 @@
 <?php
 
-require_once 'controllers/mainPageController.php';
 require_once 'controllers/ActionController.php';
-require_once 'models/MainModel.php';
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,15 +17,14 @@ class ControllerFactory
 {
     public static function create($get, $mainView)
     {
-    foreach ($get as $key => $value) 
-    {
-        if ($key == "action")
+        foreach ($get as $key => $value) 
         {
-            $actionController = new ActionController($mainView, new MainModel());
-            $actionController->setActionId($value);
-            return $actionController;
+            if ($key == "action")
+            {
+                $actionController = new ActionController($mainView);
+                $actionController->setActionId($value);
+                return $actionController;
+            }
         }
-    }
-        return new MainPageController(new MainModel(), $mainView);
     }
 }

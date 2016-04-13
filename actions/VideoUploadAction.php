@@ -26,7 +26,7 @@ class VideoUploadAction extends abstractActions
     {
         if (empty($this->file['videoFile']['tmp_name']))
         {
-            die("Ошибка! Ничего не загружено");
+            $this->view->answer("failed");
         }
         $approach = new Approach();
         $videofile = $approach->getValues(array("videoFilename"), "id={$this->get['approachId']}");
@@ -36,9 +36,10 @@ class VideoUploadAction extends abstractActions
         $filePath = "WorkingDirectory/{$hash}";
         move_uploaded_file($this->file['videoFile']['tmp_name'],$filePath);
         
-        
         $approach->update(array($filePath), array('videoFilename'), "id={$this->get['approachId']}");
-        
-        header("Location:index.php");
+        $this->view->answer("
+            <script language='javascript' type='text/javascript'>
+                alert('Успешно!');
+            </script>   ");
     }
 }
