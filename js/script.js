@@ -1,5 +1,526 @@
 
-var isPlay = false;
+var xhr = 
+{
+    getXmlHttp: function()
+    {
+          var xmlhttp;
+            try {
+              xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+              try {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+              } catch (E) {
+                xmlhttp = false;
+              }
+            }
+            if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+              xmlhttp = new XMLHttpRequest();
+            }
+            return xmlhttp;
+     },
+              
+    getAjaxData: function(url, request, onResponse)
+    {
+        var req = this.getXmlHttp();
+        req.onreadystatechange = function() 
+        {
+            if (req.readyState == 4) 
+            {
+                if(req.status == 200) 
+                {
+                    if (onResponse!=undefined)
+                    {
+                        onResponse(JSON.parse(req.responseText));
+                    }
+                }
+            }
+        } 
+        req.open('POST', url, true); 
+        req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        req.send(request);
+    }
+}
+
+var ISMikronormaWebApi =
+{
+    getProcessesAndApproaches: function(onAnswer)
+    {
+        xhr.getAjaxData("api.php?action=3","",onAnswer);
+    },
+    addProcess: function(name,comment,onAnswer)
+    {
+        xhr.getAjaxData("api.php?action=2", "name="+name+"&comment="+comment, onAnswer);
+    },
+    
+    loadVariants: function(idApproach,onAnswer)
+    {
+        xhr.getAjaxData("api.php?action=1","approachId="+idApproach,onAnswer);
+    },
+    addApproach: function(name,comment,idProcess,onAnswer)
+    {
+        xhr.getAjaxData("api.php?action=addApproach", "name="+name+"&comment="+comment+"&idProcess="+idProcess, onAnswer);
+    },
+    
+    updateApproach: function(id,name,comment, onAnswer)
+    {
+        xhr.getAjaxData("api.php?action=updateApproach&id="+id,"name="+name+"&comment="+comment,onAnswer);
+    },
+    
+    updateProcess: function (id,name,comment,onAnswer)
+    {
+        xhr.getAjaxData("api.php?action=updateProcess&id="+id,"name="+name+"&comment="+comment, onAnswer);
+    },
+    getApproach: function(id,onAnswer)
+    {
+        xhr.getAjaxData("api.php?action=getApproach&id="+id,null,onAnswer);
+    },
+    getProcess: function(id,onAnswer)
+    {
+        xhr.getAjaxData("api.php?action=getProcess&id="+id,null,onAnswer);
+    }
+}
+
+var partOfVideo = 
+{
+}
+
+
+var view = 
+{
+    submitUploadingFile: function(idApproach)
+    {
+        document.getElementById('formUppload').setAttribute('action','api.php?action=4&approachId='+idApproach);
+        document.getElementById('formUppload').submit();  
+    },
+    clickOnUploadFile: function()
+    {
+        document.getElementById('uploadFile').click(); 
+    },
+    unPressAllSpeedButtons: function()
+    {
+        document.getElementById("0125").setAttribute("pressed","");
+        document.getElementById("025").setAttribute("pressed","");
+        document.getElementById("1").setAttribute("pressed","");
+        document.getElementById("2").setAttribute("pressed","");
+    },
+    
+    setVideoCurrent: function (sec)
+    {
+        document.getElementById("videoField").currentTime+=sec;
+    },
+    
+    pressSpeedButton: function(id)
+    {
+        this.unPressAllSpeedButtons();
+        id.setAttribute("pressed","pressed");
+    },
+    
+    setSpeedVideo: function(speed)
+    {
+        document.getElementById("videoField").playbackRate = speed;
+    },
+    
+    setVariants: function(variants)
+    {
+        var innerHtml = "";
+        for (var i in variants) 
+                {
+                    innerHtml+= "<tr id='operation"+variants[i].operationsid+"' onclick='onOperationsClick(this.id);' class='operation'>"
+                    + " <td>"+variants[i].operationsname+"</td>"
+                    + " <td>&nbsp;</td>"
+                    + " <td>&nbsp;</td>"
+                    + " <td>&nbsp;</td>"
+                    + "<td>"+variants[i].operationsupdated+"</td>"
+                    + " <td>&nbsp;</td>"
+                    + "</tr>";
+                }
+                document.getElementById("actionsTableBody").innerHTML = innerHtml;
+    },
+    setVideo: function (video)
+    {
+        document.getElementById("videoField").setAttribute('src', video);
+        this.pressSpeedButton(document.getElementById("1"));
+    },
+    selectApproach: function(id)
+    {
+        this.unselectAllInProcessesTree();
+        document.getElementById("approach"+id).className = "clickedApproachRow";
+    },
+    unselectAllInProcessesTree : function ()
+    {
+        document.getElementById('timesTable').innerHTML = "";
+        var table = document.getElementById("processTableBody");
+        var cells = table.getElementsByTagName("tr"); 
+        for (var i = 0; i < cells.length; i++) 
+        { 
+            if (cells[i].className == "clickedProccessRow")
+            {
+                cells[i].className = "process";
+            }
+            else if (cells[i].className == "clickedApproachRow")
+            {
+                cells[i].className = "approach";
+            }
+        }
+    },
+    selectProcess: function(id)
+    {
+        this.unselectAllInProcessesTree();
+        document.getElementById("process"+id).className = "clickedProccessRow";
+    },
+    closeAddProcessDialog: function()
+    {
+        this.closeDialog('addingProcessDiv');
+    },
+    showAddProcessDialog: function(name,comment)
+    {
+        name = name == null ? "" : name;
+        comment = comment == null ? comment = "" : comment = comment;
+        
+        var onclick = "";
+        if (name == "" && comment == "")
+        {
+            onclick = "controller.handleAddingProcess(document.getElementById('addingProcessInputName').value,document.getElementById('addingProcessInputComment').value)";
+        }
+        else 
+        {
+            onclick = "controller.handleEditProcess(document.getElementById('addingProcessInputName').value,document.getElementById('addingProcessInputComment').value)";
+        }
+        
+        document.getElementById('okProcess').setAttribute('onclick',onclick);
+        
+        document.getElementById("addingProcessInputName").value = name;
+        document.getElementById("addingProcessInputComment").value = comment;
+        this.openDialog('addingProcessDiv');
+    },
+    
+    closeAddApproachDialog: function()
+    {
+        this.closeDialog('addingApproachDiv');
+    },
+    showAddApproachDialog: function(name,comment)
+    {
+        console.log(name);
+        console.log(comment);
+        name = name == null ? "" : name;
+        comment = comment == null ? comment = "" : comment = comment;
+        var onclick = "";
+        if (name == "" && comment == "")
+        {
+            onclick = "controller.handleAddingApproach(document.getElementById('addingApproachInputName').value,document.getElementById('addingApproachInputComment').value)";
+        }
+        else 
+        {
+            onclick = "controller.handleEditApproach(document.getElementById('addingApproachInputName').value,document.getElementById('addingApproachInputComment').value)";
+        }
+        
+        document.getElementById('okApproach').setAttribute('onclick',onclick);
+        
+        document.getElementById("addingApproachInputName").value = name;
+        document.getElementById("addingApproachInputComment").value = comment;
+        this.openDialog('addingApproachDiv');
+    },
+    
+    closeDialog: function(id)
+    {
+         document.getElementById(id).style.display = 'none';
+        document.getElementById("blockerBackground").style.display = 'none';
+    },
+    
+    openDialog: function(id)
+    {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById("blockerBackground").style.display = 'block';
+    },
+    
+    updateProcessesAndApproaches: function()
+    {
+        model.loadProcessesAndApproaches(function(response)
+        {
+              var innerHtml = "";
+              var processIds =[];
+              for(var i in response)
+                {
+                    if (processIds.indexOf(response[i].processesid)==-1)
+                    {
+                        innerHtml += "<tr id='process"+response[i].processesid+"' onclick='controller.handleProcessClick("+response[i].processesid+");return false;' class='process'>"
+                         + " <td>"+response[i].processesname+"</td>"
+                         + "<td>"+response[i].processescomment+"</td>"
+                         + "<td>"+response[i].processesupdated+"</td>"
+                         + "</tr>";
+                         processIds.push(response[i].processesid);
+                     }   
+
+                    if (response[i].approachid!=null)            
+                    {
+                         innerHtml+="<tr id='approach"+response[i].approachid+"' onclick='controller.handleApproachClick("+response[i].approachid+","+response[i].processesid+");return false;' class='approach' belong='"+response[i].processesid+"'>"
+                         + " <td>"+response[i].approachname+"</td>"
+                         + "<td>"+response[i].approachcomment+"</td>"
+                         + "<td>"+response[i].approachupdated+"</td>"
+                         + "</tr>";
+                    }
+
+                }
+           
+           document.getElementById("processTableBody").innerHTML = innerHtml; 
+        });
+    },
+    
+    showAlertMessage:function(message)
+    {
+        alert(message);
+        return false;
+    },
+    updateTimesField: function(model)
+    {
+        var innerHtml = "";
+        console.log(model.partsOfVideo);
+        for(var i=0;i<model.partsOfVideo.length;i++)
+        {
+            innerHtml+="<tr id="+i+"><td>"+model.partsOfVideo[i].begin.toFixed(3)+"-"+model.partsOfVideo[i].end.toFixed(3)+"</td>\n\
+                <td>"+model.partsOfVideo[i].lenght.toFixed(3)+"</td></tr>"
+        }
+        console.log(innerHtml);
+        document.getElementById("timesTable").innerHTML = innerHtml;
+    },
+    playPauseVideo: function(model)
+    {
+        if (document.getElementById("videoField").getAttribute('src')=="")
+        {
+            return;
+        }
+        if (model.isVideoPlaying)
+        {
+            model.isVideoPlaying = false;
+            document.getElementById("videoField").pause();
+            document.getElementById("playButton").setAttribute("src","img/play.png")
+            partOfVideo.end = document.getElementById("videoField").currentTime;
+            partOfVideo.lenght = partOfVideo.end - partOfVideo.begin;
+            
+            clonePartOfVideo = partOfVideo.constructor();
+            for (p in partOfVideo)
+            {
+                clonePartOfVideo[p] = partOfVideo[p];
+            }
+            
+            model.partsOfVideo.push(clonePartOfVideo);
+            this.updateTimesField(model);
+        }
+        else
+        {
+            document.getElementById("videoField").play();
+            document.getElementById("playButton").setAttribute("src","img/pause.png");
+            model.isVideoPlaying = true;
+            partOfVideo.begin = document.getElementById("videoField").currentTime;
+        }
+    }
+}
+
+var model = 
+{
+    currentProcess: -1,
+    currentApproach: -1,
+    isVideoPlaying: false,
+    partsOfVideo:[],
+    
+    loadProcessesAndApproaches: function (answerFunc)
+    {
+        ISMikronormaWebApi.getProcessesAndApproaches(answerFunc);
+    },
+    addProcess: function (name,comment,answerFunc)
+    {
+        ISMikronormaWebApi.addProcess(name,comment,answerFunc);
+    },
+    
+    addApproach: function(name,comment,onAnswer)
+    {
+       ISMikronormaWebApi.addApproach(name,comment,this.currentProcess,onAnswer);
+    },
+    
+    getApproach:function(id,onAnswer)
+    {
+        ISMikronormaWebApi.getApproach(id,onAnswer);
+    },
+    
+    getProcess:function(id,onAnswer)
+    {
+        ISMikronormaWebApi.getProcess(id,onAnswer);
+    },
+    
+    updateProcess: function(name, comment, onAnswer)
+    {
+        ISMikronormaWebApi.updateProcess(this.currentProcess,name,comment,onAnswer);
+    },
+    
+    updateApproach: function(name, comment, onAnswer)
+    {
+        ISMikronormaWebApi.updateApproach(this.currentApproach,name,comment,onAnswer);
+    },
+    
+    
+    loadVariants: function(idApproach, answerFunc)
+    {
+        ISMikronormaWebApi.loadVariants(idApproach,answerFunc);
+    }
+}
+
+var controller = 
+{
+    closeAddProcessDialog: function()
+    {
+       view.closeAddProcessDialog();
+    },
+    showAddProcessDialog: function()
+    {
+      view.showAddProcessDialog();
+    },
+    
+    closeAddApproachDialog: function()
+    {
+       view.closeAddApproachDialog();
+    },
+    showAddApproachDialog: function()
+    {
+        if (model.currentProcess == -1)
+        {
+            return;
+        }
+        view.showAddApproachDialog();
+    },
+    
+    handleOnload:function(view)
+    {
+        view.updateProcessesAndApproaches();
+    },
+    handleOnKeyDown: function(event,view)
+    {
+        if (event.keyCode==32)
+        {
+            view.playPauseVideo(model);
+        }
+        else 
+        {
+            return event.keyCode;
+        }
+    },
+    handleAddingProcess: function(name,comment)
+    {
+        model.addProcess(name,comment, function(response)
+        {
+            view.showAlertMessage(response.success);
+            view.updateProcessesAndApproaches();
+            view.closeAddProcessDialog();
+        });
+    },
+    handleAddingApproach: function(name,comment)
+    {
+        model.addApproach(name,comment, function(response)
+        {
+            view.showAlertMessage(response.success);
+            view.updateProcessesAndApproaches();
+            view.closeAddApproachDialog();
+        });
+    },
+    handleProcessClick: function(id)
+    {
+        model.currentProcess = id;
+        model.currentApproach = -1;
+        model.partsOfVideo = [];
+        view.selectProcess(id);
+    },
+    
+    handleApproachClick: function(id, idProcess)
+    {
+        model.currentProcess = idProcess;
+        model.currentApproach = id;
+        model.partsOfVideo = [];
+        view.selectApproach(id);
+        
+        model.loadVariants(id,function(answer)
+        {
+            view.setVariants(answer.variants);
+            view.setVideo(answer.videoFilename);
+        });
+    },
+    
+    handlePlayClick:function()
+    {
+         view.playPauseVideo(model);
+    },
+    
+    showEditDilog: function()
+    {
+        if (model.currentApproach !=-1 && model.currentProcess!=-1)
+        {
+            model.getApproach(model.currentApproach, function (response)
+            {
+                view.showAddApproachDialog(response[0].approachname, response[0].approachcomment);
+            });
+        }
+        
+        else if (model.currentApproach ==-1 && model.currentProcess!=-1)
+        {
+            model.getProcess(model.currentProcess, function (response)
+            {
+                view.showAddProcessDialog(response[0].processesname, response[0].processescomment);
+            });
+        }
+    },
+    
+    handleEditApproach: function(name, comment)
+    {
+        model.updateApproach(name,comment,function(response)
+        {
+            view.showAlertMessage(response.success);
+            view.updateProcessesAndApproaches();
+            view.closeAddApproachDialog();
+        });
+    },
+    
+    handleEditProcess: function(name, comment)
+    {
+        model.updateProcess(name,comment,function(response)
+        {
+            view.showAlertMessage(response.success);
+            view.updateProcessesAndApproaches();
+            view.closeAddProcessDialog();
+        });
+    },
+    
+    handleBackward: function()
+    {
+         view.setVideoCurrent(-2);
+    },
+ 
+    handleForward: function()
+    {
+         view.setVideoCurrent(2);
+    },
+    handleSpeed: function(speed,id)
+    {
+        view.setSpeedVideo(speed);
+        view.pressSpeedButton(id);
+    },
+    handleUpploadFile: function()
+    {
+        if (model.currentApproach==-1)
+        {
+            return;
+        }
+        view.clickOnUploadFile();
+    },
+    handleFileSelected: function()
+    {
+        view.submitUploadingFile(model.currentApproach);
+    }
+    
+}
+
+window.onload = controller.handleOnload(view);
+
+
+
+/*var isPlay = false;
 var processSelected = -1;
 var approachSelected = -1;
 
@@ -140,44 +661,10 @@ function onAddingProcess()
 
 function updateProcessTree()
 {
-        getAjaxData("api.php?action=3","", function(response)
-        {
-           var responseObject = JSON.parse(response);
-           var innerHtml = "";
-           var processIds =[];
-           for(var i in responseObject)
-           {
-               if (processIds.indexOf(responseObject[i].processesid)==-1)
-               {
-                   innerHtml += "<tr id='process"+responseObject[i].processesid+"' onclick='onProcessesClick(this.id);return false;' class='process'>"
-                    + " <td>"+responseObject[i].processesname+"</td>"
-                    + "<td>"+responseObject[i].processescomment+"</td>"
-                    + "<td>"+responseObject[i].processesupdated+"</td>"
-                    + "</tr>";
-                    processIds.push(responseObject[i].processesid);
-                }   
-                
-               if (responseObject[i].approachid!=null)            
-               {
-                    innerHtml+="<tr id=approach'"+responseObject[i].approachid+"' onclick='onProcessesClick(this.id);return false;' class='approach' belong='"+responseObject[i].processesid+"'>"
-                    + " <td>"+responseObject[i].approachname+"</td>"
-                    + "<td>"+responseObject[i].approachcomment+"</td>"
-                    + "<td>"+responseObject[i].approachupdated+"</td>"
-                    + "</tr>";
-               }
-            
-           }
-           
-           document.getElementById("processTableBody").innerHTML = innerHtml;
-           
-        });
+
 }
 
-function onOpenDialog(id)
-{
-    document.getElementById(id).style.display = 'block';
-    document.getElementById("blockerBackground").style.display = 'block';
-}
+
 
 function onCloseDialog(id)
 {
@@ -187,27 +674,6 @@ function onCloseDialog(id)
 
 function onPlayPause()
 {	
-    if (document.getElementById("videoField").getAttribute('src')=="")
-    {
-        return;
-    }
-	if (isPlay)
-	{
-		document.getElementById("videoField").pause();
-		document.getElementById("playButton").setAttribute("src","img/play.png")
-		isPlay = false; 
-                var endOfPartVideo = document.getElementById("videoField").currentTime;
-                document.getElementById("timesTable").innerHTML+=
-                        "<tr><td>"+beginOfPartVideo.toFixed(3)+"-"+endOfPartVideo.toFixed(3)+"</td>\n\
-        <td>"+(endOfPartVideo-beginOfPartVideo).toFixed(3)+"</td></tr>";
-	}
-	else
-	{
-		document.getElementById("videoField").play();
-		document.getElementById("playButton").setAttribute("src","img/pause.png");
-		isPlay = true;
-                beginOfPartVideo = document.getElementById("videoField").currentTime;
-	}
 }
 
 function onForward()
@@ -339,54 +805,10 @@ function onOperationsClick(id)
         }
 }
 
-function getXmlHttp(){
-  var xmlhttp;
-  try {
-    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-  } catch (e) {
-    try {
-      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    } catch (E) {
-      xmlhttp = false;
-    }
-  }
-  if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
-    xmlhttp = new XMLHttpRequest();
-  }
-  return xmlhttp;
-}
 
-function getAjaxData(url, request, onResponse)
-{
-    var req = getXmlHttp();
-    req.onreadystatechange = function() 
-    {
-        if (req.readyState == 4) 
-        {
-            if(req.status == 200) 
-            {
-                if (onResponse!=undefined)
-                {
-                    onCloseDialog('load');
-                    onResponse(req.responseText);
-                }
-            }
-        }
-    } 
-    req.open('POST', url, true); 
-    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-    req.send(request);
-    onOpenDialog('load');
-}
 
 function onKeyDown(event)
 {
-    if (event.keyCode==32)
-    {
-        onPlayPause();
-    }
-    else 
-    {
-        return event.keyCode;
-    }
+
 }
+*/
