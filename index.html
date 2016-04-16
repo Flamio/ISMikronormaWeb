@@ -3,7 +3,18 @@
 		<meta charset="utf-8">
 		<link href="css/style.css" rel="stylesheet">
 		<title>ИСМикронорма</title>
-		<script src="js/script.js"></script>
+		
+                <script src="js/view.js"></script>
+                <script src="js/xhr.js"></script>
+                <script src="js/controller.js"></script>
+                <script src="js/ISMikronormaWebApi.js"></script>
+                <script src="js/model.js"></script>
+                
+                <script language="javascript">
+                    window.onload = controller.handleOnload(model,view);
+                </script>
+                
+                
 	</head>
         <body onkeydown="controller.handleOnKeyDown(event,view);">
             <div id="blockerBackground"></div>
@@ -45,10 +56,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <button  id='okProcess' onclick="controller.handleAddingProcess(document.getElementById('addingProcessInputName').value,document.getElementById('addingProcessInputComment').value); return false">ОК</button>
+                            <button  id='okProcess' onclick="controller.handleAddingProcess(model,view,document.getElementById('addingProcessInputName').value,document.getElementById('addingProcessInputComment').value); return false">ОК</button>
                         </td>
                         <td>
-                            <button onclick="controller.closeAddProcessDialog();">Отмена</button>
+                            <button onclick="controller.closeAddProcessDialog(view);">Отмена</button>
                         </td>
                     </tr>
                 </table>  
@@ -74,10 +85,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <button  id='okApproach' onclick="controller.handleAddingApproach(document.getElementById('addingApproachInputName').value,document.getElementById('addingApproachInputComment').value); return false">ОК</button>
+                            <button  id='okApproach' onclick="controller.handleAddingApproach(model,view,document.getElementById('addingApproachInputName').value,document.getElementById('addingApproachInputComment').value); return false">ОК</button>
                         </td>
                         <td>
-                            <button onclick="controller.closeAddApproachDialog();">Отмена</button>
+                            <button onclick="controller.closeAddApproachDialog(view);">Отмена</button>
                         </td>
                     </tr>
                 </table>  
@@ -85,9 +96,9 @@
             
             <div id="processTreeToolbarDiv">
                 <div class="toolbarConteiner">
-                    <img class="toolbarIcons" src="img/plusBig.png" onclick="controller.showAddProcessDialog()"></img>
-                    <img class="toolbarIcons" src="img/plusSmall.png" onclick="controller.showAddApproachDialog();"></img>
-                    <img class="toolbarIcons" src="img/pencil.png" onclick="controller.showEditDilog();"></img>
+                    <img class="toolbarIcons" src="img/plusBig.png" onclick="controller.showAddProcessDialog(view)"></img>
+                    <img class="toolbarIcons" src="img/plusSmall.png" onclick="controller.showAddApproachDialog(view);"></img>
+                    <img class="toolbarIcons" src="img/pencil.png" onclick="controller.showEditDilog(view,model);"></img>
                 </div>
             </div>
                 <div id="processTreeFieldDiv"> 
@@ -115,18 +126,18 @@
 				<img class="toolbarIcons" src="img/plusBig.png"></img>
 				<img class="toolbarIcons" src="img/plusSmall.png"></img>
 				<img class="toolbarIcons" src="img/pencil.png"></img>
-                                <img class="toolbarIcons" onclick="controller.handleUpploadFile(); return false" src="img/uploadVideo.png"></img>
+                                <img class="toolbarIcons" onclick="controller.handleUpploadFile(model,view); return false" src="img/uploadVideo.png"></img>
                                 <form id ="formUppload"  method='post' enctype="multipart/form-data" target="upload_target">
-                                    <input id="uploadFile" onchange="controller.handleFileSelected()" type="file" name="videoFile">
+                                    <input id="uploadFile" onchange="controller.handleFileSelected(model,view)" type="file" name="videoFile">
                                 </form> 
                                 <iframe id="upload_target" name="upload_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>  
-				<img onclick="controller.handleBackward(); return false;" class="toolbarIcons" src="img/backward.png"></img>
-				<img id="playButton" onclick="controller.handlePlayClick();return false;" class="toolbarIcons" src="img/play.png"></img>
-				<img onclick="controller.handleForward();return false;" class="toolbarIcons" src="img/forward.png"></img>
-				<img id="0125" onclick="controller.handleSpeed(0.125,this);return false;" class="toolbarIcons" src="img/0125.png"></img>
-				<img id="025" onclick="controller.handleSpeed(0.25,this);return false;" class="toolbarIcons" src="img/025.png"></img>
-				<img id="1" onclick="controller.handleSpeed(1,this);return false;" class="toolbarIcons" src="img/1x.png"></img>
-				<img id="2" onclick="controller.handleSpeed(2,this);return false;" class="toolbarIcons" src="img/2x.png"></img>
+				<img onclick="controller.handleBackward(view); return false;" class="toolbarIcons" src="img/backward.png"></img>
+				<img id="playButton" onclick="controller.handlePlayClick(view,model);return false;" class="toolbarIcons" src="img/play.png"></img>
+				<img onclick="controller.handleForward(view);return false;" class="toolbarIcons" src="img/forward.png"></img>
+				<img id="0125" onclick="controller.handleSpeed(view,0.125,this);return false;" class="toolbarIcons" src="img/0125.png"></img>
+				<img id="025" onclick="controller.handleSpeed(view,0.25,this);return false;" class="toolbarIcons" src="img/025.png"></img>
+				<img id="1" onclick="controller.handleSpeed(view,1,this);return false;" class="toolbarIcons" src="img/1x.png"></img>
+				<img id="2" onclick="controller.handleSpeed(view,2,this);return false;" class="toolbarIcons" src="img/2x.png"></img>
 			</div>
 		</div>
                 <div id="actionsDiv">
