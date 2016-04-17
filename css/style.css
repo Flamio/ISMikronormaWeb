@@ -1,3 +1,15 @@
+
+.timesItem
+{
+    cursor: pointer;
+}
+
+.timesItem:hover
+{
+    background-color: black;
+    color:white;
+}
+
 #load
 {
     position: absolute;
@@ -89,6 +101,20 @@ input[type="file"]
 .approach
 {
     font-style: italic;
+}
+
+.approach:hover
+{
+    font-weight: italic;
+    color:white;
+    background-color: grey;
+}
+
+.process:hover
+{
+    font-weight: bold;
+    color:white;
+    background-color: grey;
 }
 
 .approach td:nth-of-type(1)

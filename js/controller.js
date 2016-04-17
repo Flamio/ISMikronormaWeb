@@ -39,6 +39,7 @@ var controller =
         if (event.keyCode==32)
         {
             view.playPauseVideo(model);
+            return false;
         }
         else 
         {

@@ -228,7 +228,7 @@ var view =
         console.log(model.partsOfVideo);
         for(var i=0;i<model.partsOfVideo.length;i++)
         {
-            innerHtml+="<tr id="+i+"><td>"+model.partsOfVideo[i].begin.toFixed(3)+"-"+model.partsOfVideo[i].end.toFixed(3)+"</td>\n\
+            innerHtml+="<tr id=times"+i+" class='timesItem'><td>"+model.partsOfVideo[i].begin.toFixed(3)+"-"+model.partsOfVideo[i].end.toFixed(3)+"</td>\n\
                 <td>"+model.partsOfVideo[i].lenght.toFixed(3)+"</td></tr>"
         }
         console.log(innerHtml);
