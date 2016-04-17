@@ -16,6 +16,7 @@ class Process  extends abstractActiveRecord
     public $name;
     public $updated;
     public $comment;
+    public $directoryId;
     
     public function __construct() 
     {
@@ -23,7 +24,7 @@ class Process  extends abstractActiveRecord
     }
     protected function fillInsertingValues() 
     {
-        $this->insertingValues = array("name" => $this->name,"updated" => $this->updated, "comment" => $this->comment);
+        $this->insertingValues = array("name" => $this->name,"updated" => $this->updated, "comment" => $this->comment, "directoryId" => $this->directoryId);
     }
 
     protected function fillTableName() 

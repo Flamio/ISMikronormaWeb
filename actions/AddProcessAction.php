@@ -16,13 +16,14 @@ class AddProcessAction extends abstractActions
 {
     private $process;
     
-    public function __construct($name, $comment) 
+    public function __construct($name, $comment, $directory) 
     {
         $this->process = new Process();
         $this->process->comment = $comment;
         $this->process->name = $name;
         $date = date('Y-m-d');
         $this->process->updated = $date;
+        $this->process->directoryId = $directory;
     }
     public function run() 
     {

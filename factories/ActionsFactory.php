@@ -29,7 +29,7 @@ class ActionsFactory
             case ActionsConsts::getOperations:
                 return new getAllOperationsAction($post["approachId"]);
             case ActionsConsts::addProcess:
-                return new AddProcessAction($post["name"],$post["comment"]);
+                return new AddProcessAction($post["name"],$post["comment"], $post["directory"]);
                 
             case ActionsConsts::updateProcessTree:
                 return new UpdateProcessTree();

@@ -25,7 +25,7 @@ class UpdateProcessAction extends abstractActions
     public function run() 
     {
         $process = new Process();
-        $answer = $process->update(array($this->post['name'],$this->post['comment']), array('name','comment'), "id={$this->id}");
+        $answer = $process->update(array($this->post['name'],$this->post['comment'], $this->post['directory']), array('name','comment','directoryId'), "id={$this->id}");
         $this->view->answer($answer);
     }
 

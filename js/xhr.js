@@ -35,6 +35,7 @@ var xhr =
                 {
                     if (onResponse!=undefined)
                     {
+			console.log(req.responseText);
                         onResponse(JSON.parse(req.responseText));
                     }
                 }

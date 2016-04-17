@@ -1,7 +1,8 @@
 <?php
 
 require_once 'controllers/ActionController.php';
-
+require_once 'DirectoriesAPI/DirectoriesAPI.php';
+require_once 'controllers/DirectoriesController.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,6 +25,10 @@ class ControllerFactory
                 $actionController = new ActionController($mainView);
                 $actionController->setActionId($value);
                 return $actionController;
+            }
+            elseif ($key == 'directories') 
+            {
+                $directoriesController = new DirectoriesController($value, new DirectoriesAPI(), $mainView);    
             }
         }
     }

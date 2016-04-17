@@ -51,12 +51,13 @@
                             Справочник
                         </td>
                         <td>
-                            &nbsp;
+                            <select id="directories">
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button  id='okProcess' onclick="controller.handleAddingProcess(model,view,document.getElementById('addingProcessInputName').value,document.getElementById('addingProcessInputComment').value); return false">ОК</button>
+                            <button  id='okProcess' onclick="controller.handleAddingProcess(model,view,document.getElementById('addingProcessInputName').value,document.getElementById('addingProcessInputComment').value, document.getElementById('directories').options[document.getElementById('directories').selectedIndex].value);">ОК</button>
                         </td>
                         <td>
                             <button onclick="controller.closeAddProcessDialog(view);">Отмена</button>

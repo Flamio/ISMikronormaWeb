@@ -31,6 +31,7 @@ var controller =
     
     handleOnload:function(model,view)
     {
+        view.setModel(model);
         view.updateProcessesAndApproaches(model);
     },
     handleOnKeyDown: function(event,view)
@@ -44,9 +45,9 @@ var controller =
             return event.keyCode;
         }
     },
-    handleAddingProcess: function(model,view,name,comment)
+    handleAddingProcess: function(model,view,name,comment,directory)
     {
-        model.addProcess(name,comment, function(response)
+        model.addProcess(name,comment, directory, function(response)
         {
             view.showAlertMessage(response.success);
             view.updateProcessesAndApproaches(model);
@@ -104,7 +105,8 @@ var controller =
         {
             model.getProcess(model.currentProcess, function (response)
             {
-                view.showAddProcessDialog(response[0].processesname, response[0].processescomment);
+                console.log(response);
+                view.showAddProcessDialog(response[0].processesname, response[0].processescomment, response[0].processesdirectoryId);
             });
         }
     },
@@ -119,9 +121,9 @@ var controller =
         });
     },
     
-    handleEditProcess: function(model,view,name, comment)
+    handleEditProcess: function(model,view,name, comment, directory)
     {
-        model.updateProcess(name,comment,function(response)
+        model.updateProcess(name,comment,directory,function(response)
         {
             view.showAlertMessage(response.success);
             view.updateProcessesAndApproaches(model);

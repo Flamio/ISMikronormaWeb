@@ -22,7 +22,7 @@ class getProcessAction extends abstractActions
     public function run() 
     {
         $process = new Process();
-        $processValue = $process->getValues(array('name','comment'), "id={$this->processId}");
+        $processValue = $process->getValues(array('name','comment','directoryId'), "id={$this->processId}");
         $this->view->answer(json_encode($processValue));
     }
 

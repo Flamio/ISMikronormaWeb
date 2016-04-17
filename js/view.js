@@ -7,6 +7,27 @@
 
 var view = 
 {
+    model:null,
+    
+    setModel: function(model)
+    {
+        this.model = model;
+    },
+    setAllDirectoriesInAddProcessDialog: function(onDone)
+    {
+        this.model.getAllDirectories(function(response)
+        {
+            var innerHtml = '';
+            for (var i = 0;i<response.length;i++)
+            {
+                innerHtml+= 
+                        "<option value='"+response[i].Id+"'>"+response[i].Name+"</option>";
+            }
+            document.getElementById("directories").innerHTML = innerHtml;
+            onDone();
+        })
+    },
+    
     submitUploadingFile: function(idApproach)
     {
         document.getElementById('formUppload').setAttribute('action','api.php?action=4&approachId='+idApproach);
@@ -92,53 +113,63 @@ var view =
     {
         this.closeDialog('addingProcessDiv');
     },
-    showAddProcessDialog: function(name,comment)
+    showAddProcessDialog: function(name,comment, directory)
     {
-        name = name == null ? "" : name;
-        comment = comment == null ? comment = "" : comment = comment;
-        
-        var onclick = "";
-        if (name == "" && comment == "")
+        var openDialog = this.openDialog;
+        this.setAllDirectoriesInAddProcessDialog(function()
         {
-            onclick = "controller.handleAddingProcess(model,view,document.getElementById('addingProcessInputName').value,document.getElementById('addingProcessInputComment').value)";
-        }
-        else 
-        {
-            onclick = "controller.handleEditProcess(model,view,document.getElementById('addingProcessInputName').value,document.getElementById('addingProcessInputComment').value)";
-        }
-        
-        document.getElementById('okProcess').setAttribute('onclick',onclick);
-        
-        document.getElementById("addingProcessInputName").value = name;
-        document.getElementById("addingProcessInputComment").value = comment;
-        this.openDialog('addingProcessDiv');
+            name = name == null ? "" : name;
+            comment = comment == null ? comment = "" : comment = comment;
+            
+
+            var onclick = "";
+            if (name == "" && comment == "")
+            {
+                onclick = "controller.handleAddingProcess(model,view,document.getElementById('addingProcessInputName').value,document.getElementById('addingProcessInputComment').value, document.getElementById('directories').options[document.getElementById('directories').selectedIndex].value)";
+            }
+            else 
+            {
+                onclick = "controller.handleEditProcess(model,view,document.getElementById('addingProcessInputName').value,document.getElementById('addingProcessInputComment').value, document.getElementById('directories').options[document.getElementById('directories').selectedIndex].value)";
+            }
+
+            document.getElementById('okProcess').setAttribute('onclick',onclick);
+
+            document.getElementById("addingProcessInputName").value = name;
+            document.getElementById("addingProcessInputComment").value = comment;
+            if (directory !=null)
+            {
+                document.getElementById("directories").value = directory;
+            }
+            openDialog('addingProcessDiv');     
+        });
     },
     
     closeAddApproachDialog: function()
     {
         this.closeDialog('addingApproachDiv');
     },
-    showAddApproachDialog: function(name,comment)
+    showAddApproachDialog: function(name,comment,directory)
     {
-        console.log(name);
-        console.log(comment);
-        name = name == null ? "" : name;
-        comment = comment == null ? comment = "" : comment = comment;
-        var onclick = "";
-        if (name == "" && comment == "")
-        {
-            onclick = "controller.handleAddingApproach(model,view,document.getElementById('addingApproachInputName').value,document.getElementById('addingApproachInputComment').value)";
-        }
-        else 
-        {
-            onclick = "controller.handleEditApproach(model,view,document.getElementById('addingApproachInputName').value,document.getElementById('addingApproachInputComment').value)";
-        }
-        
-        document.getElementById('okApproach').setAttribute('onclick',onclick);
-        
-        document.getElementById("addingApproachInputName").value = name;
-        document.getElementById("addingApproachInputComment").value = comment;
-        this.openDialog('addingApproachDiv');
+
+            console.log(name);
+            console.log(comment);
+            name = name == null ? "" : name;
+            comment = comment == null ? comment = "" : comment = comment;
+            var onclick = "";
+            if (name == "" && comment == "")
+            {
+                onclick = "controller.handleAddingApproach(model,view,document.getElementById('addingApproachInputName').value,document.getElementById('addingApproachInputComment').value)";
+            }
+            else 
+            {
+                onclick = "controller.handleEditApproach(model,view,document.getElementById('addingApproachInputName').value,document.getElementById('addingApproachInputComment').value)";
+            }
+
+            document.getElementById('okApproach').setAttribute('onclick',onclick);
+
+            document.getElementById("addingApproachInputName").value = name;
+            document.getElementById("addingApproachInputComment").value = comment;
+            this.openDialog('addingApproachDiv');
     },
     
     closeDialog: function(id)

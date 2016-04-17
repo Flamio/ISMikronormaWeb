@@ -10,13 +10,17 @@ var model =
     isVideoPlaying: false,
     partsOfVideo:[],
     
+    getAllDirectories: function(answerFunc)
+    {
+       ISMikronormaWebApi.getAllDirectories(answerFunc);
+    },
     loadProcessesAndApproaches: function (answerFunc)
     {
         ISMikronormaWebApi.getProcessesAndApproaches(answerFunc);
     },
-    addProcess: function (name,comment,answerFunc)
+    addProcess: function (name,comment, directory,answerFunc)
     {
-        ISMikronormaWebApi.addProcess(name,comment,answerFunc);
+        ISMikronormaWebApi.addProcess(name,comment,directory,answerFunc);
     },
     
     addApproach: function(name,comment,onAnswer)
@@ -34,9 +38,9 @@ var model =
         ISMikronormaWebApi.getProcess(id,onAnswer);
     },
     
-    updateProcess: function(name, comment, onAnswer)
+    updateProcess: function(name, comment, directory, onAnswer)
     {
-        ISMikronormaWebApi.updateProcess(this.currentProcess,name,comment,onAnswer);
+        ISMikronormaWebApi.updateProcess(this.currentProcess,name,comment, directory,onAnswer);
     },
     
     updateApproach: function(name, comment, onAnswer)
@@ -49,4 +53,5 @@ var model =
     {
         ISMikronormaWebApi.loadVariants(idApproach,answerFunc);
     }
+    
 }
