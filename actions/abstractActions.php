@@ -23,5 +23,11 @@ abstract class abstractActions
         $this->view = $view;
     }
     
+    protected function generateCurrentDate()
+    {
+        $date = date('Y-m-d');
+        return $date;
+    }
+    
     abstract public function run();
 }

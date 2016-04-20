@@ -5,6 +5,7 @@
         <group>
             <file>file:/var/www/html/ISMikronorma/actions/getProcessAction.php</file>
             <file>file:/var/www/html/ISMikronorma/factories/ActionsFactory.php</file>
+            <file>file:/var/www/html/ISMikronorma/activeRecords/operation.php</file>
             <file>file:/var/www/html/ISMikronorma/js/ISMikronormaWebApi.js</file>
             <file>file:/var/www/html/ISMikronorma/controllers/ActionController.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/UpdateProcessAction.php</file>
@@ -12,6 +13,8 @@
             <file>file:/var/www/html/ISMikronorma/js/view.js</file>
             <file>file:/var/www/html/ISMikronorma/core/application.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/AddProcessAction.php</file>
+            <file>file:/var/www/html/ISMikronorma/activeRecords/Approach.php</file>
+            <file>file:/var/www/html/ISMikronorma/actions/AddOperationAction.php</file>
             <file>file:/var/www/html/ISMikronorma/consts/ActionsConsts.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/UpdateProcessTree.php</file>
             <file>file:/var/www/html/ISMikronorma/css/style.css</file>

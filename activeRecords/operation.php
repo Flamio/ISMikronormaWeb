@@ -13,13 +13,23 @@ require_once 'activeRecords/abstractActiveRecord.php';
  */
 class operation extends abstractActiveRecord
 {
+    public $idApproach;
+    public $name;
+    public $updated;
+    public $comment;
+    public $position;
+    public $idOperationInDirectory;
+    public $actualTime;
+    public $calcTime;
+    
     public function __construct() 
     {
         $this->fillTableName();
     }
     protected function fillInsertingValues() 
     {
-        
+         $this->insertingValues = array("name" => $this->name,"updated" => $this->updated, "comment" => $this->comment, "idApproach"=>  $this->idApproach,
+             "position" => $this->position, "actualTime" => $this->actualTime, "calcTime" => $this->calcTime);
     }
 
     protected function fillTableName() 

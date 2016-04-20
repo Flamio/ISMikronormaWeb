@@ -9,7 +9,13 @@ var model =
     currentApproach: -1,
     isVideoPlaying: false,
     partsOfVideo:[],
+    currentDirectory: -1,
+    cuurentSelectedDirectoryValue:-1,
     
+    getChildsDirectory: function(idNode, answerFunc)            
+    {
+        ISMikronormaWebApi.getChilds(idNode,answerFunc);
+    },
     getAllDirectories: function(answerFunc)
     {
        ISMikronormaWebApi.getAllDirectories(answerFunc);

@@ -28,15 +28,19 @@ class DirectoriesAPI implements IDirectoriesAPI
         return $this->templateUrl.$path;
     }
 
-
     public function getAllDirectories() 
     {
         return file_get_contents($this->builUrl("/Specifications/nodes/27532/childs"), false,  stream_context_create($this->disablingCert));
     }
 
-    public function getChild($id) 
+    public function getChildNodes($id) 
     {
         return file_get_contents($this->builUrl("/Specifications/nodes/{$id}/childs"), false,  stream_context_create($this->disablingCert));
+    }
+    
+    public function getValues($id)
+    {
+        return file_get_contents($this->builUrl("/Specifications/nodes/{$id}/values"), false,  stream_context_create($this->disablingCert));
     }
 
 }

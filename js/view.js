@@ -9,6 +9,45 @@ var view =
 {
     model:null,
     
+    generateDirectoryChilds: function(directoriesNodes)
+    {
+        var innerHtml = "";
+        for (var i in directoriesNodes.nodes)
+        {
+            console.log(directoriesNodes.nodes[i]);
+            innerHtml += "<ul class='directoryNode' id='"+directoriesNodes.nodes[i].Id+"' onclick='controller.handleDirectoryNodeClick(event.target.id); return false;'>"+directoriesNodes.nodes[i].Name+"<childs></childs></ul>";
+        }
+        
+        for (var j in directoriesNodes.values)
+        {
+            console.log(directoriesNodes.values[j]);
+            innerHtml += "<li onclick='controller.handleOnValueClick(this,"+directoriesNodes.values[j].Value+")' selected='false' class = 'directoryValue'>"+directoriesNodes.values[j].Name+" "+directoriesNodes.values[j].Value+"</li>";
+        }
+        innerHtml+= "";
+        return innerHtml;
+    },
+    
+    setDirectoryList: function(directoriesNodes)
+    {
+        document.getElementById("directoriesTree").innerHTML= "<ul>"+this.generateDirectoryChilds(directoriesNodes)+"</ul>";
+    },
+    
+    setDirectoryListInNode: function(nodeId,directoriesNodes)
+    {
+        console.log(nodeId);
+        document.getElementById(nodeId) != null?document.getElementById(nodeId).getElementsByTagName('childs')[0].innerHTML = this.generateDirectoryChilds(directoriesNodes):"";
+    },
+    
+    closeAddOperationDialog: function()
+    {
+        this.closeDialog('addingOperationDiv');
+    },
+    
+    showAddOperationDialog: function()
+    {
+      this.openDialog('addingOperationDiv');
+    },
+    
     setModel: function(model)
     {
         this.model = model;
@@ -64,15 +103,16 @@ var view =
     setVariants: function(variants)
     {
         var innerHtml = "";
+        console.log(variants);
         for (var i in variants) 
                 {
-                    innerHtml+= "<tr id='operation"+variants[i].operationsid+"' onclick='onOperationsClick(this.id);' class='operation'>"
+                    innerHtml+= "<tr id='operation"+variants[i].operationsid+"' onclick='' class='operation'>"
                     + " <td>"+variants[i].operationsname+"</td>"
-                    + " <td>&nbsp;</td>"
-                    + " <td>&nbsp;</td>"
-                    + " <td>&nbsp;</td>"
+                    + " <td>"+variants[i].operationscomment+"</td>"
+                    + " <td>"+variants[i].operationsactualTime+"</td>"
+                    + " <td>"+variants[i].operationscalcTime+"</td>"
                     + "<td>"+variants[i].operationsupdated+"</td>"
-                    + " <td>&nbsp;</td>"
+                    + " <td>"+variants[i].operationsposition+"</td>"
                     + "</tr>";
                 }
                 document.getElementById("actionsTableBody").innerHTML = innerHtml;
@@ -228,7 +268,7 @@ var view =
         console.log(model.partsOfVideo);
         for(var i=0;i<model.partsOfVideo.length;i++)
         {
-            innerHtml+="<tr id=times"+i+" class='timesItem'><td>"+model.partsOfVideo[i].begin.toFixed(3)+"-"+model.partsOfVideo[i].end.toFixed(3)+"</td>\n\
+            innerHtml+="<tr id=times"+i+" class='timesItem' ondblclick='controller.handleTimeDblClick(view,model,"+i+");return false'><td>"+model.partsOfVideo[i].begin.toFixed(3)+"-"+model.partsOfVideo[i].end.toFixed(3)+"</td>\n\
                 <td>"+model.partsOfVideo[i].lenght.toFixed(3)+"</td></tr>"
         }
         console.log(innerHtml);

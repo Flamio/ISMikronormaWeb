@@ -66,6 +66,16 @@
                 </table>  
             </div>
             
+            <div id="addingOperationDiv">
+                <div id="directoriesTree">
+                </div>
+                <input type="text" id="operationName">
+                <input type="text" id="operationComment">
+                <br>
+                <button onclick="controller.handleAddingOperation(model,view, document.getElementById('operationName').value, document.getElementById('operationComment').value)">OK</button>
+                <button onclick="controller.closeAddingOperationDialog(view);return false;">Отмена</button>
+            </div>
+            
             <div id = "addingApproachDiv">
                 <table id="addingApproachTable">
                     <tr>
@@ -124,9 +134,6 @@
             </div>
 		<div id="actionsToolbarDiv">
 			<div  class="toolbarConteiner">	
-				<img class="toolbarIcons" src="img/plusBig.png"></img>
-				<img class="toolbarIcons" src="img/plusSmall.png"></img>
-				<img class="toolbarIcons" src="img/pencil.png"></img>
                                 <img class="toolbarIcons" onclick="controller.handleUpploadFile(model,view); return false" src="img/uploadVideo.png"></img>
                                 <form id ="formUppload"  method='post' enctype="multipart/form-data" target="upload_target">
                                     <input id="uploadFile" onchange="controller.handleFileSelected(model,view)" type="file" name="videoFile">

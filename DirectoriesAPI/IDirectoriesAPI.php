@@ -13,5 +13,6 @@
 interface IDirectoriesAPI 
 {
     function getAllDirectories();
-    function getChild($id);
+    function getChildNodes($id);
+    function getValues($id);
 }

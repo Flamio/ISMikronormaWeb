@@ -23,6 +23,15 @@ class DirectoriesController
                 $view->answer($answer);
                 break;
             }
+            case "getChilds":
+            {
+                
+                $result['nodes']= json_decode($directoriesAPI->getChildNodes($_POST['id']));
+                $result['values']= json_decode($directoriesAPI->getValues($_POST['id']));
+                $view->answer(json_encode($result));
+                break;
+            }
+            
         }
     }
 }

@@ -20,6 +20,24 @@
     display:none;
 }
 
+#directoriesTree
+{   
+    overflow-y: auto;
+    width:95%;
+    height:80%;
+}
+
+.directoryNode
+{
+    cursor:pointer;   
+}
+
+.directoryValue
+{
+    padding-left: 5px;
+    cursor: pointer;
+}
+
 input[type="file"]
 {
     display: none;
@@ -60,6 +78,18 @@ input[type="file"]
 {
     width: 100%;
     text-align: center;
+}
+
+#addingOperationDiv
+{
+    position: absolute;
+    left: 60%;
+    top:10%;
+    z-index: 3;
+    background-color: white;
+    display:none;
+    height: 80%;
+    width: 30%;
 }
 
 .clickedApproachRow
@@ -161,9 +191,6 @@ input[type="file"]
 }
 
 
-
-
-
 .toolbarIcons
 {
     height:100%;
@@ -188,7 +215,7 @@ input[type="file"]
     height: 100%;
 }
 
-div
+div:not(#directoriesTree) 
 {
     position:absolute;
 }

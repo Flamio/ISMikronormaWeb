@@ -7,6 +7,44 @@
 
 var controller = 
 {
+    handleAddingOperation: function (model,view,name,comment)
+    {
+        var calcTime = model.partsOfVideo[model.currentTimeSelected].lenght;
+        ISMikronormaWebApi.addOperation(model.currentApproach, comment, name, model.cuurentSelectedDirectoryValue , calcTime,function(response)
+        {
+           view.showAlertMessage(response.success);
+           view.closeAddOperationDialog();
+            model.loadVariants(model.currentApproach,function(answer)
+            {
+                view.setVariants(answer.variants);
+            });
+        });
+    },
+    
+    handleOnValueClick: function(node,value)
+    {
+      model.cuurentSelectedDirectoryValue = value;  
+    },
+    handleDirectoryNodeClick: function(nodeId)
+    {
+        model.getChildsDirectory(nodeId, function(response)
+        {
+            view.setDirectoryListInNode(nodeId,response);
+        });
+    },
+    handleTimeDblClick: function(view, model,id)
+    {
+        model.getChildsDirectory(model.currentDirectory, function(response)
+        {
+            view.setDirectoryList(response);
+            view.showAddOperationDialog();
+            model.currentTimeSelected = id;
+        });
+    },
+    closeAddingOperationDialog: function(view)
+    {
+        view.closeAddOperationDialog();
+    },
     closeAddProcessDialog: function(view)
     {
        view.closeAddProcessDialog();
@@ -66,24 +104,33 @@ var controller =
     },
     handleProcessClick: function(id)
     {
-        model.currentProcess = id;
-        model.currentApproach = -1;
-        model.partsOfVideo = [];
-        view.selectProcess(id);
-        view.setVideo("");
+        model.getProcess(id, function(response)
+        {
+            model.currentDirectory = response[0].processesdirectoryId;
+            model.currentProcess = id;
+            model.currentApproach = -1;
+            model.partsOfVideo = [];
+            view.selectProcess(id);
+            view.setVideo("");
+        });
+       
     },
     
     handleApproachClick: function(id, idProcess)
     {
-        model.currentProcess = idProcess;
-        model.currentApproach = id;
-        model.partsOfVideo = [];
-        view.selectApproach(id);
-        
-        model.loadVariants(id,function(answer)
+        model.getProcess(idProcess, function(response)
         {
-            view.setVariants(answer.variants);
-            view.setVideo(answer.videoFilename);
+            model.currentDirectory = response[0].processesdirectoryId;
+            model.currentProcess = idProcess;
+            model.currentApproach = id;
+            model.partsOfVideo = [];
+            view.selectApproach(id);
+
+            model.loadVariants(id,function(answer)
+            {
+                view.setVariants(answer.variants);
+                view.setVideo(answer.videoFilename);
+            });
         });
     },
     
