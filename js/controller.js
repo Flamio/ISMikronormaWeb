@@ -21,9 +21,10 @@ var controller =
         });
     },
     
-    handleOnValueClick: function(node,value)
+    handleOnValueClick: function(model,view,value)
     {
       model.cuurentSelectedDirectoryValue = value;  
+      view.setActualValueInAddingOperationDialog(value);
     },
     handleDirectoryNodeClick: function(nodeId)
     {

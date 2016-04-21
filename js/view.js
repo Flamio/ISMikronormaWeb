@@ -9,6 +9,11 @@ var view =
 {
     model:null,
     
+    setActualValueInAddingOperationDialog: function(value)
+    {
+        document.getElementById('operationActualValue').value = value;
+    },
+    
     generateDirectoryChilds: function(directoriesNodes)
     {
         var innerHtml = "";
@@ -21,7 +26,7 @@ var view =
         for (var j in directoriesNodes.values)
         {
             console.log(directoriesNodes.values[j]);
-            innerHtml += "<li onclick='controller.handleOnValueClick(this,"+directoriesNodes.values[j].Value+")' selected='false' class = 'directoryValue'>"+directoriesNodes.values[j].Name+" "+directoriesNodes.values[j].Value+"</li>";
+            innerHtml += "<li onclick='controller.handleOnValueClick(model, view,"+directoriesNodes.values[j].Value+")' selected='false' class = 'directoryValue'>"+directoriesNodes.values[j].Name+" "+directoriesNodes.values[j].Value+"</li>";
         }
         innerHtml+= "";
         return innerHtml;
@@ -46,6 +51,7 @@ var view =
     showAddOperationDialog: function()
     {
       this.openDialog('addingOperationDiv');
+      model.cuurentSelectedDirectoryValue = -1;
     },
     
     setModel: function(model)

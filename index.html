@@ -67,13 +67,44 @@
             </div>
             
             <div id="addingOperationDiv">
-                <div id="directoriesTree">
-                </div>
-                <input type="text" id="operationName">
-                <input type="text" id="operationComment">
-                <br>
-                <button onclick="controller.handleAddingOperation(model,view, document.getElementById('operationName').value, document.getElementById('operationComment').value)">OK</button>
-                <button onclick="controller.closeAddingOperationDialog(view);return false;">Отмена</button>
+                <table style="width:100%;height:100%; padding: 8px">
+                    <tr>
+                        <td colspan="2" style="height:80%">
+                            <div id="directoriesTree">
+                            </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                            <label for="operationName">Название</label>
+                        </td>
+                        <td style="text-align: center">
+                            <input type="text" id="operationName" name="operationName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="operationComment">Комментарий</label>
+                        </td>
+                        <td style="text-align: center">
+                            <input type="text" id="operationComment" name="operationComment">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >
+                            <label for="operationActualValue">Выбранное значение</label>
+                        </td>
+                        <td style="text-align: center">
+                            <input type="text" id = "operationActualValue" name = "operationActualValue" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center; padding-top: 5px">
+                            <button onclick="controller.handleAddingOperation(model,view, document.getElementById('operationName').value, document.getElementById('operationComment').value)">OK</button>
+                            <button onclick="controller.closeAddingOperationDialog(view);return false;">Отмена</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
             
             <div id = "addingApproachDiv">
