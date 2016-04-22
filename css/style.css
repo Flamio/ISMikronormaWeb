@@ -65,7 +65,7 @@ input[type="file"]
 {
     width:100%;
     height: 100%;
-    positon:fixed;
+    position:fixed;
     background: black;
     opacity: 0.7;
     z-index: 2;
@@ -207,12 +207,12 @@ input[type="file"]
 
 .toolbarIcons:hover
 {
-    background-color: #4ca9a9;
+    background-color: grey;
 }
 
 .toolbarIcons[pressed="pressed"]
 {
-    background-color: #4ca9a9;
+    background-color: grey;
 }
 
 .toolbarConteiner
@@ -221,6 +221,12 @@ input[type="file"]
     padding-top:2px;
     padding-left:1%;
     height: 100%;
+}
+
+.toolbarConteiner label
+{
+    font-size: 15pt;
+    margin-bottom: 5px;
 }
 
 div:not(#directoriesTree) 

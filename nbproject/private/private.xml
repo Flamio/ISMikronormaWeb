@@ -8,6 +8,7 @@
             <file>file:/var/www/html/ISMikronorma/activeRecords/operation.php</file>
             <file>file:/var/www/html/ISMikronorma/js/ISMikronormaWebApi.js</file>
             <file>file:/var/www/html/ISMikronorma/controllers/ActionController.php</file>
+            <file>file:/var/www/html/ISMikronorma/actions/GetLastOperationPositionAction.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/UpdateProcessAction.php</file>
             <file>file:/var/www/html/ISMikronorma/activeRecords/abstractActiveRecord.php</file>
             <file>file:/var/www/html/ISMikronorma/js/view.js</file>
