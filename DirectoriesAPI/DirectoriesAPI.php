@@ -23,24 +23,24 @@ class DirectoriesAPI implements IDirectoriesAPI
    );
     
     private $templateUrl = "https://sa:46e6098e6637e6fb4de7b65a109c5a50@norma.istu.ru:8750";
-    private function builUrl($path)
+    private function buildUrl($path)
     {
         return $this->templateUrl.$path;
     }
 
     public function getAllDirectories() 
     {
-        return file_get_contents($this->builUrl("/Specifications/nodes/27532/childs"), false,  stream_context_create($this->disablingCert));
+        return file_get_contents($this->buildUrl("/Specifications/nodes/27532/childs"), false,  stream_context_create($this->disablingCert));
     }
 
     public function getChildNodes($id) 
     {
-        return file_get_contents($this->builUrl("/Specifications/nodes/{$id}/childs"), false,  stream_context_create($this->disablingCert));
+        return file_get_contents($this->buildUrl("/Specifications/nodes/{$id}/childs"), false,  stream_context_create($this->disablingCert));
     }
     
     public function getValues($id)
     {
-        return file_get_contents($this->builUrl("/Specifications/nodes/{$id}/values"), false,  stream_context_create($this->disablingCert));
+        return file_get_contents($this->buildUrl("/Specifications/nodes/{$id}/values"), false,  stream_context_create($this->disablingCert));
     }
 
 }

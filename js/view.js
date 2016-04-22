@@ -20,13 +20,17 @@ var view =
         for (var i in directoriesNodes.nodes)
         {
             console.log(directoriesNodes.nodes[i]);
-            innerHtml += "<ul class='directoryNode' id='"+directoriesNodes.nodes[i].Id+"' onclick='controller.handleDirectoryNodeClick(event.target.id); return false;'>"+directoriesNodes.nodes[i].Name+"<childs></childs></ul>";
+            innerHtml += "<ul class='directoryNode' id='"+directoriesNodes.nodes[i].Id+
+            "' onclick='controller.handleDirectoryNodeClick(event.target.id); return false;'><img src='img/directoryFolder.png'></img>"
+            +directoriesNodes.nodes[i].Name+"<childs></childs></ul>";
         }
         
         for (var j in directoriesNodes.values)
         {
             console.log(directoriesNodes.values[j]);
-            innerHtml += "<li onclick='controller.handleOnValueClick(model, view,"+directoriesNodes.values[j].Value+")' selected='false' class = 'directoryValue'>"+directoriesNodes.values[j].Name+" "+directoriesNodes.values[j].Value+"</li>";
+            innerHtml += "<li onclick='controller.handleOnValueClick(model, view,"
+            +directoriesNodes.values[j].Value+")' selected='false' class = 'directoryValue'><img src='img/directoryValue.png'></img>"
+            +directoriesNodes.values[j].Name+" "+directoriesNodes.values[j].Value+"</li>";
         }
         innerHtml+= "";
         return innerHtml;

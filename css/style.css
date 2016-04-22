@@ -29,13 +29,21 @@
 
 .directoryNode
 {
-    cursor:pointer;   
+    cursor:pointer; 
+    list-style: none;  
 }
+
 
 .directoryValue
 {
     padding-left: 5px;
     cursor: pointer;
+}
+
+.directoryValue:active
+{
+    background-color: black;
+    color:white;    
 }
 
 input[type="file"]
