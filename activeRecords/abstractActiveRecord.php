@@ -39,7 +39,6 @@ abstract class abstractActiveRecord
     
     public function getValues($paramArray, $condition)
     {
-       // $query = "select * from Operations where idApproach={$approachId}";
        $query = "select ";
        foreach ($paramArray as $key => $value) 
         {
@@ -54,6 +53,24 @@ abstract class abstractActiveRecord
         }
         return $this->convertfromResToArray($query);
     }
+    
+    public function getMaxValues($paramArray, $condition)
+    {
+       $query = "select ";
+       foreach ($paramArray as $key => $value) 
+        {
+            $query.=" max({$this->tableName}.{$value}) as {$this->tableName}{$value},";
+        }
+        $query = rtrim($query,',');
+        
+        $query.=" from {$this->tableName}";
+        if ($condition!="")
+        {
+            $query.=" where {$condition}";
+        }
+        return $this->convertfromResToArray($query)[0];
+    }
+    
     
     private function convertfromResToArray($query)
     {

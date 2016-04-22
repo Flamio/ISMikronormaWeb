@@ -10,6 +10,7 @@ require_once 'actions/UpdateApproachAction.php';
 require_once 'actions/AddApproachAction.php';
 require_once 'actions/getApproachAction.php';
 require_once 'actions/AddOperationAction.php';
+require_once 'actions/GetLastOperationPositionAction.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -50,6 +51,8 @@ class ActionsFactory
                 return new UpdateApproachAction($_GET['id'],$post);
             case 'addOperation':
                 return new AddOperationAction($post['idApproach'], $post['comment'], $post['name'], $post['actualTime'], $post['calcTime'],$post['position']);
+            case 'getLastOperationPosition':
+                return new GetLastOperationPositionAction($_GET['idApproach']);
             default: 
                 break;
         }

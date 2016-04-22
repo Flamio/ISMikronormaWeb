@@ -7,6 +7,11 @@
 
 var ISMikronormaWebApi =
 {
+    getLastOperationPosition: function(idApproach,onAnswer)
+    {
+        xhr.getAjaxData("api.php?action=getLastOperationPosition&idApproach="+idApproach,"",onAnswer);
+    },
+    
     getAllDirectories: function(onAnswer)
     {
         xhr.getAjaxData("api.php?directories=getAllDirectories","",onAnswer);
@@ -52,9 +57,9 @@ var ISMikronormaWebApi =
     {
         xhr.getAjaxData("api.php?action=getProcess&id="+id,null,onAnswer);
     },
-    addOperation: function(idApproach, comment, name, actualTime, calcTime,onAnswerFunc)
+    addOperation: function(idApproach, comment, name, actualTime, calcTime, position, onAnswerFunc)
     {
-        xhr.getAjaxData("api.php?action=addOperation","idApproach="+idApproach+"&comment="+comment+"&name="+name+"&actualTime="+actualTime+"&calcTime="+calcTime,onAnswerFunc);
+        xhr.getAjaxData("api.php?action=addOperation","idApproach="+idApproach+"&comment="+comment+"&name="+name+"&actualTime="+actualTime+"&calcTime="+calcTime+"&position="+position,onAnswerFunc);
     }
     
 }

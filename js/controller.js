@@ -10,15 +10,20 @@ var controller =
     handleAddingOperation: function (model,view,name,comment)
     {
         var calcTime = model.partsOfVideo[model.currentTimeSelected].lenght;
-        ISMikronormaWebApi.addOperation(model.currentApproach, comment, name, model.cuurentSelectedDirectoryValue , calcTime,function(response)
+        ISMikronormaWebApi.getLastOperationPosition(model.currentApproach,function(maxPositionresponse)
         {
-           view.showAlertMessage(response.success);
-           view.closeAddOperationDialog();
-            model.loadVariants(model.currentApproach,function(answer)
+            var maxPosition = maxPositionresponse.operationsposition;
+            ISMikronormaWebApi.addOperation(model.currentApproach, comment, name, model.cuurentSelectedDirectoryValue , calcTime, Number(maxPosition)+1, function(response)
             {
-                view.setVariants(answer.variants);
+               view.showAlertMessage(response.success);
+               view.closeAddOperationDialog();
+                model.loadVariants(model.currentApproach,function(answer)
+                {
+                    view.setVariants(answer.variants);
+                });
             });
         });
+        
     },
     
     handleOnValueClick: function(model,view,value)
