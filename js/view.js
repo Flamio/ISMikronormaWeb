@@ -29,7 +29,8 @@ var view =
         {
             console.log(directoriesNodes.values[j]);
             innerHtml += "<li onclick='controller.handleOnValueClick(model, view,"
-            +directoriesNodes.values[j].Value+")' selected='false' class = 'directoryValue'><img src='img/directoryValue.png'></img>"
+            +directoriesNodes.values[j].Value+","
+            +directoriesNodes.values[j].Id+")' selected='false' class = 'directoryValue'><img src='img/directoryValue.png'></img>"
             +directoriesNodes.values[j].Name+" "+directoriesNodes.values[j].Value+"</li>";
         }
         innerHtml+= "";
@@ -119,8 +120,8 @@ var view =
                     innerHtml+= "<tr id='operation"+variants[i].operationsid+"' onclick='' class='operation'>"
                     + " <td>"+variants[i].operationsname+"</td>"
                     + " <td>"+variants[i].operationscomment+"</td>"
-                    + " <td>"+variants[i].operationsactualTime+"</td>"
                     + " <td>"+variants[i].operationscalcTime+"</td>"
+                    + " <td>"+variants[i].operationsactualTime+"</td>"
                     + "<td>"+variants[i].operationsupdated+"</td>"
                     + " <td>"+variants[i].operationsposition+"</td>"
                     + "</tr>";

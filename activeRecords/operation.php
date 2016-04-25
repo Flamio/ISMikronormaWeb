@@ -18,9 +18,10 @@ class operation extends abstractActiveRecord
     public $updated;
     public $comment;
     public $position;
-    public $idOperationInDirectory;
+    public $directoryValueId;
     public $actualTime;
     public $calcTime;
+    
     
     public function __construct() 
     {
@@ -28,8 +29,8 @@ class operation extends abstractActiveRecord
     }
     protected function fillInsertingValues() 
     {
-         $this->insertingValues = array("name" => $this->name,"updated" => $this->updated, "comment" => $this->comment, "idApproach"=>  $this->idApproach,
-             "position" => $this->position, "actualTime" => $this->actualTime, "calcTime" => $this->calcTime);
+         $this->insertingValues = array("calcTime" => $this->calcTime, "name" => $this->name,"updated" => $this->updated, "comment" => $this->comment, "idApproach"=>  $this->idApproach,
+             "position" => $this->position, "directoryValueId" => $this->directoryValueId, "actualTime" => $this->actualTime);
     }
 
     protected function fillTableName() 

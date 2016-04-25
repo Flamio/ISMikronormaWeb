@@ -42,5 +42,10 @@ class DirectoriesAPI implements IDirectoriesAPI
     {
         return file_get_contents($this->buildUrl("/Specifications/nodes/{$id}/values"), false,  stream_context_create($this->disablingCert));
     }
+    
+    public function getValue($id)
+    {
+        return file_get_contents($this->buildUrl("/Specifications/nodes/values/{$id}"), false,  stream_context_create($this->disablingCert));
+    }
 
 }

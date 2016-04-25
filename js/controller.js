@@ -9,11 +9,11 @@ var controller =
 {
     handleAddingOperation: function (model,view,name,comment)
     {
-        var calcTime = model.partsOfVideo[model.currentTimeSelected].lenght;
+        var actualTime = model.partsOfVideo[model.currentTimeSelected].lenght;
         ISMikronormaWebApi.getLastOperationPosition(model.currentApproach,function(maxPositionresponse)
         {
             var maxPosition = maxPositionresponse.operationsposition;
-            ISMikronormaWebApi.addOperation(model.currentApproach, comment, name, model.cuurentSelectedDirectoryValue , calcTime, Number(maxPosition)+1, function(response)
+            ISMikronormaWebApi.addOperation(model.currentApproach, comment, name, model.currentDirectoryValueId, model.currentDirectoryValue, actualTime, Number(maxPosition)+1, function(response)
             {
                view.showAlertMessage(response.success);
                view.closeAddOperationDialog();
@@ -26,9 +26,10 @@ var controller =
         
     },
     
-    handleOnValueClick: function(model,view,value)
+    handleOnValueClick: function(model,view,value, idValueInDirectories)
     {
-      model.cuurentSelectedDirectoryValue = value;  
+      model.currentDirectoryValueId = idValueInDirectories;
+      model.currentDirectoryValue = value;
       view.setActualValueInAddingOperationDialog(value);
     },
     handleDirectoryNodeClick: function(nodeId)

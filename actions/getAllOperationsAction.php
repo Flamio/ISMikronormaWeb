@@ -1,6 +1,7 @@
 <?php
 require_once 'abstractActions.php';
 require_once 'activeRecords/operation.php';
+require_once 'DirectoriesAPI/DirectoriesAPI.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -25,7 +26,7 @@ class getAllOperationsAction extends abstractActions
     public function run()
     {
         $opearation = new operation();
-        $operations = $opearation->getValues(array('id','idApproach','name','updated','comment','actualTime', 'calcTime','position'), "{$opearation->getTableName()}.idApproach={$this->approachId}");
+        $operations = $opearation->getValues(array('id','idApproach','name','updated','comment','calcTime', 'actualTime','position'), "{$opearation->getTableName()}.idApproach={$this->approachId}");
         $approach = new Approach();
         $videoFileName = $approach->getValues(array('videoFilename'), "id={$this->approachId}")[0]['approachvideoFilename'];
         $result['videoFilename'] = $videoFileName;

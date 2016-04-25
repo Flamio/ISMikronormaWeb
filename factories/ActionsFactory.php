@@ -50,7 +50,7 @@ class ActionsFactory
              case 'updateApproach':
                 return new UpdateApproachAction($_GET['id'],$post);
             case 'addOperation':
-                return new AddOperationAction($post['idApproach'], $post['comment'], $post['name'], $post['actualTime'], $post['calcTime'],$post['position']);
+                return new AddOperationAction($post['idApproach'], $post['comment'], $post['name'], $post['directoriesValueId'], $post['calcTime'], $post['actualTime'],$post['position']);
             case 'getLastOperationPosition':
                 return new GetLastOperationPositionAction($_GET['idApproach']);
             default: 

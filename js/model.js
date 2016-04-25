@@ -10,7 +10,9 @@ var model =
     isVideoPlaying: false,
     partsOfVideo:[],
     currentDirectory: -1,
-    cuurentSelectedDirectoryValue:-1,
+    currentDirectoryValueId: -1,
+    currentDirectoryValue: -1,
+    
     
     getChildsDirectory: function(idNode, answerFunc)            
     {
