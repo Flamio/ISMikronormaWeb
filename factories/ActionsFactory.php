@@ -11,6 +11,7 @@ require_once 'actions/AddApproachAction.php';
 require_once 'actions/getApproachAction.php';
 require_once 'actions/AddOperationAction.php';
 require_once 'actions/GetLastOperationPositionAction.php';
+require_once 'actions/getAvarageTimePerProcess.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -53,6 +54,8 @@ class ActionsFactory
                 return new AddOperationAction($post['idApproach'], $post['comment'], $post['name'], $post['directoriesValueId'], $post['calcTime'], $post['actualTime'],$post['position']);
             case 'getLastOperationPosition':
                 return new GetLastOperationPositionAction($_GET['idApproach']);
+            case 'getAverageTimePerProcess':
+                return new getAvarageTimePerProcess($_GET['id']);
             default: 
                 break;
         }

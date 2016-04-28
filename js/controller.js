@@ -7,6 +7,14 @@
 
 var controller = 
 {
+    handleAnalysisClick: function (view, model, dialogId)
+    {
+	ISMikronormaWebApi.getAvarageTimePerProcess(model.currentProcess, function (response)	
+	{	
+                view.setTimesInAnalysisDialog(response);
+		view.openDialog(dialogId.id);
+	});
+    },
     handleAddingOperation: function (model,view,name,comment)
     {
         var actualTime = model.partsOfVideo[model.currentTimeSelected].lenght;

@@ -73,7 +73,7 @@ input[type="file"]
     top:0;
     display:none;
 }
-#addingProcessDiv, #addingApproachDiv
+#addingProcessDiv, #addingApproachDiv, #analysisDiv
 {
     position: absolute;
     left: 30%;
@@ -229,7 +229,7 @@ input[type="file"]
     margin-bottom: 5px;
 }
 
-div:not(#directoriesTree) 
+div:not(#directoriesTree):not(#blockerBackground)
 {
     position:absolute;
 }

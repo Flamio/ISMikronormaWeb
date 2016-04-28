@@ -136,11 +136,29 @@
                 </table>  
             </div>
             
+            <div id="analysisDiv">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Подход</td>
+                            <td>Среднее фактическое время</td>
+                            <td>Среднее расчетное время</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                 </table>
+                <button onclick="view.closeDialog(this.parentElement.id)">OK</buton>
+            </div>
+            
             <div id="processTreeToolbarDiv">
                 <div class="toolbarConteiner">
                     <img class="toolbarIcons" src="img/plusBig.png" onclick="controller.showAddProcessDialog(view)"></img>
                     <img class="toolbarIcons" src="img/plusSmall.png" onclick="controller.showAddApproachDialog(view);"></img>
                     <img class="toolbarIcons" src="img/pencil.png" onclick="controller.showEditDilog(view,model);"></img>
+                    <img class="toolbarIcons" src="img/analysis.png" onclick="controller.handleAnalysisClick(view, model,analysisDiv);"></img>
                 </div>
             </div>
                 <div id="processTreeFieldDiv"> 

@@ -9,6 +9,24 @@ var view =
 {
     model:null,
     
+    setTimesInAnalysisDialog : function(times)
+    {
+      var tbody = document.getElementById('analysisDiv').getElementsByTagName('tbody')[0];
+      var tfoot = document.getElementById('analysisDiv').getElementsByTagName('tfoot')[0];
+      var innerHtml = "";
+      for (i in times.approachesAvarage)
+      {
+          innerHtml+= 
+                  "<tr><td>"+times.approachesAvarage[i].approachName+"</td><td>"+times.approachesAvarage[i].averageCalcTime+"</td><td>"+times.approachesAvarage[i].averageActualTime+"</td></tr>";
+      }
+      tbody.innerHTML = innerHtml;
+      
+      innerHtml = "<tr><td>Итого</td><td>"+times.sumAvarageCalc+"</td><td>"+times.sumAvarageActual+"</td></tr>";
+      
+      tfoot.innerHTML = innerHtml;
+      
+    },
+    
     setActualValueInAddingOperationDialog: function(value)
     {
         document.getElementById('operationActualValue').value = value;
