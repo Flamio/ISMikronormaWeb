@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2016 at 09:27 AM
+-- Generation Time: Apr 28, 2016 at 08:54 AM
 -- Server version: 5.6.28-0ubuntu0.15.10.1
 -- PHP Version: 5.6.11-1ubuntu3.1
 
@@ -43,10 +43,10 @@ INSERT INTO `approach` (`id`, `idProcess`, `name`, `updated`, `comment`, `videoF
 (37, 34, 'Ð¿Ð¾Ð´Ñ…Ð¾Ð´ 1', '2016-04-11', 'f', 'WorkingDirectory/22aa97c1bcd984d9baf3015e0ca80339'),
 (39, 34, '2', '2016-04-12', '55', 'WorkingDirectory/dade88782e39b5af0eeb0242b1c7d93a'),
 (40, 34, 'Ð¿Ð¾Ð´Ñ…Ð¾Ð´3', '2016-04-13', '2', 'WorkingDirectory/9c9b453eab20439ef777dca69be4a357'),
-(41, 34, 'Ð¿Ð¾Ð´Ñ…Ð¾Ð´2', '2016-04-13', '2221', 'WorkingDirectory/f4af45d8991e16cce04148e91d2c1b56'),
-(42, 34, '332', '2016-04-13', '3', ''),
-(43, 34, '332', '2016-04-13', '444', ''),
-(44, 34, '454564', '2016-04-13', '', ''),
+(41, 34, 'Ð¿Ð¾Ð´Ñ…Ð¾Ð´2', '2016-04-13', '2221', 'WorkingDirectory/e7ef720b06933f5d99c59b76383d3d23'),
+(42, 34, '332', '2016-04-13', '3', 'WorkingDirectory/0a0d29621203696d674407c6f350eb67'),
+(43, 34, '332', '2016-04-13', '444', 'WorkingDirectory/e7ef720b06933f5d99c59b76383d3d23'),
+(44, 34, '454564', '2016-04-13', '', 'WorkingDirectory/8bf8e5c44ed643f024eb81e7d60ac928'),
 (47, 36, '4455', '2016-04-13', '5', ''),
 (58, 35, '6', '2016-04-14', '8', 'WorkingDirectory/683dd621f62dbf413a5cbf53cba711e3'),
 (59, 41, '3', '2016-04-14', '4', ''),
@@ -70,24 +70,19 @@ CREATE TABLE IF NOT EXISTS `operations` (
   `comment` varchar(100) NOT NULL,
   `position` int(11) NOT NULL,
   `actualTime` float NOT NULL,
+  `directoryValueId` int(11) NOT NULL,
   `calcTime` float NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `operations`
 --
 
-INSERT INTO `operations` (`id`, `idApproach`, `name`, `updated`, `comment`, `position`, `actualTime`, `calcTime`) VALUES
-(5, 37, 'd', '2016-04-20', 'd', 0, 0.5, 0.782),
-(6, 39, 'd', '2016-04-20', 'd', 0, 0.91, 0.79275),
-(7, 39, '5', '2016-04-20', 'd', 0, 0.21, 0.604167),
-(8, 37, '44', '2016-04-21', '33', 0, 0.22, 0.059667),
-(9, 37, 'asds', '2016-04-21', 'safsdf', 0, 0.62, 0.410333),
-(10, 37, '123', '2016-04-22', '221', 0, 0.27, 0.378667),
-(11, 37, 'sdfg', '2016-04-22', 'dsfggggggg', 1, 0.91, 0.166),
-(13, 37, '222', '2016-04-22', '1', 2, 2.61, 0.354667),
-(14, 41, '222', '2016-04-22', '1', 1, 0.33, 2.383),
-(15, 41, '222', '2016-04-22', '1', 2, 0.91, 0.645333);
+INSERT INTO `operations` (`id`, `idApproach`, `name`, `updated`, `comment`, `position`, `actualTime`, `directoryValueId`, `calcTime`) VALUES
+(23, 37, 'adsf', '2016-04-25', 'aaa', 6, 0.109, 850, 0.43),
+(24, 37, '777', '2016-04-27', '44', 7, 0.502333, 876, 0.28),
+(25, 40, 'asdf', '2016-04-28', 'aa', 1, 0.296281, 856, 0.43),
+(26, 44, 'asdf', '2016-04-28', 'a3', 1, 0.263, 3969, 0.31);
 
 -- --------------------------------------------------------
 
@@ -185,7 +180,7 @@ ALTER TABLE `approach`
 -- AUTO_INCREMENT for table `operations`
 --
 ALTER TABLE `operations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `processes`
 --
