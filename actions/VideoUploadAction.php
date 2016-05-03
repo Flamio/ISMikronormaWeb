@@ -34,11 +34,6 @@ class VideoUploadAction extends abstractActions
             return;
         }
 
-        $this->view->answer("
-            <script language='javascript' type='text/javascript'>
-                alert('{$_FILES['videoFile']['tmp_name']}');
-            </script>   ");
-
         $approach = new Approach();
         $videofile = $approach->getValues(array("videoFilename"), "id={$this->get['approachId']}");
         $videofile = $videofile[0];
