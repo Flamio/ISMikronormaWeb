@@ -14,40 +14,42 @@ var view =
         console.log(gystoParameters);
         this.openDialog('gystogram');
         
+        var values = [];
         var categories = [];
-        var series = [];
-        
-        for(var i in gystoParameters)
+
+        var approachCounter = 0;
+        for (i in gystoParameters)
         {
             categories.push(i);
-            for (var j in gystoParameters[i])
+            for (j in gystoParameters[i])
             {
-                var data = [0,0];
-                var counter = 0;
-                for(var k in gystoParameters)
+                if (values[j] == null)
                 {
-                    if (j in gystoParameters[k])
-                    {
-                        data[counter] = gystoParameters[i][j].count;
-                    }
-                    else 
-                    {
-                        data[counter] = 0;
-                    }
-                    counter++;
+                    values[j] = { name: "", data: [] }
                 }
-                series.push(
-                {
-                    name: gystoParameters[i][j].name,
-                    data: data
-                });  
+                values[j].name = gystoParameters[i][j].name;
+                values[j].data[approachCounter] = gystoParameters[i][j].count;
             }
-        } 
-        
-       /* series[counter].data = [];
-                        series[counter].data[approachCounter] = gystoParameters[i][j].count;
-                        counter++;*/
-        
+            approachCounter++;
+        }
+
+        console.log(values);
+
+        var series = [];
+        for (i in values)
+        {
+            for (var j = 0; j < values[i].data.length; j++)
+            {
+                console.log(values[i].data[j]);
+                if (values[i].data[j] == null)
+                {
+                    values[i].data[j] = 0;
+                   
+                }
+            }
+            series.push(values[i]);
+        }
+
         console.log(series);
         
         $(function () {

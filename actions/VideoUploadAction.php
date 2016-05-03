@@ -24,17 +24,30 @@ class VideoUploadAction extends abstractActions
     }
     public function run()
     {
-        if (empty($this->file['videoFile']['tmp_name']))
+        $this->file = $this->file['videoFile'];
+        if (empty($this->file['tmp_name']))
         {
-            $this->view->answer("failed");
+            $this->view->answer("
+            <script language='javascript' type='text/javascript'>
+                alert('Failed!');
+            </script>");
+            return;
         }
+
+        $this->view->answer("
+            <script language='javascript' type='text/javascript'>
+                alert('{$_FILES['videoFile']['tmp_name']}');
+            </script>   ");
+
         $approach = new Approach();
         $videofile = $approach->getValues(array("videoFilename"), "id={$this->get['approachId']}");
-        @unlink($videofile[0]['approachvideoFilename']);
+        $videofile = $videofile[0];
+        @unlink($videofile['approachvideoFilename']);
+
         
-        $hash = hash_file("md5",$this->file['videoFile']['tmp_name']);
+        $hash = hash_file("md5",$this->file['tmp_name']);
         $filePath = "WorkingDirectory/{$hash}";
-        move_uploaded_file($this->file['videoFile']['tmp_name'],$filePath);
+        move_uploaded_file($this->file['tmp_name'],$filePath);
         
         $approach->update(array($filePath), array('videoFilename'), "id={$this->get['approachId']}");
         $this->view->answer("
