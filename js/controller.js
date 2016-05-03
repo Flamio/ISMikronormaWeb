@@ -7,6 +7,13 @@
 
 var controller = 
 {
+    handleGystoClick: function(view, model)
+    {
+        ISMikronormaWebApi.getOperationsCount(model.currentProcess, function (response)	
+	{
+            view.showGysto(response);
+	});
+    },
     handleAnalysisClick: function (view, model, dialogId)
     {
 	ISMikronormaWebApi.getAvarageTimePerProcess(model.currentProcess, function (response)	

@@ -7,10 +7,11 @@
             <file>file:/var/www/html/ISMikronorma/actions/getProcessAction.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/VideoUploadAction.php</file>
             <file>file:/var/www/html/ISMikronorma/factories/ActionsFactory.php</file>
-            <file>file:/var/www/html/ISMikronorma/js/ISMikronormaWebApi.js</file>
             <file>file:/var/www/html/ISMikronorma/activeRecords/operation.php</file>
+            <file>file:/var/www/html/ISMikronorma/js/ISMikronormaWebApi.js</file>
             <file>file:/var/www/html/ISMikronorma/js/controller.js</file>
             <file>file:/var/www/html/ISMikronorma/actions/abstractActions.php</file>
+            <file>file:/var/www/html/ISMikronorma/api.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/getAllOperationsAction.php</file>
             <file>file:/var/www/html/ISMikronorma/controllers/DirectoriesController.php</file>
             <file>file:/var/www/html/ISMikronorma/controllers/ActionController.php</file>
@@ -18,9 +19,10 @@
             <file>file:/var/www/html/ISMikronorma/activeRecords/abstractActiveRecord.php</file>
             <file>file:/var/www/html/ISMikronorma/js/view.js</file>
             <file>file:/var/www/html/ISMikronorma/activeRecords/process.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/getAvarageTimePerProcess.php</file>
             <file>file:/var/www/html/ISMikronorma/index.html</file>
+            <file>file:/var/www/html/ISMikronorma/actions/getAvarageTimePerProcess.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/getApproachAction.php</file>
+            <file>file:/var/www/html/ISMikronorma/actions/GetOperationsCount.php</file>
             <file>file:/var/www/html/ISMikronorma/js/model.js</file>
             <file>file:/var/www/html/ISMikronorma/actions/AddOperationAction.php</file>
             <file>file:/var/www/html/ISMikronorma/actions/UpdateProcessTree.php</file>

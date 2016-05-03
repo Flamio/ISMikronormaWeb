@@ -73,7 +73,8 @@ input[type="file"]
     top:0;
     display:none;
 }
-#addingProcessDiv, #addingApproachDiv, #analysisDiv
+
+#addingProcessDiv, #addingApproachDiv, #analysisDiv, #gystogram
 {
     position: absolute;
     left: 30%;
@@ -82,6 +83,14 @@ input[type="file"]
     background-color: white;
     display:none;
 }
+
+#gystogram
+{
+    width:600;
+    height:400;
+}
+
+
 #addingProcessTable, #addingApproachTable
 {
     width: 100%;
@@ -229,7 +238,7 @@ input[type="file"]
     margin-bottom: 5px;
 }
 
-div:not(#directoriesTree):not(#blockerBackground)
+div:not(#directoriesTree):not(#blockerBackground):not(#gystogramContainer)
 {
     position:absolute;
 }

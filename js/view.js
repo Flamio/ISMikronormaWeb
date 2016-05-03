@@ -9,6 +9,94 @@ var view =
 {
     model:null,
     
+    showGysto: function(gystoParameters)
+    {
+        console.log(gystoParameters);
+        this.openDialog('gystogram');
+        
+        var categories = [];
+        var series = [];
+        
+        for(var i in gystoParameters)
+        {
+            categories.push(i);
+            for (var j in gystoParameters[i])
+            {
+                var data = [0,0];
+                var counter = 0;
+                for(var k in gystoParameters)
+                {
+                    if (j in gystoParameters[k])
+                    {
+                        data[counter] = gystoParameters[i][j].count;
+                    }
+                    else 
+                    {
+                        data[counter] = 0;
+                    }
+                    counter++;
+                }
+                series.push(
+                {
+                    name: gystoParameters[i][j].name,
+                    data: data
+                });  
+            }
+        } 
+        
+       /* series[counter].data = [];
+                        series[counter].data[approachCounter] = gystoParameters[i][j].count;
+                        counter++;*/
+        
+        console.log(series);
+        
+        $(function () {
+            $('#gystogramContainer').highcharts({
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Распределение операций по подходам'
+                },
+
+                xAxis: {
+                    categories: categories,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -40,
+                    y: 80,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                    shadow: true
+                },
+                credits: {
+                    enabled: false
+                },
+                series: series 
+            });
+        });
+    },
+    
     setTimesInAnalysisDialog : function(times)
     {
       var tbody = document.getElementById('analysisDiv').getElementsByTagName('tbody')[0];

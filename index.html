@@ -3,7 +3,11 @@
 		<meta charset="utf-8">
 		<link href="css/style.css" rel="stylesheet">
 		<title>ИСМикронорма</title>
-		
+                
+		<script language="javascript" src="js/jquery.js"></script>
+                <script language="javascript" src="js/highcharts.js"></script>
+                <script language="javascript" src="js/exporting.js"></script>
+
                 <script src="js/view.js"></script>
                 <script src="js/xhr.js"></script>
                 <script src="js/controller.js"></script>
@@ -18,6 +22,11 @@
 	</head>
         <body onkeydown="controller.handleOnKeyDown(event,view);">
             <div id="blockerBackground"></div>
+            <div id="gystogram">
+                <div id="gystogramContainer"></div>
+                <br>
+                <button style="z-index: 400;" onclick="view.closeDialog(this.parentElement.id)">OK</button>
+            </div>
             <div id="load">
                 <table>
                     <tr>
@@ -159,6 +168,7 @@
                     <img class="toolbarIcons" src="img/plusSmall.png" onclick="controller.showAddApproachDialog(view);"></img>
                     <img class="toolbarIcons" src="img/pencil.png" onclick="controller.showEditDilog(view,model);"></img>
                     <img class="toolbarIcons" src="img/analysis.png" onclick="controller.handleAnalysisClick(view, model,analysisDiv);"></img>
+                    <button onclick="controller.handleGystoClick(view,model);">Гистограмма</button>
                 </div>
             </div>
                 <div id="processTreeFieldDiv"> 

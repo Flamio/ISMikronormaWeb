@@ -12,6 +12,7 @@ require_once 'actions/getApproachAction.php';
 require_once 'actions/AddOperationAction.php';
 require_once 'actions/GetLastOperationPositionAction.php';
 require_once 'actions/getAvarageTimePerProcess.php';
+require_once 'actions/GetOperationsCount.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -56,6 +57,8 @@ class ActionsFactory
                 return new GetLastOperationPositionAction($_GET['idApproach']);
             case 'getAverageTimePerProcess':
                 return new getAvarageTimePerProcess($_GET['id']);
+            case 'getOperationsCount':
+                return new GetOperationsCount($_GET['id']);
             default: 
                 break;
         }

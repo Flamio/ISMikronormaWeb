@@ -14,7 +14,6 @@
 abstract class abstractActions 
 {
     protected $view;
-    protected $database;
     protected $mainModel;
 
 

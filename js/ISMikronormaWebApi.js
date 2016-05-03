@@ -7,6 +7,10 @@
 
 var ISMikronormaWebApi =
 {
+    getOperationsCount: function(processId, onAnswer)
+    {
+         xhr.getAjaxData("api.php?action=getOperationsCount&id="+processId, null, onAnswer);  
+    },
     getAvarageTimePerProcess: function (processId, onAnswer) 
     {
 	 xhr.getAjaxData("api.php?action=getAverageTimePerProcess&id="+processId, null, onAnswer);  
