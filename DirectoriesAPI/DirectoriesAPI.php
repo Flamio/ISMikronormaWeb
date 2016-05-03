@@ -29,7 +29,7 @@ class DirectoriesAPI implements IDirectoriesAPI
     }
 
     public function getAllDirectories() 
-    {
+    {   
         return file_get_contents($this->buildUrl("/Specifications/nodes/27532/childs"), false,  stream_context_create($this->disablingCert));
     }
 

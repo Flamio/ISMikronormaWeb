@@ -3,30 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/ISMikronorma/css/style.css</file>
-            <file>file:/var/www/html/ISMikronorma/actions/getProcessAction.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/VideoUploadAction.php</file>
-            <file>file:/var/www/html/ISMikronorma/factories/ActionsFactory.php</file>
-            <file>file:/var/www/html/ISMikronorma/activeRecords/operation.php</file>
-            <file>file:/var/www/html/ISMikronorma/js/ISMikronormaWebApi.js</file>
-            <file>file:/var/www/html/ISMikronorma/js/controller.js</file>
-            <file>file:/var/www/html/ISMikronorma/actions/abstractActions.php</file>
-            <file>file:/var/www/html/ISMikronorma/api.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/getAllOperationsAction.php</file>
-            <file>file:/var/www/html/ISMikronorma/controllers/DirectoriesController.php</file>
-            <file>file:/var/www/html/ISMikronorma/controllers/ActionController.php</file>
-            <file>file:/var/www/html/ISMikronorma/DirectoriesAPI/DirectoriesAPI.php</file>
-            <file>file:/var/www/html/ISMikronorma/activeRecords/abstractActiveRecord.php</file>
-            <file>file:/var/www/html/ISMikronorma/js/view.js</file>
-            <file>file:/var/www/html/ISMikronorma/activeRecords/process.php</file>
-            <file>file:/var/www/html/ISMikronorma/index.html</file>
-            <file>file:/var/www/html/ISMikronorma/actions/getAvarageTimePerProcess.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/getApproachAction.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/GetOperationsCount.php</file>
-            <file>file:/var/www/html/ISMikronorma/js/model.js</file>
-            <file>file:/var/www/html/ISMikronorma/actions/AddOperationAction.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/UpdateProcessTree.php</file>
-            <file>file:/var/www/html/ISMikronorma/actions/UpdateApproachAction.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/activeRecords/Approach.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/core/application.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/factories/ControllerFactory.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/actions/abstractActions.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/controllers/ActionController.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/consts/DataBaseConnectionConsts.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/css/style.css</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/activeRecords/abstractActiveRecord.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/actions/getAllOperationsAction.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/consts/ActionsConsts.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/activeRecords/operation.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/views/MainView.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/actions/AddProcessAction.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/activeRecords/process.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/factories/ActionsFactory.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/controllers/DirectoriesController.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/actions/UpdateProcessTree.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/DirectoriesAPI/DirectoriesAPI.php</file>
+            <file>file:/C:/WebServers/home/localhost/www/ISMikronorma/actions/VideoUploadAction.php</file>
         </group>
     </open-files>
 </project-private>

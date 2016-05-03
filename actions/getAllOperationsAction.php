@@ -28,7 +28,9 @@ class getAllOperationsAction extends abstractActions
         $opearation = new operation();
         $operations = $opearation->getValues(array('id','idApproach','name','updated','comment','calcTime', 'actualTime','position'), "{$opearation->getTableName()}.idApproach={$this->approachId}");
         $approach = new Approach();
-        $videoFileName = $approach->getValues(array('videoFilename'), "id={$this->approachId}")[0]['approachvideoFilename'];
+        $videoFileName = $approach->getValues(array('videoFilename'), "id={$this->approachId}");
+        $videoFileName = $videoFileName[0];
+        $videoFileName = $videoFileName['approachvideoFilename'];
         $result['videoFilename'] = $videoFileName;
         
         if (!empty($operations))

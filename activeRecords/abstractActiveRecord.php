@@ -68,7 +68,8 @@ abstract class abstractActiveRecord
         {
             $query.=" where {$condition}";
         }
-        return $this->convertfromResToArray($query)[0];
+        $res = $this->convertfromResToArray($query);
+        return $res[0];
     }
     
     
