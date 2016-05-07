@@ -188,11 +188,11 @@
                     <img class="toolbarIcons" src="img/plusBig.png" onclick="controller.showAddProcessDialog(view)"></img>
                     <img class="toolbarIcons" src="img/plusSmall.png" onclick="controller.showAddApproachDialog(view);"></img>
                     <img class="toolbarIcons" src="img/pencil.png" onclick="controller.showEditDilog(view,model);"></img>
-                    <img class="toolbarIcons" src="img/analysis.png" onclick="controller.handleAnalysisClick(view, model,analysisDiv);"></img>
-                    <button onclick="controller.handleGystoClick(view,model);">Гистограмма</button>
+                    <img class="toolbarIcons" src="img/avarageAnalysis.png" onclick="controller.handleAnalysisClick(view, model,analysisDiv);"></img>
+                    <img class="toolbarIcons" src="img/gistogram.png" onclick="controller.handleGystoClick(view,model);"></img>
                 </div>
             </div>
-            <div id="processTreeFieldDiv">
+            <div id="processTreeFieldDiv" class="pane">
                 <table id="processTable">
                     <thead>
                         <tr>
@@ -211,7 +211,7 @@
                     <div id="videoFieldDiv">
                         <video id="videoField" src=""></video>
                     </div>
-                    <div id="timeDiv">
+                    <div id="timeDiv" class="pane">
                         <table id="timesTable"></table>
                     </div>
                 </div>
@@ -234,7 +234,7 @@
                             <label id="2" onclick="controller.handleSpeed(view,2,this);return false;" class="toolbarIcons">2x      </label>
                         </div>
                     </div>
-                    <div id="actionsDiv">
+                    <div id="actionsDiv" class="pane">
                         <table id="actionsTable">
                             <thead>
                                 <tr>

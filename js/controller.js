@@ -113,7 +113,8 @@ var controller =
             $("#videoAndTimesAndActions").splitter(
                {
                    splitHorizontal: true,
-                   sizeTop: 500
+                   sizeTop: 480,
+                   minTop: 480
                });
         });
     },
