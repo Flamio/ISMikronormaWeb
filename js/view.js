@@ -333,6 +333,7 @@ var view =
     
     closeDialog: function(id)
     {
+        console.log('closing: '+id);
          document.getElementById(id).style.display = 'none';
         document.getElementById("blockerBackground").style.display = 'none';
     },

@@ -88,11 +88,34 @@ var controller =
         }
         view.showAddApproachDialog();
     },
-    
+
     handleOnload:function(model,view)
     {
         view.setModel(model);
         view.updateProcessesAndApproaches(model);
+        var t = this;
+        $().ready(function () {
+            $("#sidePanelAndContent").splitter(
+                {
+                   
+                    splitVertical: true,
+                    sizeLeft: 300,
+                    minLeft: 300,
+
+                });
+            $("#videoAndTimes").splitter(
+            {
+                splitVertical: true,
+                sizeLeft: 640,
+                minLeft:640
+            });
+
+            $("#videoAndTimesAndActions").splitter(
+               {
+                   splitHorizontal: true,
+                   sizeTop: 500
+               });
+        });
     },
     handleOnKeyDown: function(event,view)
     {
