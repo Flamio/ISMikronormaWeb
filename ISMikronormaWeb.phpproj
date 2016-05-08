@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -19,12 +20,14 @@
     <Compile Include="actions\AddApproachAction.php" />
     <Compile Include="actions\AddOperationAction.php" />
     <Compile Include="actions\AddProcessAction.php" />
+    <Compile Include="actions\exportAnalisys.php" />
     <Compile Include="actions\getAllOperationsAction.php" />
     <Compile Include="actions\getApproachAction.php" />
     <Compile Include="actions\getAvarageTimePerProcess.php" />
     <Compile Include="actions\GetLastOperationPositionAction.php" />
     <Compile Include="actions\GetOperationsCount.php" />
     <Compile Include="actions\getProcessAction.php" />
+    <Compile Include="actions\IInternalSharable.php" />
     <Compile Include="actions\UpdateApproachAction.php" />
     <Compile Include="actions\UpdateProcessAction.php" />
     <Compile Include="actions\UpdateProcessTree.php" />
@@ -38,6 +41,8 @@
     <Compile Include="controllers\ActionController.php" />
     <Compile Include="controllers\DirectoriesController.php" />
     <Compile Include="core\application.php" />
+    <Compile Include="core\CsvBuilder.php" />
+    <Compile Include="core\FileSender.php" />
     <Compile Include="css\style.css" />
     <Compile Include="dataBaseDump\ISMikronormaDB.sql" />
     <Compile Include="DirectoriesAPI\DirectoriesAPI.php" />

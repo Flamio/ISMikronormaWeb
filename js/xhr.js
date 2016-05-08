@@ -33,7 +33,7 @@ var xhr =
             {
                 if(req.status == 200) 
                 {
-                    if (onResponse!=undefined)
+                    if (onResponse!=null)
                     {
                         view.closeDialog('load');
 			            console.log(req.responseText);

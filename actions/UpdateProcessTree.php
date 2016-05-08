@@ -1,4 +1,4 @@
- <?php
+<?php
 require_once 'abstractActions.php';
 require_once 'activeRecords/Approach.php';
 /*

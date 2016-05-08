@@ -7,6 +7,11 @@
 
 var controller = 
 {
+    handleAvarageExprot: function(model)
+    {
+        ISMikronormaWebApi.exportAvarage(model.currentProcess);
+    },
+
     handleGystoClick: function(view, model)
     {
         ISMikronormaWebApi.getOperationsCount(model.currentProcess, function (response)	

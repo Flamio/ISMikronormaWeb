@@ -11,7 +11,10 @@
  *
  * @author maksim
  */
-class GetOperationsCount extends abstractActions
+
+require_once('IInternalSharable.php');
+
+class GetOperationsCount extends abstractActions implements IInternalSharable
 {
     private $result;
     public function __construct($processId) 
@@ -29,6 +32,12 @@ class GetOperationsCount extends abstractActions
             }
         }
     }
+
+    public function getResult()
+    {
+        return $this->result;
+    }
+
     public function run()
     {
         $this->view->answer(json_encode($this->result));

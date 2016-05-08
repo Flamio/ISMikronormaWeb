@@ -68,6 +68,10 @@ var ISMikronormaWebApi =
     addOperation: function(idApproach, comment, name, directoriesValueId, calcTime, actualTime, position, onAnswerFunc)
     {
         xhr.getAjaxData(view, "api.php?action=addOperation", "calcTime=" + calcTime + "&idApproach=" + idApproach + "&comment=" + comment + "&name=" + name + "&directoriesValueId=" + directoriesValueId + "&actualTime=" + actualTime + "&position=" + position, onAnswerFunc);
+    },
+    exportAvarage: function(idProcess)
+    {
+        window.location = "api.php?action=exportAnalysis&id=" + idProcess;
     }
     
 }
