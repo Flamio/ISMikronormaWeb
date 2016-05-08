@@ -23,6 +23,7 @@
 </head>
 <body onkeydown="controller.handleOnKeyDown(event,view);">
     <div id="blockerBackground"></div>
+    <div id="loadBlockerBackground"></div>
     <div id="gystogram" class="dialog">
         <table>
             <tr>
@@ -101,7 +102,7 @@
                     <label for="operationName">Название</label>
                 </td>
                 <td style="text-align: center">
-                    <input readonly type="text" id="operationName" name="operationName">
+                    <input type="text" id="operationName" name="operationName">
                 </td>
             </tr>
             <tr>

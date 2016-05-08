@@ -47,11 +47,19 @@ var controller =
       model.currentDirectoryValue = value;
       view.setActualValueInAddingOperationDialog(value);
     },
-    handleDirectoryNodeClick: function(nodeId)
+
+    handleDirectoryNodeClick: function(event)
     {
-        model.getChildsDirectory(nodeId, function(response)
+        if (event.target.tagName == 'LI')
         {
-            view.setDirectoryListInNode(nodeId,response);
+            return;
+        }
+
+        event.stopPropagation();
+        console.log('handled on node click');
+        model.getChildsDirectory(event.target.id, function (response)
+        {
+            view.setDirectoryListInNode(event.target.id, response);
         });
     },
     handleTimeDblClick: function(view, model,id)

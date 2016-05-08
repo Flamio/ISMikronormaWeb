@@ -24,7 +24,7 @@ var xhr =
             return xmlhttp;
      },
               
-    getAjaxData: function(url, request, onResponse)
+    getAjaxData: function(view,url, request, onResponse)
     {
         var req = this.getXmlHttp();
         req.onreadystatechange = function() 
@@ -35,12 +35,14 @@ var xhr =
                 {
                     if (onResponse!=undefined)
                     {
-			console.log(req.responseText);
+                        view.closeDialog('load');
+			            console.log(req.responseText);
                         onResponse(JSON.parse(req.responseText));
                     }
                 }
             }
-        } 
+        }
+        view.openDialog('load');
         req.open('POST', url, true); 
         req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
         req.send(request);

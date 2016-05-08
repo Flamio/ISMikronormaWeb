@@ -119,7 +119,7 @@ var view =
         {
             console.log(directoriesNodes.nodes[i]);
             innerHtml += "<ul class='directoryNode' id='"+directoriesNodes.nodes[i].Id+
-            "' onclick='controller.handleDirectoryNodeClick(event.target.id); return false;'><img src='img/directoryFolder.png'></img>"
+            "' onclick='controller.handleDirectoryNodeClick(event); return false;'><img src='img/directoryFolder.png'></img>"
             +directoriesNodes.nodes[i].Name+"<childs></childs></ul>";
         }
         
@@ -323,15 +323,30 @@ var view =
     
     closeDialog: function(id)
     {
-        console.log('closing: '+id);
-         document.getElementById(id).style.display = 'none';
-        document.getElementById("blockerBackground").style.display = 'none';
+        var closingObject = document.getElementById(id);
+        if (closingObject != null)
+        {
+            console.log('closing: ' + id);
+            closingObject.style.display = 'none';
+            if (id == 'load')
+                document.getElementById("loadBlockerBackground").style.display = 'none';
+            else
+                document.getElementById("blockerBackground").style.display = 'none';
+        }
     },
     
     openDialog: function(id)
     {
-        document.getElementById(id).style.display = 'block';
-        document.getElementById("blockerBackground").style.display = 'block';
+        var openingObject = document.getElementById(id);
+        if (openingObject == null)
+        {
+            return;
+        }
+        openingObject.style.display = 'block';
+        if (id == 'load')
+            document.getElementById("loadBlockerBackground").style.display = 'block';
+        else
+            document.getElementById("blockerBackground").style.display = 'block';
     },
     
     updateProcessesAndApproaches: function(model)
