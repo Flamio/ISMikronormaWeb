@@ -1,136 +1,151 @@
 
-#blockerBackground
-{
+#blockerBackground {
     position: fixed;
     width: 100%;
-    height:100%;
+    height: 100%;
     display: none;
     background-color: black;
-    z-index:1000;
+    z-index: 1000;
     opacity: 0.8;
 }
 
-#processTreeToolbarDiv
-{
-    height:32px;
+#processTreeToolbarDiv {
+    height: 32px;
 }
 
-#videoAndTimesAndActions
-{
-    height:100%;
+#videoAndTimesAndActions {
+    height: 100%;
 }
 
-#videoAndTimes
-{
+#videoAndTimes {
     width: 100%;
-    height:100%;
+    height: 100%;
 }
 
-#sidePanelAndContent
-{
-    min-height:300px;
+#sidePanelAndContent {
+    min-height: 300px;
     min-width: 500px;
-    height:100%;
+    height: 100%;
 }
 
 
-.vsplitbar 
-{
-	width: 5px;
-	background: #aaa;
-}
-
-.hsplitbar {
-	height: 6px;
+.vsplitbar {
+    width: 5px;
     background: #aaa;
 }
 
-.toolbarIcons
-{
+.hsplitbar {
+    height: 6px;
+    background: #aaa;
+}
+
+.toolbarIcons {
     margin-right: 5px;
 }
 
-.dialog 
-{
-    display:none;
+.dialog {
+    display: none;
     position: absolute;
     z-index: 1001;
     top: 50px;
     background-color: white;
-    padding:15px;
+    padding: 15px;
 }
 
-@media screen and (max-width: 1920px) 
-{
-     .dialog 
-     {
+@media screen and (max-width: 1920px) {
+    .dialog {
         left: 640px;
         width: 640px;
-     }
+    }
 
-     .dialod input[type=text]
-     {
-         width: 300px;
-     }
+    .dialod input[type=text] {
+        width: 300px;
+    }
 
-     .dialog select
-     {
-         width: 300px;
-     }
+    .dialog select {
+        width: 300px;
+    }
 }
 
-.dialog table
-{
+.dialog table {
     width: 100%;
+    border-spacing: 0;
+    overflow: auto;
+}
+
+    .dialog table tr td {
+        text-align: center;
+    }
+
+    .dialog table tfoot {
+        font-weight: bold;
+    }
+
+#videoField {
+    width: 100%;
+    height: 100%;
+}
+
+.pane table {
+    width: 100%;
+    margin-top: 20px;
     border-spacing:0;
-    overflow:auto;
 }
 
-.dialog table tr td
-{
-    text-align: center;
-}
-
-.dialog table tfoot
-{
-    font-weight:bold;
-}
-
-#videoField
-{
-    width: 100%;    
-    height:100%;
-}
-
-.pane table
-{
-    width:100%;
-    margin-top:20px;
-}
-
-.toolbarConteiner
-{
-    padding:5px;
+.toolbarConteiner {
+    padding: 5px;
     font-size: 15pt;
 }
 
-.pane
-{
-    overflow:auto;
+.pane {
+    overflow: auto;
 }
 
-.pane tr, .toolbarConteiner img
-{
-    cursor:pointer;
-}
+.pane tr {
+        cursor: pointer;
+    }
 
-tr.process
+tr.clickedProccessRow
 {
+    background-color: #0000FF;
+    color: white;
     font-weight: bold;
     font-size: 15pt;
 }
 
-tr.approach
+.toolbarIcons[pressed=pressed]
 {
+    background-color: #0000FF;
+    color: white;
+}
+
+tr.clickedApproachRow
+{
+    background-color: #0000FF;
+    color: white;
     font-size: 10pt;
+}
+
+tr.process {
+    font-weight: bold;
+    font-size: 15pt;
+}
+
+tr.approach {
+    font-size: 10pt;
+}
+
+.toolbarIcons
+{
+    cursor:pointer;
+}
+
+.toolbarIcons:active
+{
+    background-color: #0000FF;
+}
+
+#videoField
+{
+    background-color:black;
 }
