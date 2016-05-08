@@ -64,11 +64,12 @@ var view =
                 xAxis: {
                     categories: categories,
                     title: {
-                        text: null
+                        text: "Подходы"
                     }
                 },
                 yAxis: {
                     min: 0,
+                    title: "Кол-во операций",
                     labels: {
                         overflow: 'justify'
                     }
@@ -79,17 +80,6 @@ var view =
                             enabled: true
                         }
                     }
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'top',
-                    x: -40,
-                    y: 80,
-                    floating: true,
-                    borderWidth: 1,
-                    backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
-                    shadow: true
                 },
                 credits: {
                     enabled: false
@@ -107,11 +97,11 @@ var view =
       for (i in times.approachesAvarage)
       {
           innerHtml+= 
-                  "<tr><td>"+times.approachesAvarage[i].approachName+"</td><td>"+times.approachesAvarage[i].averageCalcTime+"</td><td>"+times.approachesAvarage[i].averageActualTime+"</td></tr>";
+                  "<tr><td>"+times.approachesAvarage[i].approachName+"</td><td>"+times.approachesAvarage[i].averageCalcTime.toFixed(3)+"</td><td>"+times.approachesAvarage[i].averageActualTime.toFixed(3)+"</td></tr>";
       }
       tbody.innerHTML = innerHtml;
       
-      innerHtml = "<tr><td>Итого</td><td>"+times.sumAvarageCalc+"</td><td>"+times.sumAvarageActual+"</td></tr>";
+      innerHtml = "<tr><td>Итого</td><td>" + times.sumAvarageCalc.toFixed(3) + "</td><td>" + times.sumAvarageActual.toFixed(3) + "</td></tr>";
       
       tfoot.innerHTML = innerHtml;
       
@@ -388,8 +378,9 @@ var view =
         console.log(model.partsOfVideo);
         for(var i=0;i<model.partsOfVideo.length;i++)
         {
-            innerHtml+="<tr id=times"+i+" class='timesItem' ondblclick='controller.handleTimeDblClick(view,model,"+i+");return false'><td>"+model.partsOfVideo[i].begin.toFixed(3)+"-"+model.partsOfVideo[i].end.toFixed(3)+"</td>\n\
-                <td>"+model.partsOfVideo[i].lenght.toFixed(3)+"</td></tr>"
+            innerHtml += "<tr id=times" + i + " class='timesItem'><td>" + model.partsOfVideo[i].begin.toFixed(3) + "-" + model.partsOfVideo[i].end.toFixed(3) + "</td>\n\
+                <td>" + model.partsOfVideo[i].lenght.toFixed(3) + "</td><td onclick='controller.handleTimeDblClick(view,model," + i + ");return false'>\n\
+                <img style='height:32px' src='img/plusSmall.png' class='toolbarIcons'></img></td></tr>";
         }
         console.log(innerHtml);
         document.getElementById("timesTable").innerHTML = innerHtml;

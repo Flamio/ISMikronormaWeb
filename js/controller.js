@@ -99,8 +99,8 @@ var controller =
                 {
                    
                     splitVertical: true,
-                    sizeLeft: 300,
-                    minLeft: 300,
+                    sizeLeft: 400,
+                    minLeft: 400,
 
                 });
             $("#videoAndTimes").splitter(

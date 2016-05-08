@@ -69,21 +69,29 @@
 
 .dialog table {
     width: 100%;
-    border-spacing: 0;
+    border-spacing: 5px 0px;
     overflow: auto;
 }
 
     .dialog table tr td {
-        text-align: center;
+        text-align: center; 
     }
 
-    .dialog table tfoot {
+    .dialog table tfoot, .dialog table thead {
         font-weight: bold;
     }
 
 #videoField {
     width: 100%;
     height: 100%;
+}
+
+#videoField[src='']
+{
+    background-image: url('../img/noVideo.jpg');
+    background-size: 100% ;
+    background-repeat:no-repeat;
+    background-position:center;
 }
 
 .pane table {
@@ -94,11 +102,17 @@
 
 .toolbarConteiner {
     padding: 5px;
-    font-size: 15pt;
+    font-size: 12pt;
 }
 
 .pane {
     overflow: auto;
+    padding:5px;
+}
+
+.pane table thead
+{
+    font-weight:bold;
 }
 
 .pane tr {
@@ -149,3 +163,33 @@ tr.approach {
 {
     background-color:black;
 }
+
+.toolbarConteiner label
+{
+    font-size:32px;
+    font-weight:bold;
+}
+
+body 
+{
+    margin:0;
+}
+
+#directoriesTree
+{
+    overflow:auto;
+    height:400px;
+}
+
+#directoriesTree ul 
+{
+    text-align: left;
+    cursor: pointer;
+}
+
+
+#directoriesTree li 
+{
+    background-color:#C8A2C8;
+}
+
