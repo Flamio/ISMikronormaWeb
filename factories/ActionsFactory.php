@@ -14,6 +14,7 @@ require_once 'actions/GetLastOperationPositionAction.php';
 require_once 'actions/getAvarageTimePerProcess.php';
 require_once 'actions/GetOperationsCount.php';
 require_once 'actions/exportAnalisys.php';
+require_once 'actions/exportGysto.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -62,6 +63,8 @@ class ActionsFactory
                 return new GetOperationsCount($_GET['id']);
             case 'exportAnalysis':
                 return new exportAnalisys($_GET['id']);
+            case 'exportGysto':
+                return new exportGysto($_GET['id']);
             default: 
                 break;
         }

@@ -72,6 +72,10 @@ var ISMikronormaWebApi =
     exportAvarage: function(idProcess)
     {
         window.location = "api.php?action=exportAnalysis&id=" + idProcess;
+    },
+
+    exportGysto: function(idProcess)
+    {
+        window.location = "api.php?action=exportGysto&id=" + idProcess;
     }
-    
 }

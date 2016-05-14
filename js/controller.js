@@ -7,6 +7,11 @@
 
 var controller = 
 {
+    handleExportGysto: function (mikronormaApi, model)
+    {
+        ISMikronormaWebApi.exportGysto(model.currentProcess);
+    },
+
     handleAvarageExprot: function(model)
     {
         ISMikronormaWebApi.exportAvarage(model.currentProcess);
@@ -19,21 +24,24 @@ var controller =
             view.showGysto(response);
 	    });
     },
+
     handleAnalysisClick: function (view, model, dialogId)
     {
 	ISMikronormaWebApi.getAvarageTimePerProcess(model.currentProcess, function (response)	
 	{	
-                view.setTimesInAnalysisDialog(response);
+        view.setTimesInAnalysisDialog(response);
 		view.openDialog(dialogId.id);
 	});
     },
+
     handleAddingOperation: function (model,view,name,comment)
     {
         var actualTime = model.partsOfVideo[model.currentTimeSelected].lenght;
         ISMikronormaWebApi.getLastOperationPosition(model.currentApproach,function(maxPositionresponse)
         {
             var maxPosition = maxPositionresponse.operationsposition;
-            ISMikronormaWebApi.addOperation(model.currentApproach, comment, name, model.currentDirectoryValueId, model.currentDirectoryValue, actualTime, Number(maxPosition)+1, function(response)
+            ISMikronormaWebApi.addOperation(model.currentApproach, comment, name, model.currentDirectoryValueId,
+                model.currentDirectoryValue, actualTime, Number(maxPosition) + 1, function (response)
             {
                view.showAlertMessage(response.success);
                view.closeAddOperationDialog();

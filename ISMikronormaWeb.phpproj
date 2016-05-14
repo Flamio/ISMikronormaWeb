@@ -21,6 +21,7 @@
     <Compile Include="actions\AddOperationAction.php" />
     <Compile Include="actions\AddProcessAction.php" />
     <Compile Include="actions\exportAnalisys.php" />
+    <Compile Include="actions\ExportGysto.php" />
     <Compile Include="actions\getAllOperationsAction.php" />
     <Compile Include="actions\getApproachAction.php" />
     <Compile Include="actions\getAvarageTimePerProcess.php" />

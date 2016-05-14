@@ -11,19 +11,26 @@
  *
  * @author maksim
  */
-class getProcessAction extends abstractActions
+
+require_once('IInternalSharable.php');
+
+class getProcessAction extends abstractActions implements IInternalSharable
 {
 
-    private $processId;
+    private $processValue;
 
-    public function __construct($processId) {
-        $this->processId = $processId;
+    public function __construct($processId) 
+    {
+        $process = new Process();
+        $this->processValue = $process->getValues(array('name','comment','directoryId'), "id={$processId}");
     }
     public function run() 
     {
-        $process = new Process();
-        $processValue = $process->getValues(array('name','comment','directoryId'), "id={$this->processId}");
-        $this->view->answer(json_encode($processValue));
+        $this->view->answer(json_encode($this->processValue));
     }
 
+    public function getResult()
+    {
+        return $this->processValue;
+    }
 }

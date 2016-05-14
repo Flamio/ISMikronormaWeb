@@ -41,7 +41,13 @@ class exportAnalisys extends abstractActions
     {
         $csvBuilder = new CsvBuilder($this->outputAvarageData);
         $csvData = $csvBuilder->getData();
-        $fileSender = new FileSender($csvData,'Ñğåäíèå çíà÷åíèÿ çà ïğîöåññ "'.$this->idProcess.'"',100);
+
+        $getProcessAction = new getProcessAction($this->idProcess);
+        $processName = $getProcessAction->getResult();
+
+        $processName = $processName[0]["processesname"];
+        
+        $fileSender = new FileSender($csvData,"Ñğåäíèå çíà÷åíèÿ çà ïğîöåññ '{$processName}'",100);
         $fileSender->send();
     }
 
